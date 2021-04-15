@@ -1,2 +1,0 @@
-# Metron
-Metron virtual currency
