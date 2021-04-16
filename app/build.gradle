@@ -30,6 +30,17 @@ android {
     dataBinding {
         enabled = true
     }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+
+    lintOptions {
+        disable 'ExtraTranslation'
+    }
 }
 
 dependencies {
@@ -51,7 +62,12 @@ dependencies {
     annotationProcessor deps.lifecycle.compiler
     implementation deps.room.runtime
     annotationProcessor deps.room.compiler
+
     implementation 'com.hmcx:mvp:2.0.2'
+    implementation 'com.hmcx:dollar:1.0.1'
+    implementation 'com.hmcx:rxandroid:1.0.6'
+    implementation 'com.hmcx:dialogger:1.0.2'
+    implementation 'com.hmcx:repeatview:1.0.9'
 
     implementation 'androidx.navigation:navigation-fragment:2.2.2'
     implementation 'androidx.navigation:navigation-ui:2.2.2'

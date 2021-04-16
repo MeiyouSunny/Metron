@@ -53,12 +53,13 @@ public class ApiCallExecuteListener implements OnCallExecuteListener {
     private String parseJsonData(String json) throws JSONException {
         $.debug().e("Response: " + json);
         JSONObject jsonObject = new JSONObject(json);
-        final int code = jsonObject.optInt("status");
-        if (code != 200) {
+        final boolean result = jsonObject.optBoolean("success");
+        if (!result) {
             final String errorMsg = jsonObject.optString("message");
-            throw new ServiceError(code, errorMsg);
+            final int errorCode = jsonObject.optInt("code");
+            throw new ServiceError(errorCode, errorMsg);
         }
-        final String data = jsonObject.optString("attachment");
+        final String data = jsonObject.optString("data");
 
         return data;
     }
