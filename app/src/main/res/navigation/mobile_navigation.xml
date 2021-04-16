@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/tab_home">
+
+    <fragment
+        android:id="@+id/tab_home"
+        android:name="com.metron.coin.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/tab_profit"
+        android:name="com.metron.coin.ui.home.ProfitFragment"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/tab_minter"
+        android:name="com.metron.coin.ui.home.MinterFragment"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/tab_mine"
+        android:name="com.metron.coin.ui.home.MineFragment"
+        tools:layout="@layout/fragment_home" />
+</navigation>

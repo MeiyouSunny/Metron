@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tab_home"
+        android:icon="@drawable/ic_home"
+        android:title="首页" />
+
+    <item
+        android:id="@+id/tab_profit"
+        android:icon="@drawable/ic_profit"
+        android:title="收益" />
+
+    <item
+        android:id="@+id/tab_minter"
+        android:icon="@drawable/ic_minter"
+        android:title="矿机" />
+
+    <item
+        android:id="@+id/tab_mine"
+        android:icon="@drawable/ic_mine"
+        android:title="我的" />
+
+</menu>
