@@ -74,5 +74,7 @@ dependencies {
 
     // Switch button
     compile 'com.kyleduo.switchbutton:library:1.4.6'
+    // MPAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
 }

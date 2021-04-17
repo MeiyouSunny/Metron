@@ -1,25 +1,29 @@
 package com.metron.coin.ui.home;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.metron.coin.R;
+import com.metron.coin.base.BaseBindFragment;
+import com.metron.coin.databinding.FragmentHomeBinding;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> {
 
-public class HomeFragment extends Fragment {
-
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text);
-        textView.setText("首页");
-
-        return root;
+    @Override
+    public int initLayoutResId() {
+        return R.layout.fragment_home;
     }
+
+    @Override
+    public void click(View view) {
+        switch (view.getId()) {
+//            case R.id.settings:
+//                break;
+        }
+    }
+
+    @Override
+    public void onViewCreated() {
+        super.onViewCreated();
+    }
+
 }
