@@ -7,6 +7,10 @@
     <color name="black">#000000</color>
     <color name="whilte">#FFFFFF</color>
 
+    <color name="bg_gray">#FFFFFF</color>
+
     <!-- 字体 -->
+    <color name="font_normal">#262626</color>
+    <color name="font_red">#F72500</color>
 
 </resources>

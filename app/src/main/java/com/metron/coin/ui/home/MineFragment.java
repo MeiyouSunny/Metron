@@ -1,25 +1,39 @@
 package com.metron.coin.ui.home;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.metron.coin.R;
+import com.metron.coin.base.BaseBindFragment;
+import com.metron.coin.databinding.FragmentMineBinding;
+import com.metron.coin.ui.settings.SettingActivity;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+public class MineFragment extends BaseBindFragment<FragmentMineBinding> {
 
-public class MineFragment extends Fragment {
-
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text);
-        textView.setText("我的");
-
-        return root;
+    @Override
+    public int initLayoutResId() {
+        return R.layout.fragment_mine;
     }
+
+    @Override
+    public void click(View view) {
+        switch (view.getId()) {
+            case R.id.settings:
+                toPage(SettingActivity.class);
+                break;
+        }
+    }
+
+    @Override
+    public void onViewCreated() {
+        super.onViewCreated();
+    }
+
+//    public View onCreateView(@NonNull LayoutInflater inflater,
+//                             ViewGroup container, Bundle savedInstanceState) {
+//        View root = inflater.inflate(R.layout.fragment_mine, container, false);
+//        final TextView textView = root.findViewById(R.id.text);
+//        textView.setText("我的");
+//
+//        return root;
+//    }
 }

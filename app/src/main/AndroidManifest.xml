@@ -37,6 +37,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.welcom.WelcomActivity"></activity>
+        <activity android:name=".ui.settings.SettingActivity"></activity>
     </application>
 
 </manifest>

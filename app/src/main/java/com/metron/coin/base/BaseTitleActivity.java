@@ -23,7 +23,7 @@ public abstract class BaseTitleActivity<T extends ViewDataBinding> extends BaseV
         titleLeft = bindRoot.getRoot().findViewById(R.id.title_left);
         titleRight = bindRoot.getRoot().findViewById(R.id.title_right);
 
-        title.setText(titleResId());
+        title.setText(title());
         titleLeft.setOnClickListener(this);
     }
 
@@ -34,7 +34,7 @@ public abstract class BaseTitleActivity<T extends ViewDataBinding> extends BaseV
         }
     }
 
-    protected abstract int titleResId();
+    protected abstract String title();
 
     @Override
     public void setTitleText(int text) {
