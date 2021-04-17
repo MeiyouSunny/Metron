@@ -4,22 +4,21 @@ import android.view.View;
 
 import com.metron.coin.R;
 import com.metron.coin.base.BaseTitleActivity;
-import com.metron.coin.databinding.ActivitySettngsBinding;
-import com.metron.coin.util.ViewUtil;
+import com.metron.coin.databinding.ActivityAboutBinding;
 
 /**
- * 设置
+ * 关于
  */
-public class SettingActivity extends BaseTitleActivity<ActivitySettngsBinding> {
+public class AboutActivity extends BaseTitleActivity<ActivityAboutBinding> {
 
     @Override
     protected String title() {
-        return "设置";
+        return "关于";
     }
 
     @Override
     protected int layoutId() {
-        return R.layout.activity_settngs;
+        return R.layout.activity_about;
     }
 
     @Override
@@ -30,9 +29,9 @@ public class SettingActivity extends BaseTitleActivity<ActivitySettngsBinding> {
     @Override
     public void click(View view) {
         switch (view.getId()) {
-            case R.id.about:
-                ViewUtil.gotoActivity(this, AboutActivity.class);
-                break;
+//            case R.id.exit:
+//                exitAccount();
+//                break;
         }
     }
 

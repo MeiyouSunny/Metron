@@ -26,10 +26,38 @@
             android:background="@color/whilte"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="14dp"
+                android:text="METRON"
+                android:textColor="#15233E"
+                android:textSize="@dimen/font_22" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:text="1.0.0"
+                android:textColor="#7C8698"
+                android:textSize="@dimen/font_12" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/extractCoin"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginTop="40dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:onClick="@{handler.click}"
@@ -45,23 +73,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="付款通知"
-                        android:textColor="@color/font_normal"
+                        android:text="给我们评分"
+                        android:textColor="#15233E"
                         android:textSize="@dimen/font_16" />
 
-                    <com.kyleduo.switchbutton.SwitchButton
-                        android:id="@+id/switch_auto_share_capture_video"
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        app:kswBackDrawable="@drawable/ios_back_drawable"
-                        app:kswBackMeasureRatio="1.4"
-                        app:kswThumbDrawable="@drawable/ios_thumb_selector"
-                        app:kswThumbMarginBottom="-8dp"
-                        app:kswThumbMarginLeft="-5dp"
-                        app:kswThumbMarginRight="-5dp"
-                        app:kswThumbMarginTop="-2.5dp"/>
+                        android:src="@drawable/ic_next_item" />
 
                 </RelativeLayout>
 
@@ -71,6 +92,7 @@
                 android:id="@+id/extractMoney"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginTop="20dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:onClick="@{handler.click}"
@@ -86,8 +108,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="修改密码"
-                        android:textColor="@color/font_normal"
+                        android:text="用户协议"
+                        android:textColor="#15233E"
                         android:textSize="@dimen/font_16" />
 
                     <ImageView
@@ -102,9 +124,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/about"
+                android:id="@+id/orders"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginTop="20dp"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:onClick="@{handler.click}"
@@ -120,42 +143,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="关于"
-                        android:textColor="@color/font_normal"
-                        android:textSize="@dimen/font_16" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_next_item" />
-
-                </RelativeLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/encryptedWallet"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:onClick="@{handler.click}"
-                app:cardElevation="0dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="退出登录"
-                        android:textColor="@color/font_red"
+                        android:text="隐私政策"
+                        android:textColor="#15233E"
                         android:textSize="@dimen/font_16" />
 
                     <ImageView
