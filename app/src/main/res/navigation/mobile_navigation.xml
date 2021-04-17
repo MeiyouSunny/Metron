@@ -13,15 +13,15 @@
     <fragment
         android:id="@+id/tab_profit"
         android:name="com.metron.coin.ui.home.ProfitFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_profit" />
 
     <fragment
         android:id="@+id/tab_minter"
         android:name="com.metron.coin.ui.home.MinterFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_mine" />
 
     <fragment
         android:id="@+id/tab_mine"
         android:name="com.metron.coin.ui.home.MineFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_mine" />
 </navigation>
