@@ -1,25 +1,27 @@
 package com.metron.coin.ui.home;
 
-import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.metron.coin.R;
+import com.metron.coin.base.BaseViewBindActivity;
+import com.metron.coin.databinding.ActivityHomeBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseViewBindActivity<ActivityHomeBinding> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void onViewCreated() {
+        init();
+    }
+
+    protected void init() {
 
         getSupportActionBar().hide();
         BottomNavigationView mBottomNav = findViewById(R.id.nav_view);
@@ -91,6 +93,11 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected int layoutId() {
+        return R.layout.activity_home;
     }
 
 }

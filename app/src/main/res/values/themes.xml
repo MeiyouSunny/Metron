@@ -13,7 +13,15 @@
     </style>
 
     <style name="ThemeHome" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="colorAccent">@android:color/transparent</item>
+
+        <!-- AppCompatEditText默认状态状态设置底线颜色 -->
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <!-- AppCompatEditText选择的底线颜色 -->
+        <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
 </resources>

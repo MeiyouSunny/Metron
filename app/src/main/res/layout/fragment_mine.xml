@@ -18,7 +18,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="132dp"
             android:background="@drawable/bg_mine_top"
             android:paddingLeft="16dp"
             android:paddingRight="28dp">
