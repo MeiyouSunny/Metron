@@ -76,5 +76,7 @@ dependencies {
     compile 'com.kyleduo.switchbutton:library:1.4.6'
     // MPAndroidChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    // statusbar
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
 
 }

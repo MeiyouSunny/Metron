@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav.xml"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.metron.coin.ui.account.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_to_registInput"
+            app:destination="@id/registInputFragment" />
+        <action
+            android:id="@+id/action_to_forgetPwd"
+            app:destination="@id/forgetPwdFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registInputFragment"
+        android:name="com.metron.coin.ui.account.RegistInputFragment"
+        android:label="RegistInputFragment">
+        <action
+            android:id="@+id/action_registInput_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_regist_to_verify"
+            app:destination="@id/verifyPhoneFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/verifyPhoneFragment"
+        android:name="com.metron.coin.ui.account.VerifyPhoneFragment"
+        android:label="VerifyPhoneFragment">
+        <action
+            android:id="@+id/action_to_setPwd"
+            app:destination="@id/setPwdFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/setPwdFragment"
+        android:name="com.metron.coin.ui.account.SetPwdFragment"
+        android:label="SetPwdFragment" />
+    <fragment
+        android:id="@+id/forgetPwdFragment"
+        android:name="com.metron.coin.ui.account.ForgetPwdFragment"
+        android:label="ForgetPwdFragment" >
+        <action
+            android:id="@+id/action_forgetPwd_to_verifyPhone"
+            app:destination="@id/verifyPhoneFragment" />
+    </fragment>
+
+</navigation>

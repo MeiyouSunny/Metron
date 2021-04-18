@@ -39,6 +39,7 @@
         <activity android:name=".ui.welcom.WelcomActivity"></activity>
         <activity android:name=".ui.settings.SettingActivity"></activity>
         <activity android:name=".ui.settings.AboutActivity"></activity>
+        <activity android:name=".ui.account.LoginActivity"></activity>
     </application>
 
 </manifest>

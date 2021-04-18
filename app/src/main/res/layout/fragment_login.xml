@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.metron.coin.base.BindClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_bar_black_fragment" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="用户登录"
+                android:textColor="#15233E"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="140dp"
+                android:gravity="center"
+                android:text="手机"
+                android:textColor="#15233E"
+                android:textSize="18sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="54dp"
+                android:layout_marginTop="140dp"
+                android:layout_marginRight="28dp"
+                android:layout_toLeftOf="@+id/icClear"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="填写手机号"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:paddingLeft="6dp"
+                android:singleLine="true"
+                android:textColor="#15233E"
+                android:textColorHint="#A0A7B3"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/icClear"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="148dp"
+                android:clickable="true"
+                android:onClick="@{handler.click}"
+                android:src="@drawable/ic_input_clear" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="178dp"
+                android:background="#E8E9EC" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="194dp"
+                android:gravity="center"
+                android:text="密码"
+                android:textColor="#15233E"
+                android:textSize="18sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="54dp"
+                android:layout_marginTop="194dp"
+                android:layout_marginRight="48dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="填写密码"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:paddingLeft="6dp"
+                android:singleLine="true"
+                android:textColor="#15233E"
+                android:textColorHint="#A0A7B3"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="232dp"
+                android:background="#E8E9EC" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                style="@style/BtnBLue"
+                android:layout_marginTop="273dp"
+                android:enabled="true"
+                android:onClick="@{handler.click}"
+                android:text="登录" />
+
+            <TextView
+                android:id="@+id/forgetPwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="42dp"
+                android:onClick="@{handler.click}"
+                android:text="找回密码"
+                android:textColor="#15233E"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>
