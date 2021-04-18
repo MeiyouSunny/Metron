@@ -8,220 +8,321 @@
         <variable
             name="handler"
             type="com.metron.coin.base.BindClickListener" />
+
+        <variable
+            name="minterSeries"
+            type="com.alaer.lib.api.bean.MinterSeries" />
+
+        <variable
+            name="minterUtil"
+            type="com.metron.coin.data.MinterUtil" />
+
     </data>
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="16dp"
-        android:paddingTop="36dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="16dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="首页"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_17"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="21dp"
-            android:background="@drawable/home_banner" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="市场行情"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_17"
-            android:textStyle="bold" />
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="14dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="36dp">
 
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewClick"
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="首页"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_17"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/home_banner" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:text="市场行情"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_17"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <androidx.cardview.widget.CardView
+                    style="@style/CardViewClick"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="@{handler.click}"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="14dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="14dp">
+
+                        <ImageView
+                            android:id="@+id/icBTC"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_btc" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="6dp"
+                            android:layout_toRightOf="@+id/icBTC"
+                            android:text="BTC"
+                            android:textColor="#15233E"
+                            android:textSize="@dimen/font_14" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/changeBTC"
+                            android:text="¥51733.1"
+                            android:textColor="#03C160"
+                            android:textSize="@dimen/font_16"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/changeBTC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:text="+0.1%"
+                            android:textColor="#15233E"
+                            android:textSize="@dimen/font_12" />
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    style="@style/CardViewClick"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="@{handler.click}"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="14dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="14dp">
+
+                        <ImageView
+                            android:id="@+id/icETH"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_eth" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="6dp"
+                            android:layout_toRightOf="@+id/icETH"
+                            android:text="BTC"
+                            android:textColor="#15233E"
+                            android:textSize="@dimen/font_14" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/changeETH"
+                            android:text="¥293.21"
+                            android:textColor="#03C160"
+                            android:textSize="@dimen/font_16"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/changeETH"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:text="+0.1%"
+                            android:textColor="#15233E"
+                            android:textSize="@dimen/font_12" />
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    style="@style/CardViewClick"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="@{handler.click}"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="14dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="14dp">
+
+                        <ImageView
+                            android:id="@+id/icUSDT"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_usdt" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="6dp"
+                            android:layout_toRightOf="@+id/icUSDT"
+                            android:text="USDT"
+                            android:textColor="#15233E"
+                            android:textSize="@dimen/font_14" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/changeUSDT"
+                            android:text="¥0.003921"
+                            android:textColor="#F33917"
+                            android:textSize="@dimen/font_16"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/changeUSDT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:text="-0.2%"
+                            android:textColor="#15233E"
+                            android:textSize="@dimen/font_12" />
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="scrollable"
+                app:tabRippleColor="#06000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:onClick="@{handler.click}"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="0dp">
+                android:background="@color/white"
+                android:orientation="vertical">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="12dp"
-                    android:paddingTop="14dp"
-                    android:paddingRight="12dp"
-                    android:paddingBottom="14dp">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/avilableLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="可挖币种："
+                        android:textAlignment="center"
+                        android:textColor="#6D7686"
+                        android:textSize="12sp" />
 
                     <ImageView
-                        android:id="@+id/icBTC"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:src="@drawable/ic_btc" />
+                        android:id="@+id/currencyIcon"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/avilableLabel"
+                        android:background="@drawable/ic_btc"
+                        app:drawableRes="@{minterUtil.parseMinterCurrencyIcon(minterSeries)}" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
-                        android:layout_toRightOf="@+id/icBTC"
-                        android:text="BTC"
-                        android:textColor="#15233E"
-                        android:textSize="@dimen/font_14" />
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="2dp"
+                        android:layout_toRightOf="@+id/currencyIcon"
+                        android:text="@{minterSeries.currency}"
+                        android:textAlignment="center"
+                        android:textColor="#6D7686"
+                        android:textSize="12sp"
+                        tools:text="BTC" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_above="@+id/changeBTC"
-                        android:text="¥51733.1"
-                        android:textColor="#03C160"
-                        android:textSize="@dimen/font_16"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/changeBTC"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:text="+0.1%"
-                        android:textColor="#15233E"
-                        android:textSize="@dimen/font_12" />
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_blue_stoke"
+                        android:paddingLeft="6dp"
+                        android:paddingTop="2dp"
+                        android:paddingRight="6dp"
+                        android:paddingBottom="2dp"
+                        android:text="联系销售"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp" />
 
                 </RelativeLayout>
 
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewClick"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:onClick="@{handler.click}"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="0dp">
-
-                <RelativeLayout
+                <likly.view.repeat.RepeatView
+                    android:id="@+id/repeatView"
+                    style="@style/RepeatView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="12dp"
-                    android:paddingTop="14dp"
-                    android:paddingRight="12dp"
-                    android:paddingBottom="14dp">
+                    app:emptyView="@layout/layout_no_data"
+                    app:viewHolderClass="com.metron.coin.adapter.MinterSeriesAdapter"
+                    app:viewHolderLayout="@layout/item_minter_series" />
 
-                    <ImageView
-                        android:id="@+id/icETH"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:src="@drawable/ic_eth" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
-                        android:layout_toRightOf="@+id/icETH"
-                        android:text="BTC"
-                        android:textColor="#15233E"
-                        android:textSize="@dimen/font_14" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@+id/changeETH"
-                        android:text="¥293.21"
-                        android:textColor="#03C160"
-                        android:textSize="@dimen/font_16"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/changeETH"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:text="+0.1%"
-                        android:textColor="#15233E"
-                        android:textSize="@dimen/font_12" />
-
-                </RelativeLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewClick"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:onClick="@{handler.click}"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="0dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="12dp"
-                    android:paddingTop="14dp"
-                    android:paddingRight="12dp"
-                    android:paddingBottom="14dp">
-
-                    <ImageView
-                        android:id="@+id/icUSDT"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:src="@drawable/ic_usdt" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
-                        android:layout_toRightOf="@+id/icUSDT"
-                        android:text="BTC"
-                        android:textColor="#15233E"
-                        android:textSize="@dimen/font_14" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@+id/changeUSDT"
-                        android:text="¥0.003921"
-                        android:textColor="#F33917"
-                        android:textSize="@dimen/font_16"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/changeUSDT"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:text="-0.2%"
-                        android:textColor="#15233E"
-                        android:textSize="@dimen/font_12" />
-
-                </RelativeLayout>
-
-
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
 </layout>

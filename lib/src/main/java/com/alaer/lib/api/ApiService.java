@@ -1,7 +1,10 @@
 package com.alaer.lib.api;
 
+import com.alaer.lib.api.bean.MinterSeries;
 import com.alaer.lib.api.bean.TokenInfo;
 import com.alaer.lib.api.bean.UserInfo;
+
+import java.util.List;
 
 import likly.reverse.Call;
 import likly.reverse.annotation.BaseUrl;
@@ -40,5 +43,11 @@ public interface ApiService {
      */
     @GET("/user/profile")
     Call<UserInfo> getUserInfo(Callback<UserInfo> callback);
+
+    /**
+     * 获取矿机系列及其型号列表
+     */
+    @GET("/miner/series")
+    Call<List<MinterSeries>> getMinterSeries(Callback<List<MinterSeries>> callback);
 
 }
