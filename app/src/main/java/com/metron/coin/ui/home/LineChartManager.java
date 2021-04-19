@@ -323,6 +323,8 @@ public class LineChartManager {
         LineDataSet lineDataSet = new LineDataSet(entries, name);
         //LINEAR 折线图  CUBIC_BEZIER 圆滑曲线
         initLineDataSet(lineDataSet, color, LineDataSet.Mode.LINEAR);
+        lineDataSet.setDrawHorizontalHighlightIndicator(false);
+        lineDataSet.setHighLightColor(Color.parseColor("#15233E"));
         //线条自定义内容 放在这里
         lineDataSet.setValueFormatter(new IValueFormatter() {
             @Override

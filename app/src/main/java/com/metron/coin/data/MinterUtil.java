@@ -3,6 +3,7 @@ package com.metron.coin.data;
 import android.text.TextUtils;
 
 import com.alaer.lib.api.bean.MinterSeries;
+import com.alaer.lib.api.bean.PollNewInfo;
 import com.metron.coin.R;
 
 public class MinterUtil {
@@ -25,6 +26,8 @@ public class MinterUtil {
 
     public int parseMinterCurrencyIcon(MinterSeries minterSeries) {
         int iconRes = R.drawable.ic_btc;
+        if (minterSeries == null)
+            return iconRes;
         if (TextUtils.equals(minterSeries.currency, "ETH")) {
             iconRes = R.drawable.ic_eth;
         } else if (TextUtils.equals(minterSeries.currency, "USDT")) {
@@ -32,6 +35,18 @@ public class MinterUtil {
         }
 
         return iconRes;
+    }
+
+    public String getCnyRateBTC(PollNewInfo pollNewInfo) {
+        if (pollNewInfo != null && pollNewInfo.BTC != null)
+            return String.valueOf(pollNewInfo.BTC.cnyRate);
+        return "";
+    }
+
+    public String getCnyRateETH(PollNewInfo pollNewInfo) {
+        if (pollNewInfo != null && pollNewInfo.ETH != null)
+            return String.valueOf(pollNewInfo.ETH.cnyRate);
+        return "";
     }
 
 }

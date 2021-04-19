@@ -14,6 +14,10 @@
             type="com.alaer.lib.api.bean.MinterSeries" />
 
         <variable
+            name="pollNewInfo"
+            type="com.alaer.lib.api.bean.PollNewInfo" />
+
+        <variable
             name="minterUtil"
             type="com.metron.coin.data.MinterUtil" />
 
@@ -105,7 +109,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_above="@+id/changeBTC"
-                            android:text="¥51733.1"
+                            android:text="@{minterUtil.getCnyRateBTC(pollNewInfo)}"
                             android:textColor="#03C160"
                             android:textSize="@dimen/font_16"
                             android:textStyle="bold" />
@@ -154,7 +158,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="6dp"
                             android:layout_toRightOf="@+id/icETH"
-                            android:text="BTC"
+                            android:text="ETH"
                             android:textColor="#15233E"
                             android:textSize="@dimen/font_14" />
 
@@ -162,7 +166,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_above="@+id/changeETH"
-                            android:text="¥293.21"
+                            android:text="@{minterUtil.getCnyRateETH(pollNewInfo)}"
                             android:textColor="#03C160"
                             android:textSize="@dimen/font_16"
                             android:textStyle="bold" />
@@ -262,11 +266,20 @@
                     android:layout_height="wrap_content"
                     android:padding="16dp">
 
+                    <View
+                        android:id="@+id/greenDot"
+                        android:layout_width="4dp"
+                        android:layout_height="4dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_green_dot" />
+
                     <TextView
                         android:id="@+id/avilableLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
                         android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/greenDot"
                         android:text="可挖币种："
                         android:textAlignment="center"
                         android:textColor="#6D7686"

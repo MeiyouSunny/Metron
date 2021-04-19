@@ -2,6 +2,10 @@ package com.metron.coin.ui.home;
 
 import android.graphics.drawable.Drawable;
 
+import com.alaer.lib.api.ApiUtil;
+import com.alaer.lib.api.Callback;
+import com.alaer.lib.api.bean.TokenInfo;
+import com.alaer.lib.util.UserDataUtil;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.databinding.FragmentProfitBtcBinding;
@@ -22,6 +26,7 @@ public class ProfitBTCFragment extends BaseBindFragment<FragmentProfitBtcBinding
     public void onViewCreated() {
         super.onViewCreated();
         showData();
+        requestData();
     }
 
     private void showData() {
@@ -36,6 +41,31 @@ public class ProfitBTCFragment extends BaseBindFragment<FragmentProfitBtcBinding
         Drawable drawable = getResources().getDrawable(R.drawable.fade_green);
         lineChartManager.setChartFillDrawable(drawable);
         lineChartManager.setMarkerView(getContext());
+    }
+
+    public void requestData() {
+        ApiUtil.apiService().login("18189202461", "123456",
+                new Callback<TokenInfo>() {
+
+                    @Override
+                    public void onResponse(TokenInfo tokenInfo) {
+                        UserDataUtil.instance().setTokenInfo(tokenInfo);
+
+                        ApiUtil.apiService().incomeTrend("ETH", "d",
+                                new Callback<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        super.onResponse(response);
+                                    }
+
+                                    @Override
+                                    public void onError(int code, String msg) {
+                                        super.onError(code, msg);
+                                    }
+                                });
+                    }
+
+                });
     }
 
 }

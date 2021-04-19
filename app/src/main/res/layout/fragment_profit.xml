@@ -11,17 +11,16 @@
     </data>
 
     <LinearLayout
-        android:paddingLeft="16dp"
-        android:paddingTop="36dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingTop="36dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
             android:layout_marginBottom="4dp"
             android:text="收益"
             android:textAlignment="center"

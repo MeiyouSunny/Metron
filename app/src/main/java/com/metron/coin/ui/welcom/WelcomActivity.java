@@ -3,7 +3,6 @@ package com.metron.coin.ui.welcom;
 import android.util.Log;
 import android.view.View;
 
-import com.alaer.lib.api.ApiService;
 import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
 import com.alaer.lib.api.bean.TokenInfo;
@@ -31,7 +30,6 @@ public class WelcomActivity extends BaseViewBindActivity<ActivityWelcomBinding> 
 
     private void testApi() {
         Log.e("testApi", "testApi");
-        ApiService apiService = ApiUtil.apiService();
         ApiUtil.apiService().login("18189202461", "123456",
                 new Callback<TokenInfo>() {
 

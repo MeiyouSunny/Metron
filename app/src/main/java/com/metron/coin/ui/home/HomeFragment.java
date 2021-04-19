@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
 import com.alaer.lib.api.bean.MinterSeries;
+import com.alaer.lib.api.bean.PollNewInfo;
 import com.google.android.material.tabs.TabLayout;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
@@ -36,11 +37,31 @@ public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implemen
         super.onViewCreated();
 
         setTabEvent();
+
+        bindRoot.setMinterUtil(new MinterUtil());
+        queryPollNewInfo();
         queryMinterSeries();
     }
 
     private void setTabEvent() {
         bindRoot.tabs.addOnTabSelectedListener(this);
+    }
+
+    private void queryPollNewInfo() {
+        ApiUtil.apiService().pollNewInfo(new Callback<PollNewInfo>() {
+            @Override
+            public void onResponse(PollNewInfo pollNewInfo) {
+                if (pollNewInfo != null) {
+//                    bindRoot.setMinterUtil(new MinterUtil());
+                    bindRoot.setPollNewInfo(pollNewInfo);
+                }
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+                super.onError(code, msg);
+            }
+        });
     }
 
     private void queryMinterSeries() {
@@ -85,8 +106,8 @@ public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implemen
             return;
         }
 
+//        bindRoot.setMinterUtil(new MinterUtil());
         bindRoot.setMinterSeries(minterSeries);
-        bindRoot.setMinterUtil(new MinterUtil());
 
 //        bindRoot.repeatView.getRecyclerView().setPaddingRelative(0, 30, 0, 30);
 //        bindRoot.repeatView.getRecyclerView().setClipToPadding(false);
