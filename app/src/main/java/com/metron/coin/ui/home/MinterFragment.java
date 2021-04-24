@@ -1,11 +1,15 @@
 package com.metron.coin.ui.home;
 
+import android.util.Log;
 import android.view.View;
 
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.databinding.FragmentMinterBinding;
 
+/**
+ * 矿机
+ */
 public class MinterFragment extends BaseBindFragment<FragmentMinterBinding> {
 
     private final int[] mIcons = {R.drawable.ic_btc, R.drawable.ic_btc, R.drawable.ic_eth, R.drawable.ic_usdt};
@@ -19,6 +23,9 @@ public class MinterFragment extends BaseBindFragment<FragmentMinterBinding> {
     @Override
     public void onViewCreated() {
         super.onViewCreated();
+
+        bindRoot.viewPager.setOffscreenPageLimit(3);
+        bindRoot.viewPager.setAdapter(new MinterTypeAdapter(getContext(), getChildFragmentManager()));
 
         bindRoot.setIcons(mIcons);
         bindRoot.setTitles(mTitles);
@@ -49,6 +56,9 @@ public class MinterFragment extends BaseBindFragment<FragmentMinterBinding> {
     private void selectType(int type) {
         bindRoot.setTypeListVisible(false);
         bindRoot.setType(type);
+
+        if (type < 3)
+            bindRoot.viewPager.setCurrentItem(type);
     }
 
 }

@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.material.tabs.TabLayout;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.databinding.FragmentProfitBinding;
@@ -32,7 +31,7 @@ public class ProfitFragment extends BaseBindFragment<FragmentProfitBinding> {
 
     private void setTabs() {
         bindRoot.viewPager.setOffscreenPageLimit(3);
-        TabProfitAdapter adapter = new TabProfitAdapter(getContext(), getActivity().getSupportFragmentManager());
+        TabProfitAdapter adapter = new TabProfitAdapter(getContext(), getChildFragmentManager());
         bindRoot.viewPager.setAdapter(adapter);
         bindRoot.tabs.setupWithViewPager(bindRoot.viewPager);
 

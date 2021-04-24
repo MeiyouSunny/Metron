@@ -42,36 +42,6 @@ public class HomeActivity extends BaseViewBindActivity<ActivityHomeBinding> {
         mPager.setAdapter(tabAdapter);
         mPager.setOffscreenPageLimit(4);
 
-        mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                switch (position) {
-                    case 0:
-                        mBottomNav.setSelectedItemId(R.id.tab_home);
-                        break;
-                    case 1:
-                        mBottomNav.setSelectedItemId(R.id.tab_profit);
-                        break;
-                    case 2:
-                        mBottomNav.setSelectedItemId(R.id.tab_minter);
-                        break;
-                    case 3:
-                        mBottomNav.setSelectedItemId(R.id.tab_mine);
-                        break;
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
         mBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
