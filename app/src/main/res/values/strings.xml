@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">METRON</string>
 
+    <string name="miner_all">全部矿机</string>
+    <string name="miner_btc">BTC</string>
+    <string name="miner_eth">ETH</string>
+    <string name="miner_usdt">USDT</string>
+
 </resources>
