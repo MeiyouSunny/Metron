@@ -1,5 +1,6 @@
 package com.metron.coin.ui.home;
 
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,10 +13,13 @@ import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.data.MinterUtil;
 import com.metron.coin.databinding.FragmentHomeBinding;
+import com.metron.coin.ui.dialog.DialogCustomerService;
 import com.metron.coin.util.CollectionUtils;
 import com.metron.coin.view.FullyLinearLayoutManager;
 
 import java.util.List;
+
+import likly.dialogger.Dialogger;
 
 public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implements TabLayout.BaseOnTabSelectedListener {
 
@@ -27,8 +31,11 @@ public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implemen
     @Override
     public void click(View view) {
         switch (view.getId()) {
-//            case R.id.settings:
-//                break;
+            case R.id.customerService:
+                Dialogger.newDialog(getContext()).holder(new DialogCustomerService())
+                        .gravity(Gravity.BOTTOM)
+                        .show();
+                break;
         }
     }
 

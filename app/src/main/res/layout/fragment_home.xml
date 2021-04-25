@@ -308,6 +308,9 @@
                         tools:text="BTC" />
 
                     <TextView
+                        android:clickable="true"
+                        android:onClick="@{handler.click}"
+                        android:id="@+id/customerService"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
