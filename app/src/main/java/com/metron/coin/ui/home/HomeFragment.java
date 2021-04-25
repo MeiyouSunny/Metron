@@ -32,7 +32,8 @@ public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implemen
     public void click(View view) {
         switch (view.getId()) {
             case R.id.customerService:
-                Dialogger.newDialog(getContext()).holder(new DialogCustomerService())
+                Dialogger.newDialog(getContext())
+                        .holder(new DialogCustomerService())
                         .gravity(Gravity.BOTTOM)
                         .show();
                 break;
