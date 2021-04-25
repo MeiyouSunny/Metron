@@ -101,7 +101,7 @@
                 <LinearLayout
                     android:id="@+id/minterTypes"
                     android:layout_width="match_parent"
-                    android:layout_height="176dp"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:visibility="@{typeListVisible ? View.VISIBLE : View.GONE}">
 
@@ -234,6 +234,15 @@
                         </RelativeLayout>
 
                     </androidx.cardview.widget.CardView>
+
+                    <View
+                        android:id="@+id/typeOutside"
+                        android:clickable="true"
+                        android:onClick="@{handler.click}"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="#55000000" />
 
                 </LinearLayout>
 

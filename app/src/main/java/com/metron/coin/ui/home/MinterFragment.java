@@ -1,6 +1,5 @@
 package com.metron.coin.ui.home;
 
-import android.util.Log;
 import android.view.View;
 
 import com.metron.coin.R;
@@ -37,6 +36,9 @@ public class MinterFragment extends BaseBindFragment<FragmentMinterBinding> {
         switch (view.getId()) {
             case R.id.typeSelect:
                 bindRoot.setTypeListVisible(!bindRoot.getTypeListVisible());
+                break;
+            case R.id.typeOutside:
+                bindRoot.setTypeListVisible(false);
                 break;
             case R.id.typeAll:
                 selectType(0);
