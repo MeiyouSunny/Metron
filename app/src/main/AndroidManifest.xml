@@ -41,6 +41,8 @@
         <activity android:name=".ui.settings.AboutActivity"></activity>
         <activity android:name=".ui.account.LoginActivity"></activity>
         <activity android:name=".ui.extract.ExtractCoinActivity"></activity>
+        <activity android:name=".ui.account.AccountInfoActivity"></activity>
+        <activity android:name=".ui.account.SetProfileActivity"></activity>
     </application>
 
 </manifest>

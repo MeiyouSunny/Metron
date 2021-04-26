@@ -5,6 +5,7 @@ import android.view.View;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.databinding.FragmentMineBinding;
+import com.metron.coin.ui.account.AccountInfoActivity;
 import com.metron.coin.ui.extract.ExtractCoinActivity;
 import com.metron.coin.ui.settings.SettingActivity;
 
@@ -18,6 +19,9 @@ public class MineFragment extends BaseBindFragment<FragmentMineBinding> {
     @Override
     public void click(View view) {
         switch (view.getId()) {
+            case R.id.accountInfo:
+                toPage(AccountInfoActivity.class);
+                break;
             case R.id.settings:
                 toPage(SettingActivity.class);
                 break;
