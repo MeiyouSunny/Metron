@@ -43,6 +43,10 @@
         <activity android:name=".ui.extract.ExtractCoinActivity"></activity>
         <activity android:name=".ui.account.AccountInfoActivity"></activity>
         <activity android:name=".ui.account.SetProfileActivity"></activity>
+        <activity android:name=".ui.extract.ExtractCoinConfirmActivity"></activity>
+        <activity android:name=".ui.extract.ExtractMoneyActivity"></activity>
+        <activity android:name=".ui.extract.ExtractMoneyConfirmActivity"></activity>
+
     </application>
 
 </manifest>
