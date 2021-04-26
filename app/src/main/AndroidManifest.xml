@@ -46,6 +46,7 @@
         <activity android:name=".ui.extract.ExtractCoinConfirmActivity"></activity>
         <activity android:name=".ui.extract.ExtractMoneyActivity"></activity>
         <activity android:name=".ui.extract.ExtractMoneyConfirmActivity"></activity>
+        <activity android:name=".ui.account.EncryptedWalletActivity"></activity>
 
     </application>
 

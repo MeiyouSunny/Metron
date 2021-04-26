@@ -20,13 +20,16 @@ public class SetProfileActivity extends BaseTitleActivity<ActivitySetProfileBind
 
     public static final int NAME = 1;
     public static final int PHONE = 2;
+    public static final int SET_ADDRESS_BTC = 3;
+    public static final int SET_ADDRESS_ETH = 4;
+    public static final int SET_ADDRESS_USDT = 5;
 
     @Override
     protected String title() {
         return "";
     }
 
-    @IntDef({NAME, PHONE})
+    @IntDef({NAME, PHONE, SET_ADDRESS_BTC, SET_ADDRESS_ETH, SET_ADDRESS_USDT})
     @interface TYPE {
     }
 
@@ -62,6 +65,15 @@ public class SetProfileActivity extends BaseTitleActivity<ActivitySetProfileBind
         } else if (type == PHONE) {
             setTitleText("手机号");
             bindRoot.input.setHint("");
+        } else if (type == SET_ADDRESS_BTC) {
+            setTitleText("BTC收款地址");
+            bindRoot.input.setHint("BTC收款地址");
+        } else if (type == SET_ADDRESS_ETH) {
+            setTitleText("ETH收款地址");
+            bindRoot.input.setHint("ETH收款地址");
+        } else if (type == SET_ADDRESS_USDT) {
+            setTitleText("USDT收款地址");
+            bindRoot.input.setHint("USDT收款地址");
         }
     }
 
