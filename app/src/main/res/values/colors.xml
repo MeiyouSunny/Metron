@@ -13,6 +13,7 @@
 
     <!-- 字体 -->
     <color name="font_normal">#262626</color>
-    <color name="font_red">#F72500</color>
+    <color name="font_red">#F33917</color>
+    <color name="font_green">#03C160</color>
 
 </resources>

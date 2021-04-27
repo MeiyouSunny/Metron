@@ -60,7 +60,7 @@ public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implemen
             @Override
             public void onResponse(PollNewInfo pollNewInfo) {
                 if (pollNewInfo != null) {
-//                    bindRoot.setMinterUtil(new MinterUtil());
+                    bindRoot.setMinterUtil(new MinterUtil());
                     bindRoot.setPollNewInfo(pollNewInfo);
                 }
             }

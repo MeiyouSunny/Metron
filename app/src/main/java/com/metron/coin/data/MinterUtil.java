@@ -49,4 +49,35 @@ public class MinterUtil {
         return "";
     }
 
+    public String getCnyUSDT(PollNewInfo pollNewInfo) {
+        if (pollNewInfo != null && pollNewInfo.USDT != null && pollNewInfo.rates != null) {
+            return (pollNewInfo.USDT.currencyPrice * pollNewInfo.rates.cny) + "";
+        }
+        return "";
+    }
+
+    public String getPercentChangeBTC(PollNewInfo pollNewInfo) {
+        if (pollNewInfo != null && pollNewInfo.BTC != null) {
+            String sign = pollNewInfo.BTC.pricePercentChange.day >= 0 ? "+" : "-";
+            return sign + pollNewInfo.BTC.pricePercentChange.day + "%";
+        }
+        return "";
+    }
+
+    public String getPercentChangeETH(PollNewInfo pollNewInfo) {
+        if (pollNewInfo != null && pollNewInfo.ETH != null) {
+            String sign = pollNewInfo.ETH.pricePercentChange.day >= 0 ? "+" : "-";
+            return sign + pollNewInfo.ETH.pricePercentChange.day + "%";
+        }
+        return "";
+    }
+
+    public String getPercentChangeUSDT(PollNewInfo pollNewInfo) {
+        if (pollNewInfo != null && pollNewInfo.USDT != null) {
+            String sign = pollNewInfo.USDT.pricePercentChange.day >= 0 ? "+" : "-";
+            return sign + pollNewInfo.USDT.pricePercentChange.day + "%";
+        }
+        return "";
+    }
+
 }
