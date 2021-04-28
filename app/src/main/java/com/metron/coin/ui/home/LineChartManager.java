@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 
+import com.alaer.lib.api.bean.IncomeTrend;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
@@ -17,6 +18,8 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
+import com.metron.coin.data.IncomeUtil;
+import com.metron.coin.util.NumberUtils;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -266,22 +269,16 @@ public class LineChartManager {
     }
 
     /*****************以下方法无法通用，根据自己数据的不同进行相应的处理********************/
-    /**
-     * 展示曲线
-     *
-     * @param dataList 数据集合
-     * @param name     曲线名称
-     * @param color    曲线颜色
-     */
-    public void showLineChart(final List<IncomeBean> dataList, String name, int color) {
+
+    public void showLineChart(List<IncomeTrend.Ticker> dataList, String name, int color) {
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < dataList.size(); i++) {
-            IncomeBean data = dataList.get(i);
+            IncomeTrend.Ticker data = dataList.get(i);
             /**
              * 在此可查看 Entry构造方法，可发现 可传入数值 Entry(float x, float y)
              * 也可传入Drawable， Entry(float x, float y, Drawable icon) 可在XY轴交点 设置Drawable图像展示
              */
-            Entry entry = new Entry(i, (float) data.getValue());
+            Entry entry = new Entry(i, (float) data.userIncome);
             entries.add(entry);
         }
 
@@ -293,11 +290,11 @@ public class LineChartManager {
         //是否绘制X轴线
         xAxis.setDrawAxisLine(true);
 
+        IncomeUtil incomeUtil = new IncomeUtil();
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                String tradeDate = dataList.get((int) value % dataList.size()).getTradeDate();
-                return DateUtil.formatDateToMD(tradeDate);
+                return incomeUtil.formatTimeString(dataList.get((int) value).time);
             }
         });
 
@@ -315,7 +312,7 @@ public class LineChartManager {
         leftYAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                return ((int) (value * 100)) + "%";
+                return NumberUtils.instance().parseFloat8(value);
             }
         });
 

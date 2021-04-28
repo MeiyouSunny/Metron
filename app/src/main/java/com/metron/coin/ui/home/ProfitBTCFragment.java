@@ -6,6 +6,7 @@ import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
 import com.alaer.lib.api.bean.IncomeLastest;
 import com.alaer.lib.api.bean.IncomeList;
+import com.alaer.lib.api.bean.IncomeTrend;
 import com.alaer.lib.api.bean.WithdrawStats;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
@@ -33,22 +34,7 @@ public class ProfitBTCFragment extends BaseBindFragment<FragmentProfitBtcBinding
 
         bindRoot.setNumberUtil(NumberUtils.instance());
         bindRoot.setIncomeUtil(new IncomeUtil());
-        showData();
         requestData();
-    }
-
-    private void showData() {
-        LineChartBean lineChartBean = LocalJsonAnalyzeUtil.JsonToObject(getContext(), "line_chart.json", LineChartBean.class);
-        List<IncomeBean> incomeBeanList = lineChartBean.getGRID0().getResult().getClientAccumulativeRate();
-        //展示图表
-        LineChartManager lineChartManager = new LineChartManager(bindRoot.lineChart);
-        lineChartManager.showLineChart(incomeBeanList, "我的收益", getResources().getColor(R.color.green));
-//        lineChartManager1.addLine(shanghai, "上证指数", getResources().getColor(R.color.orange));
-
-        //设置曲线填充色 以及 MarkerView
-        Drawable drawable = getResources().getDrawable(R.drawable.fade_green);
-        lineChartManager.setChartFillDrawable(drawable);
-        lineChartManager.setMarkerView(getContext());
     }
 
     public void requestData() {
@@ -74,6 +60,27 @@ public class ProfitBTCFragment extends BaseBindFragment<FragmentProfitBtcBinding
                 }
             }
         });
+
+        ApiUtil.apiService().incomeTrend(CoinConst.ETH, "d", new Callback<IncomeTrend>() {
+            @Override
+            public void onResponse(IncomeTrend incomeTrend) {
+                if (incomeTrend != null && !CollectionUtils.isEmpty(incomeTrend.tickers)) {
+                    showChart(incomeTrend.tickers);
+                }
+            }
+        });
+    }
+
+    private void showChart(List<IncomeTrend.Ticker> tickers) {
+        //展示图表
+        LineChartManager lineChartManager = new LineChartManager(bindRoot.lineChart);
+        lineChartManager.showLineChart(tickers, "我的收益", getResources().getColor(R.color.green));
+//        lineChartManager1.addLine(shanghai, "上证指数", getResources().getColor(R.color.orange));
+
+        //设置曲线填充色 以及 MarkerView
+        Drawable drawable = getResources().getDrawable(R.drawable.fade_green);
+        lineChartManager.setChartFillDrawable(drawable);
+        lineChartManager.setMarkerView(getContext());
     }
 
 }

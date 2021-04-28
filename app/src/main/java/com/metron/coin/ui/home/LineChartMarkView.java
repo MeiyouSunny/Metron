@@ -15,6 +15,7 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.MPPointF;
 import com.metron.coin.R;
+import com.metron.coin.util.NumberUtils;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -47,7 +48,7 @@ public class LineChartMarkView extends MarkerView {
                 //获取到曲线的所有在Y轴的数据集合，根据当前X轴的位置 来获取对应的Y轴值
                 float y = dataSet.getValues().get((int) e.getX()).getY();
                 if (i == 0) {
-                    tvValue0.setText(df.format(y * 100) + "%");
+                    tvValue0.setText(NumberUtils.instance().parseFloat8(y));
                 }
             }
             tvDate.setText(xAxisValueFormatter.getFormattedValue(e.getX(), null));
@@ -57,7 +58,6 @@ public class LineChartMarkView extends MarkerView {
 
     @Override
     public MPPointF getOffset() {
-//        return new MPPointF(-(getWidth() / 2), -getHeight());
         return new MPPointF(-(getWidth() / 2), -1000);
     }
 

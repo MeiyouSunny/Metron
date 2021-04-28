@@ -5,6 +5,9 @@ import android.text.TextUtils;
 import com.alaer.lib.api.bean.WithdrawStats;
 import com.metron.coin.util.CollectionUtils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class IncomeUtil {
 
     public String parserIncomeTime(String time) {
@@ -22,6 +25,20 @@ public class IncomeUtil {
         }
 
         return 0;
+    }
+
+    // 2021-04-23 00:00 --> 04/23
+    public String formatTimeString(String time) {
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            Date date = format.parse(time);
+            format = new SimpleDateFormat("MM/dd");
+            return format.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return time;
     }
 
 }

@@ -2,6 +2,7 @@ package com.alaer.lib.api;
 
 import com.alaer.lib.api.bean.IncomeLastest;
 import com.alaer.lib.api.bean.IncomeList;
+import com.alaer.lib.api.bean.IncomeTrend;
 import com.alaer.lib.api.bean.MinterSeries;
 import com.alaer.lib.api.bean.PollNewInfo;
 import com.alaer.lib.api.bean.TokenInfo;
@@ -68,7 +69,7 @@ public interface ApiService {
      * @param zoom     h: 时时(最近24小时内)，d: 每日（最近7天）
      */
     @GET("/user/income/trend")
-    Call<String> incomeTrend(@Query("currency") String currency, @Query("zoom") String zoom, Callback<String> callback);
+    Call<IncomeTrend> incomeTrend(@Query("currency") String currency, @Query("zoom") String zoom, Callback<IncomeTrend> callback);
 
     /**
      * 用户最新收益
