@@ -4,11 +4,16 @@ import android.graphics.drawable.Drawable;
 
 import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
-import com.alaer.lib.api.bean.TokenInfo;
-import com.alaer.lib.util.UserDataUtil;
+import com.alaer.lib.api.bean.IncomeLastest;
+import com.alaer.lib.api.bean.IncomeList;
+import com.alaer.lib.api.bean.WithdrawStats;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
+import com.metron.coin.data.IncomeUtil;
 import com.metron.coin.databinding.FragmentProfitBtcBinding;
+import com.metron.coin.util.CoinConst;
+import com.metron.coin.util.CollectionUtils;
+import com.metron.coin.util.NumberUtils;
 
 import java.util.List;
 
@@ -25,6 +30,9 @@ public class ProfitBTCFragment extends BaseBindFragment<FragmentProfitBtcBinding
     @Override
     public void onViewCreated() {
         super.onViewCreated();
+
+        bindRoot.setNumberUtil(NumberUtils.instance());
+        bindRoot.setIncomeUtil(new IncomeUtil());
         showData();
         requestData();
     }
@@ -44,28 +52,28 @@ public class ProfitBTCFragment extends BaseBindFragment<FragmentProfitBtcBinding
     }
 
     public void requestData() {
-        ApiUtil.apiService().login("18189202461", "123456",
-                new Callback<TokenInfo>() {
+        ApiUtil.apiService().incomeLatest(CoinConst.BTC, new Callback<IncomeLastest>() {
+            @Override
+            public void onResponse(IncomeLastest incomeLastest) {
+                bindRoot.setIncomeLatest(incomeLastest);
+            }
+        });
 
-                    @Override
-                    public void onResponse(TokenInfo tokenInfo) {
-                        UserDataUtil.instance().setTokenInfo(tokenInfo);
+        ApiUtil.apiService().withdrawStats(CoinConst.BTC, new Callback<WithdrawStats>() {
+            @Override
+            public void onResponse(WithdrawStats withdrawStats) {
+                bindRoot.setWithdrawStats(withdrawStats);
+            }
+        });
 
-                        ApiUtil.apiService().incomeTrend("ETH", "d",
-                                new Callback<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-                                        super.onResponse(response);
-                                    }
-
-                                    @Override
-                                    public void onError(int code, String msg) {
-                                        super.onError(code, msg);
-                                    }
-                                });
-                    }
-
-                });
+        ApiUtil.apiService().incomeList(CoinConst.BTC, new Callback<IncomeList>() {
+            @Override
+            public void onResponse(IncomeList incomeList) {
+                if (incomeList != null && !CollectionUtils.isEmpty(incomeList.rows)) {
+                    bindRoot.repeatView.viewManager().bind(incomeList.rows);
+                }
+            }
+        });
     }
 
 }

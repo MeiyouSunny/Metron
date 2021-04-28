@@ -8,6 +8,23 @@
         <variable
             name="handler"
             type="com.metron.coin.base.BindClickListener" />
+
+        <variable
+            name="numberUtil"
+            type="com.metron.coin.util.NumberUtils" />
+
+        <variable
+            name="incomeUtil"
+            type="com.metron.coin.data.IncomeUtil" />
+
+        <variable
+            name="incomeLatest"
+            type="com.alaer.lib.api.bean.IncomeLastest" />
+
+        <variable
+            name="withdrawStats"
+            type="com.alaer.lib.api.bean.WithdrawStats" />
+
     </data>
 
     <ScrollView
@@ -89,10 +106,11 @@
                             android:id="@+id/profitTotal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00000000"
+                            android:text="@{numberUtil.parseFloat8(withdrawStats.income.userIncome)}"
                             android:textColor="#15233E"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:text="0.00000000" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -126,10 +144,11 @@
                             android:id="@+id/profitToday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00000000"
+                            android:text="@{numberUtil.parseFloat8(incomeLatest.totalIncome)}"
                             android:textColor="#005FEB"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:text="0.00000000" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -172,10 +191,11 @@
                             android:id="@+id/extractCoin1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00000000"
+                            android:text="@{numberUtil.parseFloat8(incomeUtil.parseWithdrawTotal(withdrawStats))}"
                             android:textColor="#15233E"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:text="0.00000000" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -209,10 +229,11 @@
                             android:id="@+id/amount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00000000"
+                            android:text="@{numberUtil.parseFloat8(withdrawStats.balance)}"
                             android:textColor="#15233E"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:text="0.00000000" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -308,6 +329,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="#D6D6D6" />
+
+            <likly.view.repeat.RepeatView
+                android:id="@+id/repeatView"
+                style="@style/RepeatView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:emptyView="@layout/layout_no_data"
+                app:viewHolderClass="com.metron.coin.adapter.IncomeAdapter"
+                app:viewHolderLayout="@layout/item_income" />
 
         </LinearLayout>
 

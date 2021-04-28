@@ -1,9 +1,12 @@
 package com.alaer.lib.api;
 
+import com.alaer.lib.api.bean.IncomeLastest;
+import com.alaer.lib.api.bean.IncomeList;
 import com.alaer.lib.api.bean.MinterSeries;
 import com.alaer.lib.api.bean.PollNewInfo;
 import com.alaer.lib.api.bean.TokenInfo;
 import com.alaer.lib.api.bean.UserInfo;
+import com.alaer.lib.api.bean.WithdrawStats;
 
 import java.util.List;
 
@@ -66,5 +69,27 @@ public interface ApiService {
      */
     @GET("/user/income/trend")
     Call<String> incomeTrend(@Query("currency") String currency, @Query("zoom") String zoom, Callback<String> callback);
+
+    /**
+     * 用户最新收益
+     */
+    @GET("/user/income/latest")
+    Call<IncomeLastest> incomeLatest(@Query("currency") String currency, Callback<IncomeLastest> callback);
+
+    /**
+     * 提币统计
+     *
+     * @param type BTC/ETH
+     */
+    @GET("/user/withdraw/stats")
+    Call<WithdrawStats> withdrawStats(@Query("currency") String currency, Callback<WithdrawStats> callback);
+
+    /**
+     * 收益列表
+     *
+     * @param type BTC/ETH
+     */
+    @GET("/user/income/list")
+    Call<IncomeList> incomeList(String type, Callback<IncomeList> callback);
 
 }

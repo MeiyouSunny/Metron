@@ -2,10 +2,16 @@ package com.metron.coin.ui.account;
 
 import android.view.View;
 
+import com.alaer.lib.api.ApiUtil;
+import com.alaer.lib.api.Callback;
+import com.alaer.lib.api.bean.TokenInfo;
+import com.alaer.lib.util.UserDataUtil;
 import com.meiyou.mvp.MvpBinder;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBackFragment;
 import com.metron.coin.databinding.FragmentLoginBinding;
+import com.metron.coin.ui.home.HomeActivity;
+import com.metron.coin.util.ViewUtil;
 
 @MvpBinder(
 )
@@ -25,6 +31,7 @@ public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
                 navigate(R.id.action_to_forgetPwd);
                 break;
             case R.id.btnLogin:
+                login();
                 break;
         }
     }
@@ -64,5 +71,22 @@ public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
 //        boolean hasInput = !TextUtils.isEmpty(mPhone) && !TextUtils.isEmpty(mPwd);
 //        bindRoot.btnLogin.setEnabled(hasInput);
 //    }
+
+    private void login() {
+        ApiUtil.apiService().login("15680809781", "123456",
+                new Callback<TokenInfo>() {
+
+                    @Override
+                    public void onResponse(TokenInfo tokenInfo) {
+                        UserDataUtil.instance().setTokenInfo(tokenInfo);
+                        ViewUtil.gotoActivity(getContext(), HomeActivity.class);
+                    }
+
+                    @Override
+                    public void onError(int code, String msg) {
+                        super.onError(code, msg);
+                    }
+                });
+    }
 
 }
