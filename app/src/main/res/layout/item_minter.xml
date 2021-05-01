@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="minter"
+            type="com.alaer.lib.api.bean.MinterList.Minter" />
+
+        <variable
+            name="minterUtil"
+            type="com.metron.coin.data.MinterUtil" />
+
+    </data>
+
+    <LinearLayout
+        style="@style/ClickableStyle"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{String.valueOf(minter.id)}"
+            android:textColor="#6D7686"
+            android:textSize="12sp"
+            tools:text="2021.03.29" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{minter.model.name}"
+            android:textColor="#6D7686"
+            android:textSize="12sp"
+            tools:text="0.12345678" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{minter.currency}"
+            android:textColor="#6D7686"
+            android:textSize="12sp"
+            tools:text="0.12345678" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:text="@{minterUtil.parseMinterStatus(minter)}"
+            android:textColor="#6D7686"
+            android:textSize="12sp"
+            tools:text="0.12345678" />
+
+    </LinearLayout>
+
+</layout>

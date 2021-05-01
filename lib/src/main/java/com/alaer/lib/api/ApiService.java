@@ -3,6 +3,7 @@ package com.alaer.lib.api;
 import com.alaer.lib.api.bean.IncomeLastest;
 import com.alaer.lib.api.bean.IncomeList;
 import com.alaer.lib.api.bean.IncomeTrend;
+import com.alaer.lib.api.bean.MinterList;
 import com.alaer.lib.api.bean.MinterSeries;
 import com.alaer.lib.api.bean.PollNewInfo;
 import com.alaer.lib.api.bean.TokenInfo;
@@ -91,6 +92,14 @@ public interface ApiService {
      * @param type BTC/ETH
      */
     @GET("/user/income/list")
-    Call<IncomeList> incomeList(String type, Callback<IncomeList> callback);
+    Call<IncomeList> incomeList(@Query("currency") String currency, Callback<IncomeList> callback);
+
+    /**
+     * 我的矿机列表
+     *
+     * @param currency BTC/ETH
+     */
+    @GET("/user/workers/list")
+    Call<MinterList> workerList(@Query("currency") String currency, Callback<MinterList> callback);
 
 }

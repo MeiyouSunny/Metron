@@ -2,6 +2,7 @@ package com.metron.coin.data;
 
 import android.text.TextUtils;
 
+import com.alaer.lib.api.bean.MinterList;
 import com.alaer.lib.api.bean.MinterSeries;
 import com.alaer.lib.api.bean.PollNewInfo;
 import com.metron.coin.R;
@@ -78,6 +79,24 @@ public class MinterUtil {
             return sign + pollNewInfo.USDT.pricePercentChange.day + "%";
         }
         return "";
+    }
+
+    public String parseMinterStatus(MinterList.Minter minter) {
+        if (minter == null)
+            return "";
+        final String[] statusList = {"库存", "运行中", "掉线", "待上架", "维护中", "下架"};
+        if (minter.status < statusList.length)
+            return statusList[minter.status];
+
+        return "";
+    }
+
+    public String parseMinterEstimationCapability(MinterList.Minter minter) {
+        return minter.model.hashrate + minter.model.hashrateUnit + "H/s";
+    }
+
+    public String parseMinterPowerWaste(MinterList.Minter minter) {
+        return minter.model.power + minter.model.powerUnit + "±" + minter.model.powerFreeRate + "%";
     }
 
 }

@@ -250,6 +250,15 @@
                 android:layout_height="0.5dp"
                 android:background="#D6D6D6" />
 
+            <likly.view.repeat.RepeatView
+                android:id="@+id/repeatView"
+                style="@style/RepeatView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:emptyView="@layout/layout_no_data"
+                app:viewHolderClass="com.metron.coin.adapter.MinterListAdapter"
+                app:viewHolderLayout="@layout/item_minter" />
+
         </LinearLayout>
 
     </LinearLayout>

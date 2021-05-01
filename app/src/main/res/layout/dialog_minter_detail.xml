@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.metron.coin.base.BindClickListener" />
+
+        <variable
+            name="util"
+            type="com.metron.coin.data.MinterUtil" />
+
+        <variable
+            name="minter"
+            type="com.alaer.lib.api.bean.MinterList.Minter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#88000000"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+
+        <TextView
+            android:id="@+id/label1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="矿机编号："
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_toRightOf="@+id/label1"
+            android:text="@{minter.identifier}"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="010101010" />
+
+        <TextView
+            android:id="@+id/label2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="矿机型号："
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_toRightOf="@+id/label2"
+            android:text="@{minter.model.name}"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="010101010" />
+
+        <TextView
+            android:id="@+id/label3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:text="可挖币种："
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:layout_toRightOf="@+id/label3"
+            android:text="@{minter.currency}"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="010101010" />
+
+        <TextView
+            android:id="@+id/label4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:text="估算能力："
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:layout_toRightOf="@+id/label4"
+            android:text="@{util.parseMinterEstimationCapability(minter)}"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="010101010" />
+
+        <TextView
+            android:id="@+id/label5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="220dp"
+            android:text="墙上功耗："
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="220dp"
+            android:layout_toRightOf="@+id/label5"
+            android:text="@{util.parseMinterPowerWaste(minter)}"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="010101010" />
+
+        <TextView
+            android:id="@+id/label6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="260dp"
+            android:text="上架时间："
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="260dp"
+            android:layout_toRightOf="@+id/label6"
+            android:text="@{minter.createTime}"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="010101010" />
+
+        <TextView
+            android:id="@+id/label7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:text="安全运行时间："
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:layout_toRightOf="@+id/label7"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="010101010" />
+
+        <TextView
+            android:id="@+id/label8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="340dp"
+            android:text="矿机地址："
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="340dp"
+            android:layout_toRightOf="@+id/label8"
+            android:text="@{minter.address}"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="010101010" />
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="42dp"
+            android:clickable="true"
+            android:onClick="@{handler.click}"
+            android:src="@drawable/ic_dialog_close" />
+
+    </RelativeLayout>
+
+</layout>
