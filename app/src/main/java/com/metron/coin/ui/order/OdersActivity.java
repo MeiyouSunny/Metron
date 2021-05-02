@@ -2,15 +2,14 @@ package com.metron.coin.ui.order;
 
 import android.view.View;
 
-import com.alaer.lib.api.bean.MinterSeries;
+import com.alaer.lib.api.ApiUtil;
+import com.alaer.lib.api.Callback;
+import com.alaer.lib.api.bean.OrderList;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseTitleActivity;
 import com.metron.coin.databinding.ActivityOrdersBinding;
 import com.metron.coin.ui.settings.AboutActivity;
 import com.metron.coin.util.ViewUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 订单列表
@@ -31,13 +30,16 @@ public class OdersActivity extends BaseTitleActivity<ActivityOrdersBinding> {
     public void onViewCreated() {
         super.onViewCreated();
 
-        List<MinterSeries.MinterInfo> list = new ArrayList<>();
-        list.add(new MinterSeries.MinterInfo());
-        list.add(new MinterSeries.MinterInfo());
-        list.add(new MinterSeries.MinterInfo());
-        list.add(new MinterSeries.MinterInfo());
-        list.add(new MinterSeries.MinterInfo());
-        bindRoot.repeatView.viewManager().bind(list);
+        queryOrders();
+    }
+
+    private void queryOrders() {
+        ApiUtil.apiService().orderList(100, new Callback<OrderList>() {
+            @Override
+            public void onResponse(OrderList orderList) {
+                bindRoot.repeatView.viewManager().bind(orderList.rows);
+            }
+        });
     }
 
     @Override

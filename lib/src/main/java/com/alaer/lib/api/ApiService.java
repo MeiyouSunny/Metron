@@ -6,6 +6,7 @@ import com.alaer.lib.api.bean.IncomeTrend;
 import com.alaer.lib.api.bean.MinterList;
 import com.alaer.lib.api.bean.MinterSeries;
 import com.alaer.lib.api.bean.MinterStats;
+import com.alaer.lib.api.bean.OrderList;
 import com.alaer.lib.api.bean.PollNewInfo;
 import com.alaer.lib.api.bean.TokenInfo;
 import com.alaer.lib.api.bean.UserInfo;
@@ -110,5 +111,13 @@ public interface ApiService {
      */
     @GET("/user/workers/stats")
     Call<List<MinterStats>> workerStats(@Query("currency") String currency, Callback<List<MinterStats>> callback);
+
+    /**
+     * 我的订单列表
+     *
+     * @param currency BTC/ETH
+     */
+    @GET("/user/order/list")
+    Call<OrderList> orderList(@Query("pageSize") int pageSize, Callback<OrderList> callback);
 
 }

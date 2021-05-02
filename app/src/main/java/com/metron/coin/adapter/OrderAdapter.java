@@ -1,18 +1,18 @@
 package com.metron.coin.adapter;
 
-import com.alaer.lib.api.bean.MinterSeries;
+import com.alaer.lib.api.bean.OrderList;
 import com.metron.coin.R;
 import com.metron.coin.base.repeatview.BaseViewHolder;
+import com.metron.coin.data.MinterUtil;
 import com.metron.coin.databinding.ItemOrderBinding;
 
-public class OrderAdapter extends BaseViewHolder<ItemOrderBinding, MinterSeries.MinterInfo> {
+public class OrderAdapter extends BaseViewHolder<ItemOrderBinding, OrderList.Order> {
 
     @Override
-    protected void onBindData(MinterSeries.MinterInfo minter) {
-//        bindRoot.setUtil(new MinterUtil());
-//        bindRoot.setMinter(minter);
-//        bindRoot.executePendingBindings();
-//        ViewUtil.showImage(getContext(), bindRoot.icon, minter.thumbnail);
+    protected void onBindData(OrderList.Order order) {
+        bindRoot.setUtil(new MinterUtil());
+        bindRoot.setOrder(order);
+        bindRoot.executePendingBindings();
     }
 
     @Override

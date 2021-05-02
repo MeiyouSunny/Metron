@@ -5,8 +5,10 @@ import android.text.TextUtils;
 import com.alaer.lib.api.bean.MinterList;
 import com.alaer.lib.api.bean.MinterSeries;
 import com.alaer.lib.api.bean.MinterStats;
+import com.alaer.lib.api.bean.OrderList;
 import com.alaer.lib.api.bean.PollNewInfo;
 import com.metron.coin.R;
+import com.metron.coin.util.CollectionUtils;
 import com.metron.coin.util.NumberUtils;
 
 import java.util.List;
@@ -158,6 +160,33 @@ public class MinterUtil {
         return NumberUtils.instance().parseFloat8(coin.dayTheoryCurrencyIncome)
                 + " " + coin.currency + " ≈ ¥ "
                 + NumberUtils.instance().parseFloat8(coin.dayTheoryCnyIncome);
+    }
+
+    public String parseOrderTime(OrderList.Order order) {
+        return parserIncomeTime(order.startTime) + "至" + parserIncomeTime(order.endTime);
+    }
+
+    public String parserIncomeTime(String time) {
+        if (!TextUtils.isEmpty(time) && time.contains("T"))
+            return time.split("T")[0];
+        return time;
+    }
+
+    // 1:收益分成 2:固定投资，用于USDT
+    public String parseOrderType(OrderList.Order order) {
+        return (order.orderType == 1) ? "收益分成" : "固定投资";
+    }
+
+    // 采购数量
+    public String parseOrderQuanlity(OrderList.Order order) {
+        if (order == null || CollectionUtils.isEmpty(order.quantity))
+            return "0台";
+        int count = 0;
+        for (OrderList.Order.Quantity quantity : order.quantity) {
+            count += quantity.quantity;
+        }
+
+        return count + "台";
     }
 
 }
