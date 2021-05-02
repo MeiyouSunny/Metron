@@ -11,6 +11,7 @@ public class PollNewInfo {
         public String currency;
         public PricePercentChange pricePercentChange;
         public String incomeUnit;
+        public float difficulty;
         public float networkHashrate;
         public float currencyPrice;
         public float cnyRate;

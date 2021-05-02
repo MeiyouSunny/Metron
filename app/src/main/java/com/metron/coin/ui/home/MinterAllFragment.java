@@ -6,12 +6,16 @@ import android.view.View;
 import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
 import com.alaer.lib.api.bean.MinterList;
+import com.alaer.lib.api.bean.MinterStats;
 import com.metron.coin.R;
 import com.metron.coin.adapter.MinterListAdapter;
 import com.metron.coin.base.BaseBindFragment;
+import com.metron.coin.data.MinterUtil;
 import com.metron.coin.databinding.FragmentMinterAllBinding;
 import com.metron.coin.ui.dialog.DialogMinterDetail;
 import com.metron.coin.util.CollectionUtils;
+
+import java.util.List;
 
 import likly.dialogger.Dialogger;
 import likly.view.repeat.OnHolderClickListener;
@@ -45,6 +49,22 @@ public class MinterAllFragment extends BaseBindFragment<FragmentMinterAllBinding
                 }
             }
         });
+
+        ApiUtil.apiService().workerStats("",
+                new Callback<List<MinterStats>>() {
+                    @Override
+                    public void onResponse(List<MinterStats> minterStatsList) {
+                        if (minterStatsList != null) {
+                            int[] values = new MinterUtil().parseMinterStatsValues(minterStatsList);
+//                            bindRoot.setMinterValues(values);
+                        }
+                    }
+
+                    @Override
+                    public void onError(int code, String msg) {
+                        super.onError(code, msg);
+                    }
+                });
     }
 
     @Override

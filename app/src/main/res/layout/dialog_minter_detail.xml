@@ -139,12 +139,30 @@
             android:textSize="16sp"
             tools:text="010101010" />
 
+<!--        <TextView-->
+<!--            android:id="@+id/label7"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="300dp"-->
+<!--            android:text="安全运行时间："-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="16sp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="300dp"-->
+<!--            android:layout_toRightOf="@+id/label7"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="16sp"-->
+<!--            tools:text="010101010" />-->
+
         <TextView
             android:id="@+id/label7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="300dp"
-            android:text="安全运行时间："
+            android:text="矿机地址："
             android:textColor="@color/white"
             android:textSize="16sp" />
 
@@ -153,24 +171,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="300dp"
             android:layout_toRightOf="@+id/label7"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            tools:text="010101010" />
-
-        <TextView
-            android:id="@+id/label8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="340dp"
-            android:text="矿机地址："
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="340dp"
-            android:layout_toRightOf="@+id/label8"
             android:text="@{minter.address}"
             android:textColor="@color/white"
             android:textSize="16sp"

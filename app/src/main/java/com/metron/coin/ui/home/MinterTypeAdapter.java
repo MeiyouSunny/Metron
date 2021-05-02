@@ -2,6 +2,8 @@ package com.metron.coin.ui.home;
 
 import android.content.Context;
 
+import com.metron.coin.util.CoinConst;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -14,7 +16,9 @@ public class MinterTypeAdapter extends FragmentPagerAdapter {
     public MinterTypeAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
-        mTabs = new Fragment[] {new MinterAllFragment(), new MinterTypeFragment(), new MinterTypeFragment()};
+        mTabs = new Fragment[]{new MinterAllFragment(),
+                new MinterTypeFragment(CoinConst.BTC),
+                new MinterTypeFragment(CoinConst.ETH)};
     }
 
     @Override
