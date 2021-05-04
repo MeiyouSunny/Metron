@@ -1,15 +1,18 @@
 package com.metron.coin.ui.account;
 
+import android.content.Intent;
 import android.view.View;
 
+import com.alaer.lib.api.bean.UserInfo;
+import com.alaer.lib.util.UserDataUtil;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseTitleActivity;
-import com.metron.coin.databinding.ActivitySettngsBinding;
+import com.metron.coin.databinding.ActivityAccountInfoBinding;
 
 /**
  * 账户信息
  */
-public class AccountInfoActivity extends BaseTitleActivity<ActivitySettngsBinding> {
+public class AccountInfoActivity extends BaseTitleActivity<ActivityAccountInfoBinding> {
 
     @Override
     protected String title() {
@@ -24,6 +27,9 @@ public class AccountInfoActivity extends BaseTitleActivity<ActivitySettngsBindin
     @Override
     public void onViewCreated() {
         super.onViewCreated();
+        UserInfo userInfo = UserDataUtil.instance().getUserInfo();
+        if (userInfo != null)
+            bindRoot.setUserInfo(userInfo);
     }
 
     @Override
@@ -33,7 +39,9 @@ public class AccountInfoActivity extends BaseTitleActivity<ActivitySettngsBindin
                 SetProfileActivity.start(this, SetProfileActivity.NAME);
                 break;
             case R.id.phone:
-                SetProfileActivity.start(this, SetProfileActivity.PHONE);
+                Intent intent = new Intent(this, ModifyPwdActivity.class);
+                intent.putExtra("isModifyPhone", true);
+                startActivity(intent);
                 break;
         }
     }

@@ -8,6 +8,10 @@
         <variable
             name="handler"
             type="com.metron.coin.base.BindClickListener" />
+
+        <variable
+            name="userInfo"
+            type="com.alaer.lib.api.bean.UserInfo" />
     </data>
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
@@ -55,9 +59,10 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="18dp"
                         android:layout_toLeftOf="@+id/icNext1"
-                        android:text="Fanta"
+                        android:text="@{userInfo.nick}"
                         android:textColor="#A0A7B3"
-                        android:textSize="@dimen/font_16" />
+                        android:textSize="@dimen/font_16"
+                        tools:text="Fanta" />
 
                     <ImageView
                         android:id="@+id/icNext1"
@@ -100,9 +105,10 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="18dp"
                         android:layout_toLeftOf="@+id/icNext2"
-                        android:text="135****4458"
+                        android:text="@{userInfo.mobile}"
                         android:textColor="#A0A7B3"
-                        android:textSize="@dimen/font_16" />
+                        android:textSize="@dimen/font_16"
+                        tools:text="135****4458" />
 
                     <ImageView
                         android:id="@+id/icNext2"

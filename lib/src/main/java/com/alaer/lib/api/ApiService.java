@@ -81,6 +81,47 @@ public interface ApiService {
                            Callback<String> callback);
 
     /**
+     * 修改昵称
+     */
+    @FormBody
+    @PUT("/user/profile")
+    Call<String> modifyNick(@Query("nick") String nick,
+                            Callback<String> callback);
+
+    /**
+     * 修改手机号
+     */
+    @FormBody
+    @PUT("/user/profile")
+    Call<String> modifyPhone(@Query("mobile") String mobile,
+                             @Query("smsCode") String smsCode,
+                             Callback<String> callback);
+
+    /**
+     * 修改BtcWallet
+     */
+    @FormBody
+    @PUT("/user/profile")
+    Call<String> modifyBtcWallet(@Query("btcWallet") String btcWallet,
+                                 Callback<String> callback);
+
+    /**
+     * 修改EthWallet
+     */
+    @FormBody
+    @PUT("/user/profile")
+    Call<String> modifyEthWallet(@Query("ethWallet") String ethWallet,
+                                 Callback<String> callback);
+
+    /**
+     * UsdtWallet
+     */
+    @FormBody
+    @PUT("/user/profile")
+    Call<String> modifyUsdtWallet(@Query("usdtWallet") String usdtWallet,
+                                  Callback<String> callback);
+
+    /**
      * 获取用户信息
      */
     @GET("/user/profile")

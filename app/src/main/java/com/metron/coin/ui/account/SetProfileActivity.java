@@ -3,11 +3,17 @@ package com.metron.coin.ui.account;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.view.View;
 
+import com.alaer.lib.api.ApiUtil;
+import com.alaer.lib.api.Callback;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseTitleActivity;
 import com.metron.coin.databinding.ActivitySetProfileBinding;
+import com.metron.coin.util.SimpleTextWatcher;
+import com.metron.coin.util.ViewUtil;
 
 import androidx.annotation.IntDef;
 
@@ -54,6 +60,13 @@ public class SetProfileActivity extends BaseTitleActivity<ActivitySetProfileBind
         super.onViewCreated();
 
         type = getIntent().getIntExtra("type", 0);
+
+        bindRoot.input.addTextChangedListener(new SimpleTextWatcher() {
+            @Override
+            public void afterTextChanged(Editable editable) {
+                bindRoot.btnSubmit.setEnabled(!TextUtils.isEmpty(ViewUtil.getText(bindRoot.input)));
+            }
+        });
     }
 
     @Override
@@ -79,6 +92,70 @@ public class SetProfileActivity extends BaseTitleActivity<ActivitySetProfileBind
 
     @Override
     public void click(View view) {
+        if (view.getId() == R.id.btnSubmit) {
+            modify();
+        }
+    }
+
+    private void modify() {
+        String input = ViewUtil.getText(bindRoot.input);
+        if (type == NAME) {
+            modifyNick(input);
+        } else if (type == PHONE) {
+            modifyPhone(input);
+        } else if (type == SET_ADDRESS_BTC) {
+            modifyBtc(input);
+        } else if (type == SET_ADDRESS_ETH) {
+            modifyEth(input);
+        } else if (type == SET_ADDRESS_USDT) {
+            modifyUsdt(input);
+        }
+    }
+
+    private void modifyNick(String input) {
+        ApiUtil.apiService().modifyNick(input, new Callback<String>() {
+            @Override
+            public void onResponse(String response) {
+                super.onResponse(response);
+            }
+        });
+    }
+
+    private void modifyPhone(String input) {
+        String smsCode = getIntent().getStringExtra("smsCode");
+        ApiUtil.apiService().modifyPhone(input, smsCode, new Callback<String>() {
+            @Override
+            public void onResponse(String response) {
+                super.onResponse(response);
+            }
+        });
+    }
+
+    private void modifyBtc(String input) {
+        ApiUtil.apiService().modifyBtcWallet(input, new Callback<String>() {
+            @Override
+            public void onResponse(String response) {
+                super.onResponse(response);
+            }
+        });
+    }
+
+    private void modifyEth(String input) {
+        ApiUtil.apiService().modifyEthWallet(input, new Callback<String>() {
+            @Override
+            public void onResponse(String response) {
+                super.onResponse(response);
+            }
+        });
+    }
+
+    private void modifyUsdt(String input) {
+        ApiUtil.apiService().modifyUsdtWallet(input, new Callback<String>() {
+            @Override
+            public void onResponse(String response) {
+                super.onResponse(response);
+            }
+        });
     }
 
 }

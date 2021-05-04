@@ -8,11 +8,13 @@ public class UserInfo {
     public Object createUser;
     public Object updateUser;
     public String mobile;
-    public Object ethWallet;
+    public String ethWallet;
     public String btcWallet;
+    public String usdtWallet;
     public int status;
     public String miner;
     public int role;
     public int orderSumAmount;
+    public String nick;
 
 }

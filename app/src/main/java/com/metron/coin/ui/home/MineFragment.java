@@ -2,6 +2,8 @@ package com.metron.coin.ui.home;
 
 import android.view.View;
 
+import com.alaer.lib.api.bean.UserInfo;
+import com.alaer.lib.util.UserDataUtil;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.databinding.FragmentMineBinding;
@@ -46,6 +48,9 @@ public class MineFragment extends BaseBindFragment<FragmentMineBinding> {
     @Override
     public void onViewCreated() {
         super.onViewCreated();
+        UserInfo userInfo = UserDataUtil.instance().getUserInfo();
+        if (userInfo != null)
+            bindRoot.setUserInfo(userInfo);
     }
 
 //    public View onCreateView(@NonNull LayoutInflater inflater,

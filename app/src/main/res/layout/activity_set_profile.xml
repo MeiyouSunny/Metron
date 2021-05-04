@@ -50,7 +50,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="40dp"
             android:layout_marginRight="16dp"
-            android:enabled="true"
+            android:enabled="false"
             android:onClick="@{handler.click}"
             android:text="确  定" />
 

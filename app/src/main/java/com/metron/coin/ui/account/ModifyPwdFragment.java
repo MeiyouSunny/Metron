@@ -1,5 +1,6 @@
 package com.metron.coin.ui.account;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -120,11 +121,20 @@ public class ModifyPwdFragment extends BaseBackFragment<FragmentModifyPwdBinding
         if (hasGoto)
             return;
 
-        Bundle bundle = new Bundle();
-        bundle.putInt("type", SetPwdFragment.TYPE_MODIFY_PWD);
-        bundle.putString("mobile", phone);
-        bundle.putString("smsCode", getInputCode());
-        navigate(R.id.action_modifyPwd_to_setPwd, bundle);
+        boolean isModifyPhone = getActivity().getIntent().getBooleanExtra("isModifyPhone", false);
+        if (isModifyPhone) {
+            Intent intent = new Intent(getActivity(), SetProfileActivity.class);
+            intent.putExtra("type", SetProfileActivity.PHONE);
+            intent.putExtra("smsCode", getInputCode());
+            startActivity(intent);
+            getActivity().finish();
+        } else {
+            Bundle bundle = new Bundle();
+            bundle.putInt("type", SetPwdFragment.TYPE_MODIFY_PWD);
+            bundle.putString("mobile", phone);
+            bundle.putString("smsCode", getInputCode());
+            navigate(R.id.action_modifyPwd_to_setPwd, bundle);
+        }
     }
 
     private String getInputCode() {
