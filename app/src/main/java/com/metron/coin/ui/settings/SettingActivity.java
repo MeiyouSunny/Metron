@@ -5,6 +5,7 @@ import android.view.View;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseTitleActivity;
 import com.metron.coin.databinding.ActivitySettngsBinding;
+import com.metron.coin.ui.account.ModifyPwdActivity;
 import com.metron.coin.util.ViewUtil;
 
 /**
@@ -32,6 +33,9 @@ public class SettingActivity extends BaseTitleActivity<ActivitySettngsBinding> {
         switch (view.getId()) {
             case R.id.about:
                 ViewUtil.gotoActivity(this, AboutActivity.class);
+                break;
+            case R.id.modifyPwd:
+                ViewUtil.gotoActivity(this, ModifyPwdActivity.class);
                 break;
         }
     }

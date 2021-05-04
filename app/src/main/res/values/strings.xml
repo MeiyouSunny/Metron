@@ -6,4 +6,6 @@
     <string name="miner_eth">ETH</string>
     <string name="miner_usdt">USDT</string>
 
+    <string name="modify_pwd_need_verify">为了您的账户安全\n需要验证您的 +86 %s 手机号码</string>
+
 </resources>

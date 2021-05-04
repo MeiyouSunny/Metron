@@ -2,6 +2,7 @@ package com.metron.coin.base;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import com.meiyou.mvp.BaseFragment;
@@ -32,6 +33,10 @@ public abstract class BaseBindFragment<T extends ViewDataBinding> extends BaseFr
 
     protected void navigate(int actionId) {
         NavigateUtil.navigate(this, actionId);
+    }
+
+    protected void navigate(int actionId, Bundle bundle) {
+        NavigateUtil.navigate(this, actionId, bundle);
     }
 
     protected void toPage(Class<? extends Activity> activityDes) {

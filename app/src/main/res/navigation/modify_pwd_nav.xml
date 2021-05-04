@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/modify_pwd_nav.xml"
+    app:startDestination="@id/modifyPwdFragment">
+
+    <fragment
+        android:id="@+id/modifyPwdFragment"
+        android:name="com.metron.coin.ui.account.ModifyPwdFragment"
+        android:label="ModifyPwdFragment">
+        <action
+            android:id="@+id/action_modifyPwd_to_setPwd"
+            app:destination="@id/setPwdFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/setPwdFragment"
+        android:name="com.metron.coin.ui.account.SetPwdFragment"
+        android:label="SetPwdFragment" />
+
+</navigation>

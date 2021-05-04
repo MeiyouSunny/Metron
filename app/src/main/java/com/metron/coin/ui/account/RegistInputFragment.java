@@ -1,15 +1,21 @@
 package com.metron.coin.ui.account;
 
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
+import com.alaer.lib.api.ApiUtil;
+import com.alaer.lib.api.Callback;
 import com.meiyou.mvp.MvpBinder;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBackFragment;
-import com.metron.coin.databinding.FragmentLoginBinding;
+import com.metron.coin.databinding.FragmentRegistInputBinding;
+import com.metron.coin.util.SimpleTextWatcher;
+import com.metron.coin.util.ViewUtil;
 
 @MvpBinder(
 )
-public class RegistInputFragment extends BaseBackFragment<FragmentLoginBinding> {
+public class RegistInputFragment extends BaseBackFragment<FragmentRegistInputBinding> {
 
     @Override
     public int initLayoutResId() {
@@ -20,9 +26,22 @@ public class RegistInputFragment extends BaseBackFragment<FragmentLoginBinding> 
     public void click(View view) {
         switch (view.getId()) {
             case R.id.btnGetCode:
-                navigate(R.id.action_regist_to_verify);
+                sendSms();
                 break;
         }
+    }
+
+    private void sendSms() {
+        ApiUtil.apiService().sendSms("86", ViewUtil.getText(bindRoot.etPhone),
+                new Callback<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("type", SetPwdFragment.TYPE_REGIST);
+                        bundle.putString("mobile", ViewUtil.getText(bindRoot.etPhone));
+                        navigate(R.id.action_regist_to_verify, bundle);
+                    }
+                });
     }
 
     @Override
@@ -38,27 +57,12 @@ public class RegistInputFragment extends BaseBackFragment<FragmentLoginBinding> 
     @Override
     public void onViewCreated() {
         super.onViewCreated();
-//        bindRoot.region.setText("+" + AppConfig.DIALLING_CODE);
-
-//        bindRoot.etPhone.addTextChangedListener(new SimpleTextWatcher() {
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                onInputChange();
-//            }
-//        });
-//        bindRoot.etPwd.addTextChangedListener(new SimpleTextWatcher() {
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                onInputChange();
-//            }
-//        });
+        bindRoot.etPhone.addTextChangedListener(new SimpleTextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                bindRoot.btnGetCode.setEnabled(!TextUtils.isEmpty(ViewUtil.getText(bindRoot.etPhone)));
+            }
+        });
     }
-
-//    private void onInputChange() {
-//        mPhone = ViewUtil.getText(bindRoot.etPhone);
-//        mPwd = ViewUtil.getText(bindRoot.etPwd);
-//        boolean hasInput = !TextUtils.isEmpty(mPhone) && !TextUtils.isEmpty(mPwd);
-//        bindRoot.btnLogin.setEnabled(hasInput);
-//    }
 
 }

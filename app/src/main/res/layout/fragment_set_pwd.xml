@@ -32,6 +32,7 @@
                 android:textSize="28sp" />
 
             <EditText
+                android:id="@+id/etPwd"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="140dp"
@@ -54,6 +55,7 @@
                 android:background="#E8E9EC" />
 
             <EditText
+                android:id="@+id/etPwdConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="194dp"

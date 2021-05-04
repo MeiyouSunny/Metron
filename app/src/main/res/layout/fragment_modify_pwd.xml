@@ -24,35 +24,18 @@
             android:paddingRight="18dp">
 
             <TextView
+                android:id="@+id/hint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:text="验证码已发送至"
-                android:textColor="#15233E"
-                android:textSize="28sp" />
-
-            <TextView
-                android:id="@+id/tvPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="118dp"
-                tools:text="135xxxx6666"
-                android:textColor="#15233E"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="118dp"
-                android:text="60s"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp" />
+                android:layout_marginTop="26dp"
+                tools:text="为了您的账户安全\n需要验证您的 +86 18909878938 手机号码"
+                android:textColor="#6D7686"
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="200dp"
+                android:layout_marginTop="112dp"
                 android:orientation="horizontal">
 
                 <RelativeLayout

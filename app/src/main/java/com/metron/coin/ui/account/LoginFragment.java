@@ -1,23 +1,24 @@
 package com.metron.coin.ui.account;
 
+import android.text.TextUtils;
 import android.view.View;
 
 import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
 import com.alaer.lib.api.bean.TokenInfo;
+import com.alaer.lib.api.bean.UserInfo;
 import com.alaer.lib.util.UserDataUtil;
 import com.meiyou.mvp.MvpBinder;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBackFragment;
 import com.metron.coin.databinding.FragmentLoginBinding;
 import com.metron.coin.ui.home.HomeActivity;
+import com.metron.coin.util.SimpleTextWatcher;
 import com.metron.coin.util.ViewUtil;
 
 @MvpBinder(
 )
 public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
-
-    private String mPhone, mPwd;
 
     @Override
     public int initLayoutResId() {
@@ -27,6 +28,9 @@ public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
     @Override
     public void click(View view) {
         switch (view.getId()) {
+            case R.id.icClear:
+                bindRoot.etPhone.setText("");
+                break;
             case R.id.forgetPwd:
                 navigate(R.id.action_to_forgetPwd);
                 break;
@@ -49,37 +53,35 @@ public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
     @Override
     public void onViewCreated() {
         super.onViewCreated();
-//        bindRoot.region.setText("+" + AppConfig.DIALLING_CODE);
 
-//        bindRoot.etPhone.addTextChangedListener(new SimpleTextWatcher() {
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                onInputChange();
-//            }
-//        });
-//        bindRoot.etPwd.addTextChangedListener(new SimpleTextWatcher() {
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                onInputChange();
-//            }
-//        });
+        bindRoot.etPhone.addTextChangedListener(new SimpleTextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                onInputChange();
+            }
+        });
+        bindRoot.etPwd.addTextChangedListener(new SimpleTextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                onInputChange();
+            }
+        });
     }
 
-//    private void onInputChange() {
-//        mPhone = ViewUtil.getText(bindRoot.etPhone);
-//        mPwd = ViewUtil.getText(bindRoot.etPwd);
-//        boolean hasInput = !TextUtils.isEmpty(mPhone) && !TextUtils.isEmpty(mPwd);
-//        bindRoot.btnLogin.setEnabled(hasInput);
-//    }
+    private void onInputChange() {
+        boolean hasInput = !TextUtils.isEmpty(ViewUtil.getText(bindRoot.etPhone))
+                && !TextUtils.isEmpty(ViewUtil.getText(bindRoot.etPwd));
+        bindRoot.btnLogin.setEnabled(hasInput);
+    }
 
     private void login() {
-        ApiUtil.apiService().login("15680809781", "123456",
+        ApiUtil.apiService().login(ViewUtil.getText(bindRoot.etPhone), ViewUtil.getText(bindRoot.etPwd),
                 new Callback<TokenInfo>() {
 
                     @Override
                     public void onResponse(TokenInfo tokenInfo) {
                         UserDataUtil.instance().setTokenInfo(tokenInfo);
-                        ViewUtil.gotoActivity(getContext(), HomeActivity.class);
+                        getUserInfo();
                     }
 
                     @Override
@@ -87,6 +89,16 @@ public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
                         super.onError(code, msg);
                     }
                 });
+    }
+
+    private void getUserInfo() {
+        ApiUtil.apiService().getUserInfo(new Callback<UserInfo>() {
+            @Override
+            public void onResponse(UserInfo userInfo) {
+                UserDataUtil.instance().setUserInfo(userInfo);
+                ViewUtil.gotoActivity(getContext(), HomeActivity.class);
+            }
+        });
     }
 
 }

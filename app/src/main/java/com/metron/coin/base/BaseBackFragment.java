@@ -1,5 +1,6 @@
 package com.metron.coin.base;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,10 +16,17 @@ public abstract class BaseBackFragment<T extends ViewDataBinding> extends BaseBi
     protected void onTitleRightClick() {
     }
 
+    protected String title() {
+        return "";
+    }
+
     @Override
     public void onViewCreated() {
         super.onViewCreated();
 
+        TextView title = bindRoot.getRoot().findViewById(R.id.title);
+        if (!TextUtils.isEmpty(title()))
+            title.setText(title());
         TextView rightTitle = bindRoot.getRoot().findViewById(R.id.title_right);
         rightTitle.setText(rightTitle());
         rightTitle.setOnClickListener(this);

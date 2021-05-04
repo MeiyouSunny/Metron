@@ -20,6 +20,7 @@ import likly.reverse.annotation.CallExecuteListener;
 import likly.reverse.annotation.FormBody;
 import likly.reverse.annotation.GET;
 import likly.reverse.annotation.POST;
+import likly.reverse.annotation.PUT;
 import likly.reverse.annotation.Part;
 import likly.reverse.annotation.Query;
 import likly.reverse.annotation.ServiceInvokeListener;
@@ -46,6 +47,38 @@ public interface ApiService {
     @POST("/auth/login")
     Call<TokenInfo> login(@Part("username") String username, @Part("password") String password,
                           Callback<TokenInfo> callback);
+
+    /**
+     * 发送验证码
+     */
+    @FormBody
+    @POST("/sms/send")
+    Call<String> sendSms(@Part("countryCode") String countryCode, @Part("mobile") String mobile,
+                         Callback<String> callback);
+
+    /**
+     * 注册
+     */
+    @FormBody
+    @POST("/user/signup")
+    Call<String> signup(@Part("mobile") String mobile, @Part("password") String password, @Part("smsCode") String smsCode,
+                        Callback<String> callback);
+
+    /**
+     * 重置密码
+     */
+    @FormBody
+    @POST("/user/password/forgot")
+    Call<String> resetPwd(@Part("mobile") String mobile, @Part("password") String password, @Part("smsCode") String smsCode,
+                          Callback<String> callback);
+
+    /**
+     * 修改密码
+     */
+    @FormBody
+    @PUT("/user/password")
+    Call<String> modifyPwd(@Query("mobile") String mobile, @Query("password") String password, @Query("smsCode") String smsCode,
+                           Callback<String> callback);
 
     /**
      * 获取用户信息

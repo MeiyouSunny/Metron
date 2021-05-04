@@ -44,11 +44,17 @@
     <fragment
         android:id="@+id/setPwdFragment"
         android:name="com.metron.coin.ui.account.SetPwdFragment"
-        android:label="SetPwdFragment" />
+        android:label="SetPwdFragment">
+        <action
+            android:id="@+id/action_setPwd_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/forgetPwdFragment"
         android:name="com.metron.coin.ui.account.ForgetPwdFragment"
-        android:label="ForgetPwdFragment" >
+        android:label="ForgetPwdFragment">
         <action
             android:id="@+id/action_forgetPwd_to_verifyPhone"
             app:destination="@id/verifyPhoneFragment" />
