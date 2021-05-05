@@ -14,7 +14,7 @@ public class ExtractCoinTypeAdapter extends FragmentPagerAdapter {
     public ExtractCoinTypeAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
-        mTabs = new Fragment[] {new ExtractFragment(), new ExtractFragment(), new ExtractFragment()};
+        mTabs = new Fragment[] {new ExtractFragment(), new ExtractFragment()};
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ExtractCoinTypeAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
 }

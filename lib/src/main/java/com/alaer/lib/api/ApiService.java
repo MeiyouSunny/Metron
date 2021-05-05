@@ -10,6 +10,7 @@ import com.alaer.lib.api.bean.OrderList;
 import com.alaer.lib.api.bean.PollNewInfo;
 import com.alaer.lib.api.bean.TokenInfo;
 import com.alaer.lib.api.bean.UserInfo;
+import com.alaer.lib.api.bean.WithdrawList;
 import com.alaer.lib.api.bean.WithdrawStats;
 
 import java.util.List;
@@ -193,5 +194,14 @@ public interface ApiService {
      */
     @GET("/user/order/list")
     Call<OrderList> orderList(@Query("pageSize") int pageSize, Callback<OrderList> callback);
+
+    /**
+     * 提币列表
+     *
+     * @param currency BTC/ETH
+     */
+    @GET("/user/withdraw/list")
+    Call<WithdrawList> withdrawList(@Query("currency") String[] currency, @Query("pageSize") int pageSize,
+                                    Callback<WithdrawList> callback);
 
 }
