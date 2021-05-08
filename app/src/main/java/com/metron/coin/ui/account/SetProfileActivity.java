@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
+import com.alaer.lib.util.UserDataUtil;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseTitleActivity;
 import com.metron.coin.databinding.ActivitySetProfileBinding;
@@ -28,14 +29,13 @@ public class SetProfileActivity extends BaseTitleActivity<ActivitySetProfileBind
     public static final int PHONE = 2;
     public static final int SET_ADDRESS_BTC = 3;
     public static final int SET_ADDRESS_ETH = 4;
-    public static final int SET_ADDRESS_USDT = 5;
 
     @Override
     protected String title() {
         return "";
     }
 
-    @IntDef({NAME, PHONE, SET_ADDRESS_BTC, SET_ADDRESS_ETH, SET_ADDRESS_USDT})
+    @IntDef({NAME, PHONE, SET_ADDRESS_BTC, SET_ADDRESS_ETH})
     @interface TYPE {
     }
 
@@ -84,9 +84,6 @@ public class SetProfileActivity extends BaseTitleActivity<ActivitySetProfileBind
         } else if (type == SET_ADDRESS_ETH) {
             setTitleText("ETH收款地址");
             bindRoot.input.setHint("ETH收款地址");
-        } else if (type == SET_ADDRESS_USDT) {
-            setTitleText("USDT收款地址");
-            bindRoot.input.setHint("USDT收款地址");
         }
     }
 
@@ -107,8 +104,6 @@ public class SetProfileActivity extends BaseTitleActivity<ActivitySetProfileBind
             modifyBtc(input);
         } else if (type == SET_ADDRESS_ETH) {
             modifyEth(input);
-        } else if (type == SET_ADDRESS_USDT) {
-            modifyUsdt(input);
         }
     }
 
@@ -116,7 +111,8 @@ public class SetProfileActivity extends BaseTitleActivity<ActivitySetProfileBind
         ApiUtil.apiService().modifyNick(input, new Callback<String>() {
             @Override
             public void onResponse(String response) {
-                super.onResponse(response);
+                UserDataUtil.instance().getUserInfo().nick = input;
+                finish();
             }
         });
     }
@@ -126,7 +122,8 @@ public class SetProfileActivity extends BaseTitleActivity<ActivitySetProfileBind
         ApiUtil.apiService().modifyPhone(input, smsCode, new Callback<String>() {
             @Override
             public void onResponse(String response) {
-                super.onResponse(response);
+                UserDataUtil.instance().getUserInfo().mobile = input;
+                finish();
             }
         });
     }
@@ -135,7 +132,8 @@ public class SetProfileActivity extends BaseTitleActivity<ActivitySetProfileBind
         ApiUtil.apiService().modifyBtcWallet(input, new Callback<String>() {
             @Override
             public void onResponse(String response) {
-                super.onResponse(response);
+                UserDataUtil.instance().getUserInfo().btcWallet = input;
+                finish();
             }
         });
     }
@@ -144,16 +142,8 @@ public class SetProfileActivity extends BaseTitleActivity<ActivitySetProfileBind
         ApiUtil.apiService().modifyEthWallet(input, new Callback<String>() {
             @Override
             public void onResponse(String response) {
-                super.onResponse(response);
-            }
-        });
-    }
-
-    private void modifyUsdt(String input) {
-        ApiUtil.apiService().modifyUsdtWallet(input, new Callback<String>() {
-            @Override
-            public void onResponse(String response) {
-                super.onResponse(response);
+                UserDataUtil.instance().getUserInfo().ethWallet = input;
+                finish();
             }
         });
     }

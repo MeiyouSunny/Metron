@@ -1,7 +1,6 @@
 package com.metron.coin.ui.welcom;
 
-import android.util.Log;
-import android.view.View;
+import android.text.TextUtils;
 
 import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
@@ -11,6 +10,11 @@ import com.alaer.lib.util.UserDataUtil;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseViewBindActivity;
 import com.metron.coin.databinding.ActivityWelcomBinding;
+import com.metron.coin.ui.account.LoginActivity;
+import com.metron.coin.ui.home.HomeActivity;
+import com.metron.coin.util.ViewUtil;
+
+import likly.dollar.$;
 
 public class WelcomActivity extends BaseViewBindActivity<ActivityWelcomBinding> {
 
@@ -21,36 +25,46 @@ public class WelcomActivity extends BaseViewBindActivity<ActivityWelcomBinding> 
 
     @Override
     public void onViewCreated() {
-        testApi();
+        autoLogin();
     }
 
-    public void testApi(View view) {
-        testApi();
+    private void autoLogin() {
+        String phone = $.config().getString("phone");
+        String pwd = $.config().getString("pwd");
+        if (!TextUtils.isEmpty(phone) && !TextUtils.isEmpty(pwd)) {
+            login(phone, pwd);
+        } else {
+            ViewUtil.gotoActivity(this, LoginActivity.class);
+            finish();
+        }
     }
 
-    private void testApi() {
-        Log.e("testApi", "testApi");
-        ApiUtil.apiService().login("18189202461", "123456",
+    private void login(String phone, String pwd) {
+        ApiUtil.apiService().login(phone, pwd,
                 new Callback<TokenInfo>() {
 
                     @Override
                     public void onResponse(TokenInfo tokenInfo) {
                         UserDataUtil.instance().setTokenInfo(tokenInfo);
-
-                        ApiUtil.apiService().getUserInfo(new Callback<UserInfo>() {
-                            @Override
-                            public void onResponse(UserInfo response) {
-                                super.onResponse(response);
-                            }
-
-                            @Override
-                            public void onError(int code, String msg) {
-                                super.onError(code, msg);
-                            }
-                        });
+                        getUserInfo();
                     }
 
+                    @Override
+                    public void onError(int code, String msg) {
+                        super.onError(code, msg);
+                    }
                 });
+    }
+
+    private void getUserInfo() {
+        ApiUtil.apiService().getUserInfo(new Callback<UserInfo>() {
+            @Override
+            public void onResponse(UserInfo userInfo) {
+                UserDataUtil.instance().setUserInfo(userInfo);
+                ViewUtil.gotoActivity(getContext(), HomeActivity.class);
+                finish();
+            }
+        });
     }
 
 }

@@ -27,6 +27,11 @@ public class AccountInfoActivity extends BaseTitleActivity<ActivityAccountInfoBi
     @Override
     public void onViewCreated() {
         super.onViewCreated();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         UserInfo userInfo = UserDataUtil.instance().getUserInfo();
         if (userInfo != null)
             bindRoot.setUserInfo(userInfo);

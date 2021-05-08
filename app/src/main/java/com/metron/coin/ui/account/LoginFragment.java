@@ -16,6 +16,8 @@ import com.metron.coin.ui.home.HomeActivity;
 import com.metron.coin.util.SimpleTextWatcher;
 import com.metron.coin.util.ViewUtil;
 
+import likly.dollar.$;
+
 @MvpBinder(
 )
 public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
@@ -35,7 +37,7 @@ public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
                 navigate(R.id.action_to_forgetPwd);
                 break;
             case R.id.btnLogin:
-                login();
+                login(ViewUtil.getText(bindRoot.etPhone), ViewUtil.getText(bindRoot.etPwd));
                 break;
         }
     }
@@ -66,6 +68,16 @@ public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
                 onInputChange();
             }
         });
+
+//        autoLogin();
+    }
+
+    private void autoLogin() {
+        String phone = $.config().getString("phone");
+        String pwd = $.config().getString("pwd");
+        if (!TextUtils.isEmpty(phone) && !TextUtils.isEmpty(pwd)) {
+            login(phone, pwd);
+        }
     }
 
     private void onInputChange() {
@@ -74,19 +86,17 @@ public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
         bindRoot.btnLogin.setEnabled(hasInput);
     }
 
-    private void login() {
-        ApiUtil.apiService().login(ViewUtil.getText(bindRoot.etPhone), ViewUtil.getText(bindRoot.etPwd),
+    private void login(String phone, String pwd) {
+        ApiUtil.apiService().login(phone, pwd,
                 new Callback<TokenInfo>() {
 
                     @Override
                     public void onResponse(TokenInfo tokenInfo) {
                         UserDataUtil.instance().setTokenInfo(tokenInfo);
-                        getUserInfo();
-                    }
+                        $.config().putString("phone", phone);
+                        $.config().putString("pwd", pwd);
 
-                    @Override
-                    public void onError(int code, String msg) {
-                        super.onError(code, msg);
+                        getUserInfo();
                     }
                 });
     }
@@ -97,6 +107,7 @@ public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
             public void onResponse(UserInfo userInfo) {
                 UserDataUtil.instance().setUserInfo(userInfo);
                 ViewUtil.gotoActivity(getContext(), HomeActivity.class);
+                getActivity().finish();
             }
         });
     }

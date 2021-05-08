@@ -13,11 +13,15 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+import likly.dollar.$;
 
 public class HomeActivity extends BaseViewBindActivity<ActivityHomeBinding> {
 
+    public static HomeActivity instance;
+
     @Override
     public void onViewCreated() {
+        instance = this;
         init();
     }
 
@@ -68,6 +72,24 @@ public class HomeActivity extends BaseViewBindActivity<ActivityHomeBinding> {
     @Override
     protected int layoutId() {
         return R.layout.activity_home;
+    }
+
+    @Override
+    public void onBackPressed() {
+        backToExit();
+    }
+
+    private long exitTime = 0;
+
+    private void backToExit() {
+        // 再次点击返回键退出程序
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            $.toast().text("再次按下返回键退出程序!").show();
+            exitTime = System.currentTimeMillis();
+        } else {
+//            System.exit(0);
+            android.os.Process.killProcess(android.os.Process.myPid());
+        }
     }
 
 }

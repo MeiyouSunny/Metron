@@ -2,6 +2,8 @@ package com.metron.coin.ui.account;
 
 import android.view.View;
 
+import com.alaer.lib.api.bean.UserInfo;
+import com.alaer.lib.util.UserDataUtil;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseTitleActivity;
 import com.metron.coin.databinding.ActivityEncrypedWalletBinding;
@@ -27,6 +29,14 @@ public class EncryptedWalletActivity extends BaseTitleActivity<ActivityEncrypedW
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        UserInfo userInfo = UserDataUtil.instance().getUserInfo();
+        if (userInfo != null)
+            bindRoot.setUserInfo(userInfo);
+    }
+
+    @Override
     public void click(View view) {
         switch (view.getId()) {
             case R.id.setAddressBTC:
@@ -34,9 +44,6 @@ public class EncryptedWalletActivity extends BaseTitleActivity<ActivityEncrypedW
                 break;
             case R.id.setAddressETH:
                 SetProfileActivity.start(this, SetProfileActivity.SET_ADDRESS_ETH);
-                break;
-            case R.id.setAddressUSDT:
-                SetProfileActivity.start(this, SetProfileActivity.SET_ADDRESS_USDT);
                 break;
         }
     }

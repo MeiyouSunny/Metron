@@ -30,16 +30,16 @@
         <activity
             android:name=".ui.home.HomeActivity"
             android:theme="@style/ThemeHome"></activity>
-        <activity android:name=".ui.welcom.WelcomActivity"></activity>
-        <activity android:name=".ui.settings.SettingActivity"></activity>
-        <activity android:name=".ui.settings.AboutActivity"></activity>
-        <activity android:name=".ui.account.LoginActivity">
+        <activity android:name=".ui.welcom.WelcomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.settings.SettingActivity"></activity>
+        <activity android:name=".ui.settings.AboutActivity"></activity>
+        <activity android:name=".ui.account.LoginActivity"></activity>
         <activity android:name=".ui.account.ModifyPwdActivity"></activity>
         <activity android:name=".ui.extract.ExtractCoinActivity"></activity>
         <activity android:name=".ui.account.AccountInfoActivity"></activity>

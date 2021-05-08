@@ -8,6 +8,10 @@
         <variable
             name="handler"
             type="com.metron.coin.base.BindClickListener" />
+
+        <variable
+            name="userInfo"
+            type="com.alaer.lib.api.bean.UserInfo" />
     </data>
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
@@ -34,6 +38,7 @@
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:onClick="@{handler.click}"
+                android:visibility="gone"
                 app:cardElevation="0dp">
 
                 <RelativeLayout
@@ -110,9 +115,10 @@
                         android:layout_toRightOf="@+id/label2"
                         android:gravity="right"
                         android:singleLine="true"
-                        android:text="89984USDT/ERC20…"
+                        android:text="@{userInfo.ethWallet}"
                         android:textColor="#6D7686"
-                        android:textSize="@dimen/font_16" />
+                        android:textSize="@dimen/font_16"
+                        tools:text="89984USDT/ERC20…" />
 
                     <ImageView
                         android:id="@+id/icNext2"
@@ -160,9 +166,10 @@
                         android:layout_toRightOf="@+id/label3"
                         android:gravity="right"
                         android:singleLine="true"
-                        android:text="89984USDT/ERC20…"
+                        android:text="@{userInfo.btcWallet}"
                         android:textColor="#6D7686"
-                        android:textSize="@dimen/font_16" />
+                        android:textSize="@dimen/font_16"
+                        tools:text="89984USDT/ERC20…" />
 
                     <ImageView
                         android:id="@+id/icNext3"
