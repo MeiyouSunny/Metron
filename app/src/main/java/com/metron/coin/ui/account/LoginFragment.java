@@ -95,6 +95,7 @@ public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
                         UserDataUtil.instance().setTokenInfo(tokenInfo);
                         $.config().putString("phone", phone);
                         $.config().putString("pwd", pwd);
+                        UserDataUtil.setIsChannelUser(false);
 
                         getUserInfo();
                     }

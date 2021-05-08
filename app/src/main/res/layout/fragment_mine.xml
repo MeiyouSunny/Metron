@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="handler"
             type="com.metron.coin.base.BindClickListener" />
@@ -12,6 +14,10 @@
         <variable
             name="userInfo"
             type="com.alaer.lib.api.bean.UserInfo" />
+
+        <variable
+            name="isChannelUser"
+            type="boolean" />
     </data>
 
     <LinearLayout
@@ -37,12 +43,36 @@
                 android:textSize="@dimen/font_24"
                 tools:text="Fanta" />
 
+            <ImageView
+                android:layout_marginTop="3dp"
+                android:id="@+id/icType"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_below="@+id/userName"
+                android:layout_centerVertical="true"
+                android:scaleType="centerInside"
+                android:src="@{isChannelUser ? @drawable/ic_user_channel : @drawable/ic_user_normal}" />
+
+            <TextView
+                android:id="@+id/labelType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/userName"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@+id/icType"
+                android:text="@{isChannelUser ? @string/user_channel : @string/user_normal}"
+                android:textColor="#CCFFFFFF"
+                android:textSize="@dimen/font_14" />
+
             <TextView
                 android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/userName"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/labelType"
                 android:text="@{userInfo.mobile}"
                 android:textColor="#CCFFFFFF"
                 android:textSize="@dimen/font_14"
@@ -110,6 +140,7 @@
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
             android:onClick="@{handler.click}"
+            android:visibility="@{isChannelUser ? View.GONE : View.VISIBLE}"
             app:cardElevation="0dp">
 
             <RelativeLayout
@@ -151,6 +182,7 @@
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
             android:onClick="@{handler.click}"
+            android:visibility="@{isChannelUser ? View.GONE : View.VISIBLE}"
             app:cardElevation="0dp">
 
             <RelativeLayout

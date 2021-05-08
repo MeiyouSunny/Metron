@@ -2,6 +2,7 @@ package com.metron.coin.ui.home;
 
 import android.view.MenuItem;
 
+import com.alaer.lib.util.UserDataUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseViewBindActivity;
@@ -22,13 +23,20 @@ public class HomeActivity extends BaseViewBindActivity<ActivityHomeBinding> {
     @Override
     public void onViewCreated() {
         instance = this;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         init();
     }
 
     protected void init() {
+        boolean isChannelUser = UserDataUtil.instance().isChannelUser();
 
         getSupportActionBar().hide();
         BottomNavigationView mBottomNav = findViewById(R.id.nav_view);
+        mBottomNav.inflateMenu(isChannelUser ? R.menu.bottom_nav_menu_ : R.menu.bottom_nav_menu);
         ViewPager mPager = findViewById(R.id.pager);
 //        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
 //                R.id.tab_home, R.id.tab_profit, R.id.tab_minter, R.id.tab_mine)

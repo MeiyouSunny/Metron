@@ -46,19 +46,12 @@ public class MineFragment extends BaseBindFragment<FragmentMineBinding> {
     }
 
     @Override
-    public void onViewCreated() {
-        super.onViewCreated();
+    public void onResume() {
+        super.onResume();
         UserInfo userInfo = UserDataUtil.instance().getUserInfo();
         if (userInfo != null)
             bindRoot.setUserInfo(userInfo);
+        bindRoot.setIsChannelUser(UserDataUtil.isChannelUser());
     }
 
-//    public View onCreateView(@NonNull LayoutInflater inflater,
-//                             ViewGroup container, Bundle savedInstanceState) {
-//        View root = inflater.inflate(R.layout.fragment_mine, container, false);
-//        final TextView textView = root.findViewById(R.id.text);
-//        textView.setText("我的");
-//
-//        return root;
-//    }
 }

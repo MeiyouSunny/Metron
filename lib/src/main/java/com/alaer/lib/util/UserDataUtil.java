@@ -3,6 +3,8 @@ package com.alaer.lib.util;
 import com.alaer.lib.api.bean.TokenInfo;
 import com.alaer.lib.api.bean.UserInfo;
 
+import likly.dollar.$;
+
 public class UserDataUtil {
     private static final UserDataUtil instance = new UserDataUtil();
 
@@ -32,6 +34,19 @@ public class UserDataUtil {
 
     public void setUserInfo(UserInfo userInfo) {
         this.userInfo = userInfo;
+    }
+
+//    // 是否渠道专员
+//    public boolean isChannelUser() {
+//        return userInfo != null && userInfo.role == 2;
+//    }
+
+    public static void setIsChannelUser(boolean isChannelUser) {
+        $.config().putBoolean("channelUser", isChannelUser);
+    }
+
+    public static boolean isChannelUser() {
+        return $.config().getBoolean("channelUser", false);
     }
 
 }

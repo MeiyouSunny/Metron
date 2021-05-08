@@ -8,6 +8,10 @@ import com.alaer.lib.util.UserDataUtil;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseTitleActivity;
 import com.metron.coin.databinding.ActivityAccountInfoBinding;
+import com.metron.coin.ui.home.HomeActivity;
+import com.metron.coin.util.ViewUtil;
+
+import likly.dollar.$;
 
 /**
  * 账户信息
@@ -27,6 +31,7 @@ public class AccountInfoActivity extends BaseTitleActivity<ActivityAccountInfoBi
     @Override
     public void onViewCreated() {
         super.onViewCreated();
+        bindRoot.setIsChannelUser(UserDataUtil.isChannelUser());
     }
 
     @Override
@@ -47,6 +52,17 @@ public class AccountInfoActivity extends BaseTitleActivity<ActivityAccountInfoBi
                 Intent intent = new Intent(this, ModifyPwdActivity.class);
                 intent.putExtra("isModifyPhone", true);
                 startActivity(intent);
+                break;
+            case R.id.swtichAccount:
+                boolean isChannelUser = UserDataUtil.isChannelUser();
+                isChannelUser = !isChannelUser;
+                UserDataUtil.setIsChannelUser(isChannelUser);
+                bindRoot.setIsChannelUser(isChannelUser);
+                final String hintText = "已切换至 " + (isChannelUser ? "渠道专员" : "普通用户");
+                $.toast().text(hintText).show();
+                HomeActivity.instance.finish();
+                ViewUtil.gotoActivity(this, HomeActivity.class);
+                finish();
                 break;
         }
     }

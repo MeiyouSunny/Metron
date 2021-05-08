@@ -12,6 +12,10 @@
         <variable
             name="userInfo"
             type="com.alaer.lib.api.bean.UserInfo" />
+
+        <variable
+            name="isChannelUser"
+            type="boolean" />
     </data>
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
@@ -112,6 +116,51 @@
 
                     <ImageView
                         android:id="@+id/icNext2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_next_item" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/swtichAccount"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:onClick="@{handler.click}"
+                app:cardElevation="0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="切换账号"
+                        android:textColor="@color/font_normal"
+                        android:textSize="@dimen/font_16" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="18dp"
+                        android:layout_toLeftOf="@+id/icNext3"
+                        android:text="@{isChannelUser ? @string/user_channel : @string/user_normal}"
+                        android:textColor="#A0A7B3"
+                        android:textSize="@dimen/font_16" />
+
+                    <ImageView
+                        android:id="@+id/icNext3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"

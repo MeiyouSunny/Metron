@@ -8,4 +8,7 @@
 
     <string name="modify_pwd_need_verify">为了您的账户安全\n需要验证您的 +86 %s 手机号码</string>
 
+    <string name="user_normal">普通用户</string>
+    <string name="user_channel">渠道专员</string>
+
 </resources>
