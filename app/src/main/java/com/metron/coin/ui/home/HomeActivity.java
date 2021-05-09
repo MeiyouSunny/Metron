@@ -5,6 +5,7 @@ import android.view.MenuItem;
 import com.alaer.lib.util.UserDataUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.metron.coin.R;
+import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.base.BaseViewBindActivity;
 import com.metron.coin.databinding.ActivityHomeBinding;
 
@@ -33,12 +34,6 @@ public class HomeActivity extends BaseViewBindActivity<ActivityHomeBinding> {
         BottomNavigationView mBottomNav = findViewById(R.id.nav_view);
         mBottomNav.inflateMenu(isChannelUser ? R.menu.bottom_nav_menu_ : R.menu.bottom_nav_menu);
         ViewPager mPager = findViewById(R.id.pager);
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.tab_home, R.id.tab_profit, R.id.tab_minter, R.id.tab_mine)
-//                .build();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_home_tab);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(navView, navController);
 
         List<Fragment> tabFragments = new ArrayList<>(4);
         tabFragments.add(new HomeFragment());
@@ -52,6 +47,12 @@ public class HomeActivity extends BaseViewBindActivity<ActivityHomeBinding> {
         HomeTabAdapter tabAdapter = new HomeTabAdapter(getSupportFragmentManager(), tabFragments);
         mPager.setAdapter(tabAdapter);
         mPager.setOffscreenPageLimit(4);
+        mPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                ((BaseBindFragment) tabFragments.get(position)).load();
+            }
+        });
 
         mBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

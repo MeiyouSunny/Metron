@@ -71,9 +71,9 @@ public class MinterTypeFragment extends BaseBindFragment<FragmentMinterBtcBindin
                 if (pollNewInfo != null) {
                     bindRoot.setMinterUtil(new MinterUtil());
                     bindRoot.setNumberUtil(NumberUtils.instance());
-                    if (TextUtils.equals(type, "BTC"))
+                    if (TextUtils.equals(type, CoinConst.BTC))
                         bindRoot.setCoin(pollNewInfo.BTC);
-                    else if (TextUtils.equals(type, "ETH"))
+                    else if (TextUtils.equals(type, CoinConst.ETH))
                         bindRoot.setCoin(pollNewInfo.ETH);
                 }
             }
@@ -84,21 +84,21 @@ public class MinterTypeFragment extends BaseBindFragment<FragmentMinterBtcBindin
             }
         });
 
-        ApiUtil.apiService().withdrawStats(CoinConst.BTC, new Callback<WithdrawStats>() {
+        ApiUtil.apiService().withdrawStats(type, new Callback<WithdrawStats>() {
             @Override
             public void onResponse(WithdrawStats withdrawStats) {
                 bindRoot.setWithdrawStats(withdrawStats);
             }
         });
 
-        ApiUtil.apiService().incomeLatest(CoinConst.BTC, new Callback<IncomeLastest>() {
+        ApiUtil.apiService().incomeLatest(type, new Callback<IncomeLastest>() {
             @Override
             public void onResponse(IncomeLastest incomeLastest) {
                 bindRoot.setIncomeLatest(incomeLastest);
             }
         });
 
-        ApiUtil.apiService().workerList(type, new Callback<MinterList>() {
+        ApiUtil.apiService().workerList(type, 10, new Callback<MinterList>() {
             @Override
             public void onResponse(MinterList minterList) {
                 super.onResponse(minterList);

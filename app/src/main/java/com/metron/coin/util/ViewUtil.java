@@ -15,6 +15,12 @@ public class ViewUtil {
         context.startActivity(new Intent(context, activityDes));
     }
 
+    public static void gotoActivity(Context context, Class<? extends Activity> activityDes, String key, String value) {
+        Intent intent = new Intent(context, activityDes);
+        intent.putExtra(key, value);
+        context.startActivity(intent);
+    }
+
     public static String getText(TextView textView) {
         if (textView == null)
             return "";

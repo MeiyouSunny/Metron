@@ -44,9 +44,9 @@ public class ModifyPwdFragment extends BaseBackFragment<FragmentModifyPwdBinding
 
     private void sendSms() {
         ApiUtil.apiService().sendSms("86", phone,
-                new Callback<String>() {
+                new Callback<Boolean>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(Boolean response) {
                         $.toast().text("验证码已发送！");
                     }
                 });

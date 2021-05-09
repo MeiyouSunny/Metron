@@ -48,6 +48,11 @@ public class MineFragment extends BaseBindFragment<FragmentMineBinding> {
     @Override
     public void onResume() {
         super.onResume();
+        loadData();
+    }
+
+    @Override
+    protected void loadData() {
         UserInfo userInfo = UserDataUtil.instance().getUserInfo();
         if (userInfo != null)
             bindRoot.setUserInfo(userInfo);

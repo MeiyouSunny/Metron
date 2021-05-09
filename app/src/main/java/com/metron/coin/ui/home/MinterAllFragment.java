@@ -13,6 +13,7 @@ import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.data.MinterUtil;
 import com.metron.coin.databinding.FragmentMinterAllBinding;
 import com.metron.coin.ui.dialog.DialogMinterDetail;
+import com.metron.coin.util.CoinConst;
 import com.metron.coin.util.CollectionUtils;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public class MinterAllFragment extends BaseBindFragment<FragmentMinterAllBinding
     }
 
     private void queryMinters() {
-        ApiUtil.apiService().workerList("", new Callback<MinterList>() {
+        ApiUtil.apiService().workerList("", 10, new Callback<MinterList>() {
             @Override
             public void onResponse(MinterList minterList) {
                 super.onResponse(minterList);
@@ -50,19 +51,35 @@ public class MinterAllFragment extends BaseBindFragment<FragmentMinterAllBinding
             }
         });
 
-        ApiUtil.apiService().workerStats("",
+        ApiUtil.apiService().workerAllStats(new Callback<List<MinterStats>>() {
+            @Override
+            public void onResponse(List<MinterStats> minterStatsList) {
+                if (minterStatsList != null) {
+                    int[] values = new MinterUtil().parseMinterStatsValues(minterStatsList);
+                    bindRoot.setMinterValues(values);
+                }
+            }
+        });
+
+        ApiUtil.apiService().workerStats(CoinConst.BTC,
                 new Callback<List<MinterStats>>() {
                     @Override
                     public void onResponse(List<MinterStats> minterStatsList) {
                         if (minterStatsList != null) {
                             int[] values = new MinterUtil().parseMinterStatsValues(minterStatsList);
-//                            bindRoot.setMinterValues(values);
+                            bindRoot.setMinterCountBTC(values[0]);
                         }
                     }
+                });
 
+        ApiUtil.apiService().workerStats(CoinConst.ETH,
+                new Callback<List<MinterStats>>() {
                     @Override
-                    public void onError(int code, String msg) {
-                        super.onError(code, msg);
+                    public void onResponse(List<MinterStats> minterStatsList) {
+                        if (minterStatsList != null) {
+                            int[] values = new MinterUtil().parseMinterStatsValues(minterStatsList);
+                            bindRoot.setMinterCountETH(values[0]);
+                        }
                     }
                 });
     }

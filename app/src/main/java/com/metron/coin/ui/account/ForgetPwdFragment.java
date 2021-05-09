@@ -26,7 +26,7 @@ public class ForgetPwdFragment extends BaseBackFragment<FragmentForgetPwdBinding
     public void click(View view) {
         switch (view.getId()) {
             case R.id.btnGetCode:
-                navigate(R.id.action_forgetPwd_to_verifyPhone);
+                sendSms();
                 break;
         }
     }
@@ -56,13 +56,23 @@ public class ForgetPwdFragment extends BaseBackFragment<FragmentForgetPwdBinding
 
     private void sendSms() {
         ApiUtil.apiService().sendSms("86", ViewUtil.getText(bindRoot.etPhone),
-                new Callback<String>() {
+                new Callback<Boolean>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(Boolean response) {
                         Bundle bundle = new Bundle();
                         bundle.putInt("type", SetPwdFragment.TYPE_FORGET_PWD);
                         bundle.putString("mobile", ViewUtil.getText(bindRoot.etPhone));
-                        navigate(R.id.action_regist_to_verify, bundle);
+                        navigate(R.id.action_forgetPwd_to_verifyPhone, bundle);
+                    }
+
+                    @Override
+                    public void onError(int code, String msg) {
+                        super.onError(code, msg);
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
                     }
                 });
     }

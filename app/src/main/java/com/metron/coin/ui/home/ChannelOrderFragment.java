@@ -23,6 +23,10 @@ public class ChannelOrderFragment extends BaseBindFragment<FragmentChannelOrders
     @Override
     public void onViewCreated() {
         super.onViewCreated();
+    }
+
+    @Override
+    protected void loadData() {
         queryOrders();
     }
 

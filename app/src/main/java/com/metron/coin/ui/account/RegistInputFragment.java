@@ -33,9 +33,9 @@ public class RegistInputFragment extends BaseBackFragment<FragmentRegistInputBin
 
     private void sendSms() {
         ApiUtil.apiService().sendSms("86", ViewUtil.getText(bindRoot.etPhone),
-                new Callback<String>() {
+                new Callback<Boolean>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(Boolean response) {
                         Bundle bundle = new Bundle();
                         bundle.putInt("type", SetPwdFragment.TYPE_REGIST);
                         bundle.putString("mobile", ViewUtil.getText(bindRoot.etPhone));

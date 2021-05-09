@@ -55,8 +55,8 @@ public interface ApiService {
      */
     @FormBody
     @POST("/sms/send")
-    Call<String> sendSms(@Part("countryCode") String countryCode, @Part("mobile") String mobile,
-                         Callback<String> callback);
+    Call<Boolean> sendSms(@Part("countryCode") String countryCode, @Part("mobile") String mobile,
+                          Callback<Boolean> callback);
 
     /**
      * 注册
@@ -178,7 +178,7 @@ public interface ApiService {
      * @param currency BTC/ETH
      */
     @GET("/user/workers/list")
-    Call<MinterList> workerList(@Query("currency") String currency, Callback<MinterList> callback);
+    Call<MinterList> workerList(@Query("currency") String currency, @Query("pageSize") int pageSize, Callback<MinterList> callback);
 
     /**
      * 我的矿机统计
@@ -187,6 +187,12 @@ public interface ApiService {
      */
     @GET("/user/workers/stats")
     Call<List<MinterStats>> workerStats(@Query("currency") String currency, Callback<List<MinterStats>> callback);
+
+    /**
+     * 所有矿机统计
+     */
+    @GET("/user/workers/stats")
+    Call<List<MinterStats>> workerAllStats(Callback<List<MinterStats>> callback);
 
     /**
      * 我的订单列表

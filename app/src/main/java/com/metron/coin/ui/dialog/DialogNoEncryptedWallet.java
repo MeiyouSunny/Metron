@@ -11,8 +11,11 @@ import com.metron.coin.databinding.DialogNoEncryptedWalletBinding;
  */
 public class DialogNoEncryptedWallet extends BaseDialogHolder<DialogNoEncryptedWalletBinding> {
 
-    public DialogNoEncryptedWallet() {
+    private OnSetWalletListener mListener;
+
+    public DialogNoEncryptedWallet(OnSetWalletListener listener) {
         super(R.layout.dialog_no_encrypted_wallet);
+        mListener = listener;
     }
 
     @Override
@@ -24,9 +27,15 @@ public class DialogNoEncryptedWallet extends BaseDialogHolder<DialogNoEncryptedW
     public void click(View view) {
         switch (view.getId()) {
             case R.id.goSet:
+                if (mListener != null)
+                    mListener.onSetWallet();
                 dismiss();
                 break;
         }
+    }
+
+    public interface OnSetWalletListener {
+        void onSetWallet();
     }
 
 }

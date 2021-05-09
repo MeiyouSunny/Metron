@@ -11,8 +11,8 @@ import com.metron.coin.databinding.FragmentMinterBinding;
  */
 public class MinterFragment extends BaseBindFragment<FragmentMinterBinding> {
 
-    private final int[] mIcons = {R.drawable.ic_btc, R.drawable.ic_btc, R.drawable.ic_eth, R.drawable.ic_usdt};
-    private final int[] mTitles = {R.string.miner_all, R.string.miner_btc, R.string.miner_eth, R.string.miner_usdt};
+    private final int[] mIcons = {R.drawable.ic_btc, R.drawable.ic_btc, R.drawable.ic_eth};
+    private final int[] mTitles = {R.string.miner_all, R.string.miner_btc, R.string.miner_eth};
 
     @Override
     public int initLayoutResId() {
@@ -22,13 +22,15 @@ public class MinterFragment extends BaseBindFragment<FragmentMinterBinding> {
     @Override
     public void onViewCreated() {
         super.onViewCreated();
-
-        bindRoot.viewPager.setOffscreenPageLimit(3);
-        bindRoot.viewPager.setAdapter(new MinterTypeAdapter(getContext(), getChildFragmentManager()));
-
         bindRoot.setIcons(mIcons);
         bindRoot.setTitles(mTitles);
         bindRoot.setType(0);
+    }
+
+    @Override
+    protected void loadData() {
+        bindRoot.viewPager.setOffscreenPageLimit(3);
+        bindRoot.viewPager.setAdapter(new MinterTypeAdapter(getContext(), getChildFragmentManager()));
     }
 
     @Override
@@ -48,9 +50,6 @@ public class MinterFragment extends BaseBindFragment<FragmentMinterBinding> {
                 break;
             case R.id.typeETH:
                 selectType(2);
-                break;
-            case R.id.typeUSDT:
-                selectType(3);
                 break;
         }
     }

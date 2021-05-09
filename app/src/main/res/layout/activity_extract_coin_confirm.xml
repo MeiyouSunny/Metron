@@ -8,6 +8,10 @@
         <variable
             name="handler"
             type="com.metron.coin.base.BindClickListener" />
+
+        <variable
+            name="coinAddress"
+            type="String" />
     </data>
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
@@ -64,9 +68,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="提币地址：0xbc15aa321ade18252437a337d8dd079b43426a09"
+                android:text="@{@string/coin_address_is(coinAddress)}"
                 android:textColor="#15233E"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                tools:text="提币地址：0xbc15aa321ade18252437a337d8dd079b43426a09" />
 
             <TextView
                 android:layout_width="wrap_content"

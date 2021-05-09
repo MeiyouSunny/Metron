@@ -22,8 +22,11 @@ public class ProfitFragment extends BaseBindFragment<FragmentProfitBinding> {
     @Override
     public void onViewCreated() {
         super.onViewCreated();
-        setTabs();
+    }
 
+    @Override
+    protected void loadData() {
+        setTabs();
     }
 
     String[] mTabTitles = new String[]{"BTC", "ETH"};

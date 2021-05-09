@@ -1,5 +1,7 @@
 package com.metron.coin.ui.welcom;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 
 import com.alaer.lib.api.ApiUtil;
@@ -34,8 +36,13 @@ public class WelcomActivity extends BaseViewBindActivity<ActivityWelcomBinding> 
         if (!TextUtils.isEmpty(phone) && !TextUtils.isEmpty(pwd)) {
             login(phone, pwd);
         } else {
-            ViewUtil.gotoActivity(this, LoginActivity.class);
-            finish();
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ViewUtil.gotoActivity(WelcomActivity.this, LoginActivity.class);
+                    finish();
+                }
+            }, 1500);
         }
     }
 

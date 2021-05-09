@@ -17,6 +17,7 @@ import androidx.databinding.ViewDataBinding;
 public abstract class BaseBindFragment<T extends ViewDataBinding> extends BaseFragment implements BindClickListener {
 
     protected T bindRoot;
+    protected boolean hasLoadData;
 
     @Override
     public void onViewCreated() {
@@ -56,6 +57,17 @@ public abstract class BaseBindFragment<T extends ViewDataBinding> extends BaseFr
 
     @Override
     public void click(View view) {
+    }
+
+    public void load() {
+        if (!hasLoadData) {
+            hasLoadData = true;
+            loadData();
+        }
+    }
+
+    protected void loadData() {
+
     }
 
 }

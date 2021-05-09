@@ -18,12 +18,11 @@
         android:paddingRight="8dp">
 
         <androidx.cardview.widget.CardView
-            style="@style/CardViewClick"
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:layout_above="@+id/cancel"
             android:layout_marginBottom="17dp"
-            android:clickable="true"
+            android:clickable="false"
             android:onClick="@{handler.click}"
             app:cardCornerRadius="8dp"
             app:cardElevation="0dp">

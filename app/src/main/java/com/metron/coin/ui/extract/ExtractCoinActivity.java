@@ -11,8 +11,8 @@ import com.metron.coin.databinding.ActivityExtractCoinBinding;
  */
 public class ExtractCoinActivity extends BaseViewBindActivity<ActivityExtractCoinBinding> {
 
-    private final int[] mIcons = {R.drawable.ic_btc, R.drawable.ic_eth, R.drawable.ic_usdt};
-    private final int[] mTitles = {R.string.miner_btc, R.string.miner_eth, R.string.miner_usdt};
+    private final int[] mIcons = {R.drawable.ic_btc, R.drawable.ic_eth};
+    private final int[] mTitles = {R.string.miner_btc, R.string.miner_eth};
 
     @Override
     protected int layoutId() {
@@ -45,9 +45,6 @@ public class ExtractCoinActivity extends BaseViewBindActivity<ActivityExtractCoi
                 break;
             case R.id.typeETH:
                 selectType(1);
-                break;
-            case R.id.typeUSDT:
-                selectType(2);
                 break;
         }
     }
