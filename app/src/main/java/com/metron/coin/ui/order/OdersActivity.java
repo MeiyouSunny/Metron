@@ -39,6 +39,11 @@ public class OdersActivity extends BaseTitleActivity<ActivityOrdersBinding> {
             public void onResponse(OrderList orderList) {
                 bindRoot.repeatView.viewManager().bind(orderList.rows);
             }
+
+            @Override
+            public void onError(int code, String msg) {
+                super.onError(code, msg);
+            }
         });
     }
 

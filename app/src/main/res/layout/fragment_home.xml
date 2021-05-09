@@ -236,6 +236,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:onClick="@{handler.click}"
+                        android:visibility="gone"
                         app:cardCornerRadius="5dp"
                         app:cardElevation="0dp">
 

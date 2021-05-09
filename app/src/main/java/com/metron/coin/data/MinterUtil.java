@@ -174,7 +174,8 @@ public class MinterUtil {
 
     // 1:收益分成 2:固定投资，用于USDT
     public String parseOrderType(OrderList.Order order) {
-        return (order.orderType == 1) ? "收益分成" : "固定投资";
+        return "订单交易";
+//        return (order.orderType == 1) ? "收益分成" : "固定投资";
     }
 
     // 采购数量
@@ -187,6 +188,12 @@ public class MinterUtil {
         }
 
         return count + "台";
+    }
+
+    public String parseUserName(OrderList.Order order) {
+        if (order == null || order.user == null)
+            return "";
+        return order.user.nick;
     }
 
 }

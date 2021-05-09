@@ -68,7 +68,7 @@ public class ExtractFragment extends BaseBindFragment<FragmentExtractCoinBinding
         super.onViewCreated();
         bindRoot.setType(type);
 
-        ApiUtil.apiService().withdrawList(new String[]{"BTC"}, 100,
+        ApiUtil.apiService().withdrawList(new String[]{"BTC"}, 200,
                 new Callback<WithdrawList>() {
                     @Override
                     public void onResponse(WithdrawList withdrawList) {

@@ -44,12 +44,12 @@
                 tools:text="Fanta" />
 
             <ImageView
-                android:layout_marginTop="3dp"
                 android:id="@+id/icType"
                 android:layout_width="14dp"
                 android:layout_height="14dp"
                 android:layout_below="@+id/userName"
                 android:layout_centerVertical="true"
+                android:layout_marginTop="3dp"
                 android:scaleType="centerInside"
                 android:src="@{isChannelUser ? @drawable/ic_user_channel : @drawable/ic_user_normal}" />
 
@@ -81,10 +81,11 @@
 
             <ImageView
                 android:id="@+id/accountInfo"
+                style="@style/ClickableStyle_"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
+                android:layout_marginTop="50dp"
                 android:clickable="true"
                 android:onClick="@{handler.click}"
                 android:scaleType="centerInside"
@@ -140,7 +141,7 @@
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
             android:onClick="@{handler.click}"
-            android:visibility="@{isChannelUser ? View.GONE : View.VISIBLE}"
+            android:visibility="gone"
             app:cardElevation="0dp">
 
             <RelativeLayout

@@ -10,11 +10,11 @@ import com.alaer.lib.api.bean.OrderList;
 import com.metron.coin.R;
 import com.metron.coin.base.repeatview.BaseViewHolder;
 import com.metron.coin.data.MinterUtil;
-import com.metron.coin.databinding.ItemOrderBinding;
+import com.metron.coin.databinding.ItemOrderChannelBinding;
 import com.metron.coin.util.CollectionUtils;
 import com.metron.coin.util.ViewUtil;
 
-public class OrderAdapter extends BaseViewHolder<ItemOrderBinding, OrderList.Order> {
+public class OrderChannelAdapter extends BaseViewHolder<ItemOrderChannelBinding, OrderList.Order> {
 
     @Override
     protected void onBindData(OrderList.Order order) {
@@ -47,7 +47,7 @@ public class OrderAdapter extends BaseViewHolder<ItemOrderBinding, OrderList.Ord
 
     @Override
     protected int getViewHolderLayout() {
-        return R.layout.item_order;
+        return R.layout.item_order_channel;
     }
 
 }

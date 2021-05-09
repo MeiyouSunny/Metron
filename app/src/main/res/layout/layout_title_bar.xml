@@ -7,6 +7,7 @@
 
     <ImageView
         android:id="@+id/title_left"
+        style="@style/ClickableStyle_"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:scaleType="centerInside"
@@ -19,7 +20,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:scaleType="centerInside"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/title"

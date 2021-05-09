@@ -34,6 +34,9 @@ public class ExtractCoinActivity extends BaseViewBindActivity<ActivityExtractCoi
     @Override
     public void click(View view) {
         switch (view.getId()) {
+            case R.id.title_left:
+                finish();
+                break;
             case R.id.typeSelect:
                 bindRoot.setTypeListVisible(!bindRoot.getTypeListVisible());
                 break;

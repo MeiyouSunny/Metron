@@ -10,20 +10,22 @@ public class OrderList {
     public static class Order {
         public float amount;
         public float usdt;
-        public float rate;
+        public int rate;
         public int id;
         public String createTime;
         public String updateTime;
         public String sn;
         public int userId;
-        public String channelCommissionerId;
+        public Object channelCommissionerId;
         public String startTime;
         public String endTime;
         public String paidTime;
         public int orderType;
         public int status;
+        public String remark;
         public List<Quantity> quantity;
         public Object channelCommissioner;
+        public User user;
     }
 
     public static class Quantity {
@@ -34,16 +36,16 @@ public class OrderList {
         public int userId;
         public int orderId;
         public int modelId;
-        public Modle modle;
+        public Model model;
     }
 
-    public static class Modle {
-        public int hashrate;
-        public int hashrateFreeRate;
-        public int power;
-        public int powerFreeRate;
-        public int price;
-        public double staticIncomeBy300Day;
+    public static class Model {
+        public float hashrate;
+        public float hashrateFreeRate;
+        public float power;
+        public float powerFreeRate;
+        public float price;
+        public float staticIncomeBy300Day;
         public int id;
         public String createTime;
         public String updateTime;
@@ -56,6 +58,13 @@ public class OrderList {
         public int stock;
         public int minimumQuantity;
         public int status;
+    }
+
+    public static class User {
+        public int id;
+        public String nick;
+        public String mobile;
+
     }
 
 }

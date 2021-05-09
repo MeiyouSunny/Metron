@@ -28,24 +28,36 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="20dp"
-                    android:background="#005FEB" />
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
                     android:text="@{util.parseOrderType(order)}"
-                    android:textColor="#15233E"
+                    android:textColor="#005FEB"
                     android:textSize="14sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="订单编号 "
+                    android:textColor="#6D7686"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(order.sn)}"
+                    android:textColor="#6D7686"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -53,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="16dp"
-                android:paddingTop="6dp"
+                android:paddingTop="14dp"
                 android:paddingRight="16dp"
                 android:paddingBottom="24dp">
 
@@ -61,54 +73,24 @@
                     android:id="@+id/label1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="编号"
+                    android:text="客户姓名："
                     android:textColor="#6D7686"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
                     android:layout_toRightOf="@+id/label1"
-                    android:text="@{String.valueOf(order.sn)}"
+                    android:text="@{util.parseUserName(order)}"
                     android:textColor="#6D7686"
-                    android:textSize="12sp" />
-
-
-                <LinearLayout
-                    android:id="@+id/mintersLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/label1"
-                    android:orientation="vertical"
-                    android:paddingBottom="4dp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/label2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/mintersLayout"
-                    android:layout_marginTop="8dp"
-                    android:text="采购数量："
-                    android:textColor="#6D7686"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/mintersLayout"
-                    android:layout_marginTop="8dp"
-                    android:layout_toRightOf="@+id/label2"
-                    android:text="@{util.parseOrderQuanlity(order)}"
-                    android:textColor="#6D7686"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/label3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/label2"
-                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/label1"
+                    android:layout_marginTop="4dp"
                     android:text="服务时间："
                     android:textColor="#6D7686"
                     android:textSize="14sp" />
@@ -116,40 +98,49 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/label2"
-                    android:layout_marginTop="8dp"
-                    android:layout_toRightOf="@+id/label3"
+                    android:layout_below="@+id/label1"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@+id/label2"
                     android:text="@{util.parseOrderTime(order)}"
                     android:textColor="#6D7686"
                     android:textSize="14sp" />
 
+
+                <LinearLayout
+                    android:id="@+id/mintersLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/label2"
+                    android:orientation="vertical"
+                    android:paddingBottom="4dp" />
+
                 <TextView
-                    android:id="@+id/label4"
+                    android:id="@+id/label3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/label3"
+                    android:layout_below="@+id/mintersLayout"
                     android:layout_marginTop="8dp"
-                    android:text="付款时间："
-                    android:textColor="#6D7686"
+                    android:text="采购总计："
+                    android:textColor="#15233E"
                     android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/label3"
+                    android:layout_below="@+id/mintersLayout"
                     android:layout_marginTop="8dp"
-                    android:layout_toRightOf="@+id/label4"
-                    android:text="@{util.parserIncomeTime(order.paidTime)}"
-                    android:textColor="#6D7686"
-                    android:textSize="14sp" />
-
+                    android:layout_toRightOf="@+id/label3"
+                    android:text="@{util.parseOrderQuanlity(order)}"
+                    android:textColor="#15233E"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/label5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/label4"
-                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/label3"
+                    android:layout_marginTop="8dp"
                     android:text="付款金额："
                     android:textColor="#15233E"
                     android:textSize="14sp" />
@@ -158,9 +149,9 @@
                     android:id="@+id/label6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/label4"
+                    android:layout_below="@+id/label3"
                     android:layout_alignBaseline="@+id/label5"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_toRightOf="@+id/label5"
                     android:text="¥"
                     android:textColor="#15233E"
@@ -169,14 +160,37 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/label4"
+                    android:layout_below="@+id/label3"
                     android:layout_alignBaseline="@+id/label5"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
                     android:layout_toRightOf="@+id/label6"
                     android:text="@{String.valueOf(order.amount)}"
                     android:textColor="#15233E"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/label7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/label5"
+                    android:layout_marginTop="8dp"
+                    android:text="渠道分成："
+                    android:textColor="#15233E"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/label5"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/label7"
+                    android:text="@{String.valueOf(order.rate)+'%'}"
+                    android:textColor="#15233E"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 

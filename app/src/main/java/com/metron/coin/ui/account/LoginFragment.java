@@ -99,11 +99,6 @@ public class LoginFragment extends BaseBackFragment<FragmentLoginBinding> {
 
                         getUserInfo();
                     }
-
-                    @Override
-                    public void onError(int code, String msg) {
-                        $.toast().text(msg).show();
-                    }
                 });
     }
 
