@@ -20,7 +20,6 @@ import com.metron.coin.ui.dialog.DialogMinterDetail;
 import com.metron.coin.util.CoinConst;
 import com.metron.coin.util.CollectionUtils;
 import com.metron.coin.util.NumberUtils;
-import com.metron.coin.view.FullyLinearLayoutManager;
 
 import java.util.List;
 
@@ -98,16 +97,15 @@ public class MinterTypeFragment extends BaseBindFragment<FragmentMinterBtcBindin
             }
         });
 
-        ApiUtil.apiService().workerList(type, 10, new Callback<MinterList>() {
+        ApiUtil.apiService().workerList(type, 200, new Callback<MinterList>() {
             @Override
             public void onResponse(MinterList minterList) {
                 super.onResponse(minterList);
                 if (minterList != null && !CollectionUtils.isEmpty(minterList.rows)) {
                     bindRoot.repeatView.viewManager().bind(minterList.rows);
 
-                    FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(getContext(), minterList.rows.size());
-                    bindRoot.repeatView.getRecyclerView().setLayoutManager(layoutManager);
-                    bindRoot.scrollView.scrollTo(0, 0);
+//                    FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(getContext(), minterList.rows.size());
+//                    bindRoot.repeatView.getRecyclerView().setLayoutManager(layoutManager);
                 }
             }
         });
