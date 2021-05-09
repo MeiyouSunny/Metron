@@ -20,6 +20,8 @@ public class ApiCallExecuteListener implements OnCallExecuteListener {
 
     @Override
     public void onResponse(Response response) {
+        if (response.isSuccessful())
+            return;
         try {
             String json = response.body().string();
             JSONObject jsonObject = new JSONObject(json);
