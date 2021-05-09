@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.metron.coin.base.BindClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:paddingTop="28dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:gravity="center_vertical"
+            android:text="订单"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_17"
+            android:textStyle="bold" />
+
+        <likly.view.repeat.RepeatView
+            android:id="@+id/repeatView"
+            style="@style/RepeatView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:emptyView="@layout/layout_no_data"
+            app:viewHolderClass="com.metron.coin.adapter.OrderAdapter"
+            app:viewHolderLayout="@layout/item_order" />
+
+    </LinearLayout>
+
+</layout>

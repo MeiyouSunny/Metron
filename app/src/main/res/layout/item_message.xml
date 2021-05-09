@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="message"
+            type="com.alaer.lib.api.bean.MessageList.Message" />
+
+        <variable
+            name="util"
+            type="com.metron.coin.util.StringUtil" />
+
+        <variable
+            name="icons"
+            type="int[]" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="132dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginRight="12dp"
+            android:scaleType="centerInside"
+            app:drawableRes="@{icons[message.type]}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_toRightOf="@+id/icon"
+            android:lines="3"
+            android:text="@{message.content}"
+            android:textColor="#15233E"
+            android:textSize="14sp"
+            tools:text="您的机器（编号：xxxx）出现故障，运维人员正在紧急维护中，为您带来的不便深表歉意。" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="24dp"
+            android:layout_toRightOf="@+id/icon"
+            android:text="@{util.formatTimeString(message.createTime)}"
+            android:textColor="#6D7686"
+            android:textSize="12sp"
+            tools:text="2021年4月16日 06:00" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="#E8E9EC" />
+
+    </RelativeLayout>
+
+</layout>

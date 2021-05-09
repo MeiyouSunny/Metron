@@ -3,6 +3,7 @@ package com.alaer.lib.api;
 import com.alaer.lib.api.bean.IncomeLastest;
 import com.alaer.lib.api.bean.IncomeList;
 import com.alaer.lib.api.bean.IncomeTrend;
+import com.alaer.lib.api.bean.MessageList;
 import com.alaer.lib.api.bean.MinterList;
 import com.alaer.lib.api.bean.MinterSeries;
 import com.alaer.lib.api.bean.MinterStats;
@@ -189,11 +190,15 @@ public interface ApiService {
 
     /**
      * 我的订单列表
-     *
-     * @param currency BTC/ETH
      */
     @GET("/user/order/list")
     Call<OrderList> orderList(@Query("pageSize") int pageSize, Callback<OrderList> callback);
+
+    /**
+     * 我的订单列表(渠道专员)
+     */
+    @GET("/user/order/list")
+    Call<OrderList> orderList(@Query("role") int role, @Query("pageSize") int pageSize, Callback<OrderList> callback);
 
     /**
      * 提币列表
@@ -203,5 +208,24 @@ public interface ApiService {
     @GET("/user/withdraw/list")
     Call<WithdrawList> withdrawList(@Query("currency") String[] currency, @Query("pageSize") int pageSize,
                                     Callback<WithdrawList> callback);
+
+    /**
+     * 消息列表
+     */
+    @GET("/notice")
+    Call<MessageList> messageList(@Query("pageSize") int pageSize, Callback<MessageList> callback);
+
+    /**
+     * 未读消息
+     */
+    @GET("/notice/count/unread")
+    Call<Integer> messageUnread(Callback<Integer> callback);
+
+    /**
+     * 标记全部消息为已读
+     */
+    @FormBody
+    @PUT("/notice/read/all")
+    Call<String> markAllRead(Callback<String> callback);
 
 }

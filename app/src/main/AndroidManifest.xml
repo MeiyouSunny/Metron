@@ -50,6 +50,7 @@
         <activity android:name=".ui.account.EncryptedWalletActivity"></activity>
         <activity android:name=".ui.order.OdersActivity"></activity>
         <activity android:name=".ui.webpage.WebPageActivity"></activity>
+        <activity android:name=".ui.message.MessagesActivity"></activity>
 
     </application>
 

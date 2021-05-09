@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="handler"
             type="com.metron.coin.base.BindClickListener" />
@@ -20,6 +22,10 @@
         <variable
             name="minterUtil"
             type="com.metron.coin.data.MinterUtil" />
+
+        <variable
+            name="unreadMessage"
+            type="int" />
 
     </data>
 
@@ -46,11 +52,13 @@
                 android:textStyle="bold" />
 
             <RelativeLayout
-                android:layout_width="26dp"
+                android:id="@+id/messages"
                 style="@style/ClickableStyle_"
+                android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                android:onClick="@{handler.click}">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -62,7 +70,8 @@
                     android:layout_width="9dp"
                     android:layout_height="9dp"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/bg_red_dot" />
+                    android:background="@drawable/bg_red_dot"
+                    android:visibility="@{unreadMessage>0 ? View.VISIBLE : View.GONE}" />
 
             </RelativeLayout>
 

@@ -182,7 +182,7 @@ public class MinterUtil {
         if (order == null || CollectionUtils.isEmpty(order.quantity))
             return "0台";
         int count = 0;
-        for (OrderList.Order.Quantity quantity : order.quantity) {
+        for (OrderList.Quantity quantity : order.quantity) {
             count += quantity.quantity;
         }
 

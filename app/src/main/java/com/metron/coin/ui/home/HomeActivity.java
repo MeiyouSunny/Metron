@@ -23,11 +23,6 @@ public class HomeActivity extends BaseViewBindActivity<ActivityHomeBinding> {
     @Override
     public void onViewCreated() {
         instance = this;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         init();
     }
 
@@ -48,7 +43,11 @@ public class HomeActivity extends BaseViewBindActivity<ActivityHomeBinding> {
         List<Fragment> tabFragments = new ArrayList<>(4);
         tabFragments.add(new HomeFragment());
         tabFragments.add(new ProfitFragment());
-        tabFragments.add(new MinterFragment());
+        if (isChannelUser)
+            tabFragments.add(new ChannelOrderFragment());
+        else
+            tabFragments.add(new MinterFragment());
+
         tabFragments.add(new MineFragment());
         HomeTabAdapter tabAdapter = new HomeTabAdapter(getSupportFragmentManager(), tabFragments);
         mPager.setAdapter(tabAdapter);
@@ -100,4 +99,8 @@ public class HomeActivity extends BaseViewBindActivity<ActivityHomeBinding> {
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

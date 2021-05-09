@@ -14,6 +14,7 @@ import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.data.MinterUtil;
 import com.metron.coin.databinding.FragmentHomeBinding;
 import com.metron.coin.ui.dialog.DialogCustomerService;
+import com.metron.coin.ui.message.MessagesActivity;
 import com.metron.coin.util.CollectionUtils;
 import com.metron.coin.view.FullyLinearLayoutManager;
 
@@ -36,6 +37,9 @@ public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implemen
                         .holder(new DialogCustomerService())
                         .gravity(Gravity.BOTTOM)
                         .show();
+                break;
+            case R.id.messages:
+                toPage(MessagesActivity.class);
                 break;
         }
     }
@@ -137,6 +141,21 @@ public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implemen
 
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        unreadMessage();
+    }
+
+    private void unreadMessage() {
+        ApiUtil.apiService().messageUnread(new Callback<Integer>() {
+            @Override
+            public void onResponse(Integer unreadCount) {
+                bindRoot.setUnreadMessage(unreadCount);
+            }
+        });
     }
 
 }
