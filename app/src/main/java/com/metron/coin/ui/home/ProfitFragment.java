@@ -26,8 +26,8 @@ public class ProfitFragment extends BaseBindFragment<FragmentProfitBinding> {
 
     }
 
-    String[] mTabTitles = new String[]{"BTC", "ETH", "USDT"};
-    int[] mTabIcons = new int[]{R.drawable.ic_btc, R.drawable.ic_eth, R.drawable.ic_usdt};
+    String[] mTabTitles = new String[]{"BTC", "ETH"};
+    int[] mTabIcons = new int[]{R.drawable.ic_btc, R.drawable.ic_eth};
 
     private void setTabs() {
         bindRoot.viewPager.setOffscreenPageLimit(3);

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.metron.coin.base.BindClickListener" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="32dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
+
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewClick"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_above="@+id/cancel"
+            android:layout_marginBottom="17dp"
+            android:clickable="true"
+            android:onClick="@{handler.click}"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="退出后不会删除任何数据，确定退出？"
+                    android:textColor="#15233E"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/exit"
+                    style="@style/ClickableStyle_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="14dp"
+                    android:onClick="@{handler.click}"
+                    android:padding="4dp"
+                    android:text="确定"
+                    android:textColor="#F72500"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cancel"
+            style="@style/CardViewClick"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:clickable="true"
+            android:onClick="@{handler.click}"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="取消"
+                android:textColor="#15233E"
+                android:textSize="16sp" />
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+
+</layout>

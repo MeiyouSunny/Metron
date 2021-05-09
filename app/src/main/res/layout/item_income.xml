@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@{incomeUtil.parserIncomeTime(income.incomeTime)}"
+            android:text="@{income.time}"
             android:textColor="#6D7686"
             android:textSize="11sp"
             tools:text="2021.03.29" />

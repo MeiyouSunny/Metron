@@ -294,7 +294,9 @@ public class LineChartManager {
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                return incomeUtil.formatTimeString(dataList.get((int) value).time);
+                if ((int) value > 0)
+                    return incomeUtil.formatTimeString(dataList.get((int) value).time);
+                return "";
             }
         });
 

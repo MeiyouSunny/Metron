@@ -22,6 +22,11 @@ import java.util.List;
  * 收益BTC
  */
 public class ProfitBTCFragment extends BaseBindFragment<FragmentProfitBtcBinding> {
+    private String type;
+
+    public ProfitBTCFragment(String type) {
+        this.type = type;
+    }
 
     @Override
     public int initLayoutResId() {
@@ -32,27 +37,28 @@ public class ProfitBTCFragment extends BaseBindFragment<FragmentProfitBtcBinding
     public void onViewCreated() {
         super.onViewCreated();
 
+        bindRoot.setType(type);
         bindRoot.setNumberUtil(NumberUtils.instance());
         bindRoot.setIncomeUtil(new IncomeUtil());
         requestData();
     }
 
     public void requestData() {
-        ApiUtil.apiService().incomeLatest(CoinConst.BTC, new Callback<IncomeLastest>() {
+        ApiUtil.apiService().incomeLatest(type, new Callback<IncomeLastest>() {
             @Override
             public void onResponse(IncomeLastest incomeLastest) {
                 bindRoot.setIncomeLatest(incomeLastest);
             }
         });
 
-        ApiUtil.apiService().withdrawStats(CoinConst.BTC, new Callback<WithdrawStats>() {
+        ApiUtil.apiService().withdrawStats(type, new Callback<WithdrawStats>() {
             @Override
             public void onResponse(WithdrawStats withdrawStats) {
                 bindRoot.setWithdrawStats(withdrawStats);
             }
         });
 
-        ApiUtil.apiService().incomeList(CoinConst.BTC, new Callback<IncomeList>() {
+        ApiUtil.apiService().incomeList(type, new Callback<IncomeList>() {
             @Override
             public void onResponse(IncomeList incomeList) {
                 if (incomeList != null && !CollectionUtils.isEmpty(incomeList.rows)) {

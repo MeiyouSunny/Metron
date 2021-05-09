@@ -7,9 +7,11 @@ import com.metron.coin.base.BaseTitleActivity;
 import com.metron.coin.databinding.ActivitySettngsBinding;
 import com.metron.coin.ui.account.LoginActivity;
 import com.metron.coin.ui.account.ModifyPwdActivity;
+import com.metron.coin.ui.dialog.DialogLogout;
 import com.metron.coin.ui.home.HomeActivity;
 import com.metron.coin.util.ViewUtil;
 
+import likly.dialogger.Dialogger;
 import likly.dollar.$;
 
 /**
@@ -42,9 +44,20 @@ public class SettingActivity extends BaseTitleActivity<ActivitySettngsBinding> {
                 ViewUtil.gotoActivity(this, ModifyPwdActivity.class);
                 break;
             case R.id.logout:
-                logout();
+                showLogoutDialog();
                 break;
         }
+    }
+
+    private void showLogoutDialog() {
+        Dialogger.newDialog(getContext())
+                .holder(new DialogLogout(new DialogLogout.OnExitListener() {
+                    @Override
+                    public void onExit() {
+                        logout();
+                    }
+                }))
+                .show();
     }
 
     private void logout() {

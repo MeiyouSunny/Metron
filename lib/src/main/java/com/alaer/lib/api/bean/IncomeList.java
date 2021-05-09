@@ -26,7 +26,7 @@ public class IncomeList {
         public int orderId;
         public int workerId;
         public Object channelCommissionerId;
-        public String incomeTime;
+        public String time;
     }
 
 }

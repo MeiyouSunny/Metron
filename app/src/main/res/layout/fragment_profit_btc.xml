@@ -10,6 +10,10 @@
             type="com.metron.coin.base.BindClickListener" />
 
         <variable
+            name="type"
+            type="String" />
+
+        <variable
             name="numberUtil"
             type="com.metron.coin.util.NumberUtils" />
 
@@ -118,7 +122,7 @@
                             android:layout_marginLeft="4dp"
                             android:layout_marginTop="5dp"
                             android:layout_toRightOf="@+id/profitTotal"
-                            android:text="BTC"
+                            android:text="@{type}"
                             android:textColor="#6D7686"
                             android:textSize="8sp" />
 
@@ -156,7 +160,7 @@
                             android:layout_marginLeft="4dp"
                             android:layout_marginTop="5dp"
                             android:layout_toRightOf="@+id/profitToday"
-                            android:text="BTC"
+                            android:text="@{type}"
                             android:textColor="#6D7686"
                             android:textSize="8sp" />
 
@@ -203,7 +207,7 @@
                             android:layout_marginLeft="4dp"
                             android:layout_marginTop="5dp"
                             android:layout_toRightOf="@+id/extractCoin1"
-                            android:text="BTC"
+                            android:text="@{type}"
                             android:textColor="#6D7686"
                             android:textSize="8sp" />
 
@@ -241,7 +245,7 @@
                             android:layout_marginLeft="4dp"
                             android:layout_marginTop="5dp"
                             android:layout_toRightOf="@+id/amount"
-                            android:text="BTC"
+                            android:text="@{type}"
                             android:textColor="#6D7686"
                             android:textSize="8sp" />
 
