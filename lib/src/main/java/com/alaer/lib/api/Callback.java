@@ -64,7 +64,7 @@ public abstract class Callback<T> implements likly.reverse.Callback<T> {
         // 网络判断
         boolean available = NetworkUtil.isNetworkAvailable();
         if (!available) {
-//            $.toast().text(R.string.network_not_available).show();
+            $.toast().text("网络不可用!").show();
         }
 
         return available;

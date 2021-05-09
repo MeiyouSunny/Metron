@@ -1,5 +1,8 @@
 package com.alaer.lib.api;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -9,12 +12,31 @@ import likly.reverse.OnCallExecuteListener;
 import likly.reverse.Response;
 
 public class ApiCallExecuteListener implements OnCallExecuteListener {
+    Handler mUIHandler = new Handler(Looper.getMainLooper());
+
     @Override
     public void onStart() {
     }
 
     @Override
     public void onResponse(Response response) {
+        try {
+            String json = response.body().string();
+            JSONObject jsonObject = new JSONObject(json);
+            final int code = jsonObject.optInt("httpStatus");
+            final String errorMsg = jsonObject.optString("message");
+            if (code != 200) {
+                mUIHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        $.toast().text(errorMsg).show();
+                    }
+                });
+                throw new ServiceError(code, errorMsg);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -33,6 +55,7 @@ public class ApiCallExecuteListener implements OnCallExecuteListener {
 
     @Override
     public void onResponseResult(Object o) {
+        System.out.println("");
     }
 
     @Override
