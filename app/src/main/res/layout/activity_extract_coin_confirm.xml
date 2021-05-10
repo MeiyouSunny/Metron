@@ -10,7 +10,15 @@
             type="com.metron.coin.base.BindClickListener" />
 
         <variable
+            name="type"
+            type="String" />
+
+        <variable
             name="coinAddress"
+            type="String" />
+
+        <variable
+            name="balance"
             type="String" />
     </data>
 
@@ -49,16 +57,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:text="0.00000000"
+                    android:text="@{balance}"
                     android:textColor="#005FEB"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="0.00000000" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                    android:text="BTC"
+                    android:text="@{type}"
                     android:textColor="#6D7686"
                     android:textSize="8sp" />
 
@@ -73,12 +82,17 @@
                 android:textSize="14sp"
                 tools:text="提币地址：0xbc15aa321ade18252437a337d8dd079b43426a09" />
 
-            <TextView
+            <EditText
+                android:id="@+id/input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:text="0.03498734"
-                android:textColor="#A0A7B3"
+                android:background="@null"
+                android:hint="请输入提币数量"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:textColor="#15233E"
+                android:textColorHint="#A0A7B3"
                 android:textSize="18sp" />
 
             <View

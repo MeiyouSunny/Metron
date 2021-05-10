@@ -3,16 +3,27 @@ package com.metron.coin.ui.extract;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.alaer.lib.api.ApiUtil;
+import com.alaer.lib.api.Callback;
 import com.alaer.lib.util.UserDataUtil;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseTitleActivity;
 import com.metron.coin.databinding.ActivityExtractCoinConfirmBinding;
 import com.metron.coin.util.CoinConst;
+import com.metron.coin.util.NumberUtils;
+import com.metron.coin.util.ViewUtil;
+
+import likly.dollar.$;
 
 /**
  * 申请提币确认
  */
 public class ExtractCoinConfirmActivity extends BaseTitleActivity<ActivityExtractCoinConfirmBinding> {
+
+    // 最小提币数量
+    private static final float MIN_BTC = 0.005F;
+    private static final float MIN_ETH = 0.2F;
+
     private String type;
 
     @Override
@@ -27,15 +38,21 @@ public class ExtractCoinConfirmActivity extends BaseTitleActivity<ActivityExtrac
 
     @Override
     public void click(View view) {
+        if (view.getId() == R.id.btnSubmit) {
+            extraCoin();
+        }
     }
 
     @Override
     public void onViewCreated() {
         super.onViewCreated();
-        type = getIntent().getStringExtra("type");
 
+        type = getIntent().getStringExtra("type");
+        bindRoot.setType(type);
         String coinAddress = getCoinAddress();
         bindRoot.setCoinAddress(coinAddress);
+        float balance = getIntent().getFloatExtra("balance", 0F);
+        bindRoot.setBalance(NumberUtils.instance().parseFloat8(balance));
 
         if (TextUtils.equals(type, CoinConst.BTC))
             bindRoot.hintBTC.setVisibility(View.VISIBLE);
@@ -51,6 +68,47 @@ public class ExtractCoinConfirmActivity extends BaseTitleActivity<ActivityExtrac
             return UserDataUtil.instance().getUserInfo().ethWallet;
         }
         return "";
+    }
+
+    private void extraCoin() {
+        try {
+            String input = ViewUtil.getText(bindRoot.input);
+            float amount = Float.parseFloat(input);
+            if (inputTooSmall(amount)) {
+                $.toast().text("输入不能小于起提数量!").show();
+                return;
+            }
+
+            ApiUtil.apiService().withdrawApply(UserDataUtil.instance().getUserInfo().role, type, amount,
+                    new Callback<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            $.toast().text("提币申请成功,等待处理!").show();
+                            finish();
+                        }
+
+                        @Override
+                        public void onError(int code, String msg) {
+                            $.toast().text(msg).show();
+                        }
+                    });
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            $.toast().text("请输入有效的数量!").show();
+        }
+
+    }
+
+    private boolean inputTooSmall(float inputValue) {
+        if (inputValue <= 0)
+            return true;
+        if (TextUtils.equals(type, CoinConst.BTC) && inputValue < MIN_BTC)
+            return true;
+        if (TextUtils.equals(type, CoinConst.ETH) && inputValue < MIN_ETH)
+            return true;
+
+        return false;
     }
 
 }

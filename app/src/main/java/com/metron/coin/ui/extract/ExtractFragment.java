@@ -1,5 +1,6 @@
 package com.metron.coin.ui.extract;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -28,6 +29,7 @@ import likly.dialogger.Dialogger;
 public class ExtractFragment extends BaseBindFragment<FragmentExtractCoinBinding> implements DialogNoEncryptedWallet.OnSetWalletListener {
 
     private String type;
+    private float[] withdrawValues;
 
     public ExtractFragment(String type) {
         this.type = type;
@@ -48,7 +50,10 @@ public class ExtractFragment extends BaseBindFragment<FragmentExtractCoinBinding
                             .gravity(Gravity.BOTTOM)
                             .show();
                 } else {
-                    ViewUtil.gotoActivity(getContext(), ExtractCoinConfirmActivity.class, "type", type);
+                    Intent intent = new Intent(getContext(), ExtractCoinConfirmActivity.class);
+                    intent.putExtra("type", type);
+                    intent.putExtra("balance", withdrawValues[3]);
+                    getContext().startActivity(intent);
                 }
                 break;
         }
@@ -74,7 +79,7 @@ public class ExtractFragment extends BaseBindFragment<FragmentExtractCoinBinding
         ApiUtil.apiService().withdrawStats(type, new Callback<WithdrawStats>() {
             @Override
             public void onResponse(WithdrawStats withdrawStats) {
-                float[] withdrawValues = new IncomeUtil().parseWithdrawValues(withdrawStats);
+                withdrawValues = new IncomeUtil().parseWithdrawValues(withdrawStats);
                 bindRoot.setUtil(NumberUtils.instance());
                 bindRoot.setValues(withdrawValues);
             }

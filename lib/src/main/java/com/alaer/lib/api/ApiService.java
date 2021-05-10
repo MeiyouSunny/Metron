@@ -166,6 +166,16 @@ public interface ApiService {
     Call<WithdrawStats> withdrawStats(@Query("currency") String currency, Callback<WithdrawStats> callback);
 
     /**
+     * 提币申请
+     *
+     * @param type BTC/ETH
+     */
+    @FormBody
+    @POST("/withdraw")
+    Call<String> withdrawApply(@Part("role") int role, @Part("currency") String currency, @Part("amount") float amount,
+                               Callback<String> callback);
+
+    /**
      * 收益列表
      *
      * @param type BTC/ETH
