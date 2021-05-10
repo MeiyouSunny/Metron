@@ -36,6 +36,11 @@ public class ExtractCoinConfirmActivity extends BaseTitleActivity<ActivityExtrac
 
         String coinAddress = getCoinAddress();
         bindRoot.setCoinAddress(coinAddress);
+
+        if (TextUtils.equals(type, CoinConst.BTC))
+            bindRoot.hintBTC.setVisibility(View.VISIBLE);
+        if (TextUtils.equals(type, CoinConst.ETH))
+            bindRoot.hintETH.setVisibility(View.VISIBLE);
     }
 
     private String getCoinAddress() {

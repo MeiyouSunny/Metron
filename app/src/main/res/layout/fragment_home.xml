@@ -109,7 +109,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="86dp"
                     android:layout_marginTop="14dp"
                     android:orientation="horizontal"
                     android:paddingLeft="16dp"
@@ -135,14 +135,15 @@
 
                             <ImageView
                                 android:id="@+id/icBTC"
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="12dp"
                                 android:src="@drawable/ic_btc" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="6dp"
                                 android:layout_toRightOf="@+id/icBTC"
                                 android:text="BTC"
                                 android:textColor="#15233E"
@@ -151,7 +152,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_above="@+id/changeBTC"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/icBTC"
                                 android:text="@{minterUtil.getCnyRateBTC(pollNewInfo)}"
                                 android:textColor="@{pollNewInfo.BTC.pricePercentChange.day>=0 ? @color/font_green : @color/font_red}"
                                 android:textSize="@dimen/font_16"
@@ -162,6 +164,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
+                                android:layout_toRightOf="@+id/icBTC"
                                 android:text="@{minterUtil.getPercentChangeBTC(pollNewInfo)}"
                                 android:textColor="#15233E"
                                 android:textSize="@dimen/font_12" />
@@ -192,14 +195,15 @@
 
                             <ImageView
                                 android:id="@+id/icETH"
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="12dp"
                                 android:src="@drawable/ic_eth" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="6dp"
                                 android:layout_toRightOf="@+id/icETH"
                                 android:text="ETH"
                                 android:textColor="#15233E"
@@ -208,7 +212,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_above="@+id/changeETH"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/icETH"
                                 android:text="@{minterUtil.getCnyRateETH(pollNewInfo)}"
                                 android:textColor="@{pollNewInfo.ETH.pricePercentChange.day>=0 ? @color/font_green : @color/font_red}"
                                 android:textSize="@dimen/font_16"
@@ -219,6 +224,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
+                                android:layout_toRightOf="@+id/icETH"
                                 android:text="@{minterUtil.getPercentChangeETH(pollNewInfo)}"
                                 android:textColor="#15233E"
                                 android:textSize="@dimen/font_12" />

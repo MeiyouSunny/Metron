@@ -7,14 +7,17 @@ import android.view.View;
 import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
 import com.alaer.lib.api.bean.WithdrawList;
+import com.alaer.lib.api.bean.WithdrawStats;
 import com.alaer.lib.util.UserDataUtil;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
+import com.metron.coin.data.IncomeUtil;
 import com.metron.coin.databinding.FragmentExtractCoinBinding;
 import com.metron.coin.ui.account.EncryptedWalletActivity;
 import com.metron.coin.ui.dialog.DialogNoEncryptedWallet;
 import com.metron.coin.util.CoinConst;
 import com.metron.coin.util.CollectionUtils;
+import com.metron.coin.util.NumberUtils;
 import com.metron.coin.util.ViewUtil;
 
 import likly.dialogger.Dialogger;
@@ -68,7 +71,16 @@ public class ExtractFragment extends BaseBindFragment<FragmentExtractCoinBinding
         super.onViewCreated();
         bindRoot.setType(type);
 
-        ApiUtil.apiService().withdrawList(new String[]{"BTC"}, 200,
+        ApiUtil.apiService().withdrawStats(type, new Callback<WithdrawStats>() {
+            @Override
+            public void onResponse(WithdrawStats withdrawStats) {
+                float[] withdrawValues = new IncomeUtil().parseWithdrawValues(withdrawStats);
+                bindRoot.setUtil(NumberUtils.instance());
+                bindRoot.setValues(withdrawValues);
+            }
+        });
+
+        ApiUtil.apiService().withdrawList(new String[]{type}, 200,
                 new Callback<WithdrawList>() {
                     @Override
                     public void onResponse(WithdrawList withdrawList) {

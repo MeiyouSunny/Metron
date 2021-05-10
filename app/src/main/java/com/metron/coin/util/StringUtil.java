@@ -1,5 +1,7 @@
 package com.metron.coin.util;
 
+import android.text.TextUtils;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,6 +21,17 @@ public class StringUtil {
         }
 
         return time;
+    }
+
+    public static String parseStringToStar(String content) {
+        if (TextUtils.isEmpty(content))
+            return "";
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < content.length(); i++) {
+            builder.append("*");
+        }
+
+        return builder.toString();
     }
 
 }

@@ -8,41 +8,128 @@
         <variable
             name="handler"
             type="com.metron.coin.base.BindClickListener" />
+
+        <variable
+            name="totalAssets"
+            type="com.alaer.lib.api.bean.TotalAssets" />
+
+        <variable
+            name="util"
+            type="com.metron.coin.util.NumberUtils" />
     </data>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:paddingTop="36dp">
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:scrollbars="none"-->
+<!--        android:layout_height="match_parent">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="4dp"
-            android:text="收益"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_17"
-            android:textStyle="bold" />
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            app:tabIndicatorColor="@color/colorPrimary"
-            app:tabIndicatorFullWidth="false"
-            app:tabIndicatorHeight="2dp"
-            app:tabMode="scrollable"
-            app:tabRippleColor="#06000000" />
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_mine_top"
+            android:orientation="vertical"
+            android:paddingTop="36dp">
 
-        <com.metron.coin.view.NoScrollViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="24dp"
+                android:text="收益"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_17"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/bg_profit_top"
+                android:paddingLeft="26dp"
+                android:paddingTop="26dp"
+                android:paddingRight="26dp"
+                android:paddingBottom="28dp">
+
+                <View
+                    android:id="@+id/indicator"
+                    android:layout_width="8dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#1FA2FF" />
+
+                <TextView
+                    android:id="@+id/labelTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_toRightOf="@+id/indicator"
+                    android:text="总资产估值（ BTC）"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/labelTotalBTC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@{util.parseFloat8(totalAssets.totalBtc)}"
+                    android:textColor="@color/white"
+                    android:textSize="36sp"
+                    tools:text="0.02867890" />
+
+                <TextView
+                    android:id="@+id/labelTotalCNY"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{@string/total_assets_cny_is(util.parseFloat8(totalAssets.totalCny))}"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    tools:text="≈ 10,9839.90 CNY" />
+
+                <ImageView
+                    android:id="@+id/moneyHide"
+                    style="@style/ClickableStyle_"
+                    android:layout_width="30dp"
+                    android:layout_height="16dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="2dp"
+                    android:scaleType="centerInside"
+                    android:layout_toRightOf="@+id/labelTotal"
+                    android:onClick="@{handler.click}"
+                    android:src="@drawable/ic_money_hide" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_about_white" />
+
+
+            </RelativeLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="scrollable"
+                app:tabRippleColor="#06000000" />
+
+            <com.metron.coin.view.NoScrollViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+
+        </LinearLayout>
+
+<!--    </ScrollView>-->
 
 </layout>

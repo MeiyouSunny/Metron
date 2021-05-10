@@ -8,9 +8,18 @@
         <variable
             name="handler"
             type="com.metron.coin.base.BindClickListener" />
+
         <variable
             name="type"
             type="String" />
+
+        <variable
+            name="values"
+            type="float[]" />
+
+        <variable
+            name="util"
+            type="com.metron.coin.util.NumberUtils" />
     </data>
 
     <LinearLayout
@@ -48,7 +57,8 @@
                             android:id="@+id/value1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00000000"
+                            tools:text="0.00000000"
+                            android:text="@{util.parseFloat8(values[0])}"
                             android:textColor="#15233E"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -91,7 +101,8 @@
                             android:id="@+id/value2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00000000"
+                            tools:text="0.00000000"
+                            android:text="@{util.parseFloat8(values[1])}"
                             android:textColor="#15233E"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -143,7 +154,8 @@
                             android:id="@+id/value3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00000000"
+                            tools:text="0.00000000"
+                            android:text="@{util.parseFloat8(values[2])}"
                             android:textColor="#15233E"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -186,7 +198,8 @@
                             android:id="@+id/value4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00000000"
+                            tools:text="0.00000000"
+                            android:text="@{util.parseFloat8(values[3])}"
                             android:textColor="#15233E"
                             android:textSize="16sp"
                             android:textStyle="bold" />

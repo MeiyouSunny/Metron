@@ -10,6 +10,7 @@ import com.alaer.lib.api.bean.MinterStats;
 import com.alaer.lib.api.bean.OrderList;
 import com.alaer.lib.api.bean.PollNewInfo;
 import com.alaer.lib.api.bean.TokenInfo;
+import com.alaer.lib.api.bean.TotalAssets;
 import com.alaer.lib.api.bean.UserInfo;
 import com.alaer.lib.api.bean.WithdrawList;
 import com.alaer.lib.api.bean.WithdrawStats;
@@ -171,6 +172,12 @@ public interface ApiService {
      */
     @GET("/user/income/list")
     Call<IncomeList> incomeList(@Query("currency") String currency, Callback<IncomeList> callback);
+
+    /**
+     * 总资产估值
+     */
+    @GET("/user/funds/valuation")
+    Call<TotalAssets> totalAssets(@Query("role") int role, Callback<TotalAssets> callback);
 
     /**
      * 我的矿机列表

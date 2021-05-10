@@ -87,6 +87,43 @@
                 android:layout_marginTop="16dp"
                 android:background="#E8E9EC" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="*"
+                    android:textColor="#005FEB"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/hintBTC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="BTC起提数量：0.005    BTC提币手续费：0.0005"
+                    android:textColor="#A0A7B3"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/hintETH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="ETH起提数量：0.2    ETH提币手续费：0.005"
+                    android:textColor="#A0A7B3"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSubmit"
                 style="@style/BtnBLue"

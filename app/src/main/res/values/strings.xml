@@ -11,5 +11,6 @@
     <string name="user_normal">普通用户</string>
     <string name="user_channel">渠道专员</string>
     <string name="coin_address_is">提币地址：%s</string>
+    <string name="total_assets_cny_is">≈ %s CNY</string>
 
 </resources>

@@ -41,4 +41,22 @@ public class IncomeUtil {
         return time;
     }
 
+    // 0:转账中 1:已完成 2:交易失败
+    // result float[]: 累计提币/当前余额/转账中/可提额度
+    public float[] parseWithdrawValues(WithdrawStats withdrawStats) {
+        float[] values = new float[4];
+        for (WithdrawStats.Withdraw withdraw : withdrawStats.withdraw) {
+            if (withdraw.status == 1) {
+                values[0] = withdraw.amount;
+            } else if (withdraw.status == 0) {
+                values[2] = withdraw.amount;
+            }
+        }
+
+        values[1] = withdrawStats.balance;
+        values[3] = withdrawStats.balance - values[2];
+
+        return values;
+    }
+
 }

@@ -5,14 +5,22 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alaer.lib.api.ApiUtil;
+import com.alaer.lib.api.Callback;
+import com.alaer.lib.api.bean.TotalAssets;
+import com.alaer.lib.util.UserDataUtil;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.databinding.FragmentProfitBinding;
+import com.metron.coin.util.NumberUtils;
+import com.metron.coin.util.StringUtil;
 
 /**
  * 收益
  */
 public class ProfitFragment extends BaseBindFragment<FragmentProfitBinding> {
+    private boolean moneyHide;
+    private TotalAssets mTotalAssets;
 
     @Override
     public int initLayoutResId() {
@@ -27,6 +35,7 @@ public class ProfitFragment extends BaseBindFragment<FragmentProfitBinding> {
     @Override
     protected void loadData() {
         setTabs();
+        queryTotalAssets();
     }
 
     String[] mTabTitles = new String[]{"BTC", "ETH"};
@@ -37,10 +46,6 @@ public class ProfitFragment extends BaseBindFragment<FragmentProfitBinding> {
         TabProfitAdapter adapter = new TabProfitAdapter(getContext(), getChildFragmentManager());
         bindRoot.viewPager.setAdapter(adapter);
         bindRoot.tabs.setupWithViewPager(bindRoot.viewPager);
-
-//        for (int i = 0; i < mTabTitles.length; i++) {
-//            bindRoot.tabs.addTab(bindRoot.tabs.newTab());
-//        }
 
         for (int i = 0; i < mTabTitles.length; i++) {
             bindRoot.tabs.getTabAt(i).setCustomView(makeTabView(i));
@@ -55,6 +60,38 @@ public class ProfitFragment extends BaseBindFragment<FragmentProfitBinding> {
         imageView.setImageResource(mTabIcons[position]);
 
         return tabView;
+    }
+
+    private void queryTotalAssets() {
+        ApiUtil.apiService().totalAssets(UserDataUtil.instance().getUserInfo().role, new Callback<TotalAssets>() {
+            @Override
+            public void onResponse(TotalAssets totalAssets) {
+                mTotalAssets = totalAssets;
+                bindRoot.setUtil(NumberUtils.instance());
+                bindRoot.setTotalAssets(totalAssets);
+            }
+        });
+    }
+
+    @Override
+    public void click(View view) {
+        switch (view.getId()) {
+            case R.id.moneyHide:
+                if (mTotalAssets == null)
+                    break;
+                moneyHide = !moneyHide;
+                String totalBTC = NumberUtils.instance().parseFloat8(mTotalAssets.totalBtc);
+                String totalCNY = NumberUtils.instance().parseFloat8(mTotalAssets.totalCny);
+                if (moneyHide) {
+                    totalBTC = StringUtil.parseStringToStar(totalBTC);
+                    totalCNY = "≈ " + StringUtil.parseStringToStar(totalCNY) + " CNY";
+                } else {
+                    totalCNY = "≈ " + totalCNY + " CNY";
+                }
+                bindRoot.labelTotalBTC.setText(totalBTC);
+                bindRoot.labelTotalCNY.setText(totalCNY);
+                break;
+        }
     }
 
 }
