@@ -16,6 +16,7 @@ import com.metron.coin.util.CollectionUtils;
 import com.metron.coin.util.NumberUtils;
 import com.metron.coin.util.ViewUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -74,6 +75,10 @@ public class ProfitTypeChannelFragment extends BaseBindFragment<FragmentProfitTy
             public void onResponse(IncomeTrend incomeTrend) {
                 if (incomeTrend != null && !CollectionUtils.isEmpty(incomeTrend.tickers)) {
                     showChart(incomeTrend.tickers);
+                } else {
+                    List<IncomeTrend.Ticker> tickers = new ArrayList<>();
+                    tickers.add(new IncomeTrend.Ticker());
+                    showChart(tickers);
                 }
             }
         });

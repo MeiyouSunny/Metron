@@ -16,6 +16,7 @@ import com.metron.coin.util.CollectionUtils;
 import com.metron.coin.util.NumberUtils;
 import com.metron.coin.util.ViewUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,8 +62,10 @@ public class ProfitTypeFragment extends BaseBindFragment<FragmentProfitBtcBindin
         ApiUtil.apiService().incomeList(type, new Callback<IncomeList>() {
             @Override
             public void onResponse(IncomeList incomeList) {
-                if (incomeList != null && !CollectionUtils.isEmpty(incomeList.rows)) {
+                if (incomeList != null) {
                     ViewUtil.showListData(bindRoot.repeatView, incomeList.rows);
+                } else {
+                    bindRoot.repeatView.layoutAdapterManager().showEmptyView();
                 }
             }
         });
@@ -72,6 +75,10 @@ public class ProfitTypeFragment extends BaseBindFragment<FragmentProfitBtcBindin
             public void onResponse(IncomeTrend incomeTrend) {
                 if (incomeTrend != null && !CollectionUtils.isEmpty(incomeTrend.tickers)) {
                     showChart(incomeTrend.tickers);
+                } else {
+                    List<IncomeTrend.Ticker> tickers = new ArrayList<>();
+                    tickers.add(new IncomeTrend.Ticker());
+                    showChart(tickers);
                 }
             }
         });
