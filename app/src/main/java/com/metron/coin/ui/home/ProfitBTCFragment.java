@@ -15,6 +15,7 @@ import com.metron.coin.databinding.FragmentProfitBtcBinding;
 import com.metron.coin.util.CoinConst;
 import com.metron.coin.util.CollectionUtils;
 import com.metron.coin.util.NumberUtils;
+import com.metron.coin.util.ViewUtil;
 
 import java.util.List;
 
@@ -62,7 +63,7 @@ public class ProfitBTCFragment extends BaseBindFragment<FragmentProfitBtcBinding
             @Override
             public void onResponse(IncomeList incomeList) {
                 if (incomeList != null && !CollectionUtils.isEmpty(incomeList.rows)) {
-                    bindRoot.repeatView.viewManager().bind(incomeList.rows);
+                    ViewUtil.showListData(bindRoot.repeatView, incomeList.rows);
                 }
             }
         });

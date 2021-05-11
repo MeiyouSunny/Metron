@@ -20,6 +20,7 @@ import com.metron.coin.ui.dialog.DialogMinterDetail;
 import com.metron.coin.util.CoinConst;
 import com.metron.coin.util.CollectionUtils;
 import com.metron.coin.util.NumberUtils;
+import com.metron.coin.util.ViewUtil;
 
 import java.util.List;
 
@@ -102,7 +103,7 @@ public class MinterTypeFragment extends BaseBindFragment<FragmentMinterBtcBindin
             public void onResponse(MinterList minterList) {
                 super.onResponse(minterList);
                 if (minterList != null && !CollectionUtils.isEmpty(minterList.rows)) {
-                    bindRoot.repeatView.viewManager().bind(minterList.rows);
+                    ViewUtil.showListData(bindRoot.repeatView, minterList.rows);
 
 //                    FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(getContext(), minterList.rows.size());
 //                    bindRoot.repeatView.getRecyclerView().setLayoutManager(layoutManager);

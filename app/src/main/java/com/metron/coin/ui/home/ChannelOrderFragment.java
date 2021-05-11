@@ -8,6 +8,7 @@ import com.alaer.lib.api.bean.OrderList;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.databinding.FragmentChannelOrdersBinding;
+import com.metron.coin.util.ViewUtil;
 
 public class ChannelOrderFragment extends BaseBindFragment<FragmentChannelOrdersBinding> {
 
@@ -34,7 +35,7 @@ public class ChannelOrderFragment extends BaseBindFragment<FragmentChannelOrders
         ApiUtil.apiService().orderList(2, 100, new Callback<OrderList>() {
             @Override
             public void onResponse(OrderList orderList) {
-                bindRoot.repeatView.viewManager().bind(orderList.rows);
+                ViewUtil.showListData(bindRoot.repeatView, orderList.rows);
             }
         });
     }

@@ -37,12 +37,7 @@ public class OdersActivity extends BaseTitleActivity<ActivityOrdersBinding> {
         ApiUtil.apiService().orderList(100, new Callback<OrderList>() {
             @Override
             public void onResponse(OrderList orderList) {
-                bindRoot.repeatView.viewManager().bind(orderList.rows);
-            }
-
-            @Override
-            public void onError(int code, String msg) {
-                super.onError(code, msg);
+                ViewUtil.showListData(bindRoot.repeatView, orderList.rows);
             }
         });
     }

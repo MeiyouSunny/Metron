@@ -9,6 +9,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.List;
+
+import likly.view.repeat.RepeatView;
+
 public class ViewUtil {
 
     public static void gotoActivity(Context context, Class<? extends Activity> activityDes) {
@@ -34,6 +38,13 @@ public class ViewUtil {
                 .load(imageUrl)
                 .dontAnimate()
                 .into(imageView);
+    }
+
+    public static void showListData(RepeatView repeatView, List data) {
+        if (CollectionUtils.isEmpty(data))
+            repeatView.layoutAdapterManager().showEmptyView();
+        else
+            repeatView.viewManager().bind(data);
     }
 
 }

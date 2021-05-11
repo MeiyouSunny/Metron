@@ -6,6 +6,7 @@ import com.alaer.lib.api.bean.MessageList;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseTitleActivity;
 import com.metron.coin.databinding.ActivityMessagesBinding;
+import com.metron.coin.util.ViewUtil;
 
 /**
  * 消息列表
@@ -43,7 +44,7 @@ public class MessagesActivity extends BaseTitleActivity<ActivityMessagesBinding>
         ApiUtil.apiService().messageList(200, new Callback<MessageList>() {
             @Override
             public void onResponse(MessageList response) {
-                bindRoot.repeatView.viewManager().bind(response.rows);
+                ViewUtil.showListData(bindRoot.repeatView, response.rows);
             }
         });
     }

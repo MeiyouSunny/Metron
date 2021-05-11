@@ -90,7 +90,7 @@ public class ExtractFragment extends BaseBindFragment<FragmentExtractCoinBinding
                     @Override
                     public void onResponse(WithdrawList withdrawList) {
                         if (withdrawList != null && !CollectionUtils.isEmpty(withdrawList.rows)) {
-                            bindRoot.repeatView.viewManager().bind(withdrawList.rows);
+                            ViewUtil.showListData(bindRoot.repeatView, withdrawList.rows);
                         }
                     }
                 });

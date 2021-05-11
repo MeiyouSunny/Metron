@@ -15,6 +15,7 @@ import com.metron.coin.databinding.FragmentMinterAllBinding;
 import com.metron.coin.ui.dialog.DialogMinterDetail;
 import com.metron.coin.util.CoinConst;
 import com.metron.coin.util.CollectionUtils;
+import com.metron.coin.util.ViewUtil;
 
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class MinterAllFragment extends BaseBindFragment<FragmentMinterAllBinding
             public void onResponse(MinterList minterList) {
                 super.onResponse(minterList);
                 if (minterList != null && !CollectionUtils.isEmpty(minterList.rows)) {
-                    bindRoot.repeatView.viewManager().bind(minterList.rows);
+                    ViewUtil.showListData(bindRoot.repeatView, minterList.rows);
                 }
             }
         });
