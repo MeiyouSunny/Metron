@@ -15,6 +15,7 @@ public class WithdrawStats {
         public float userIncome;
         public float companyIncome;
         public float channelIncome;
+        public float dividedIncome;
         public float powerFee;
         public String hashrateUnit;
     }

@@ -10,7 +10,7 @@ import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.databinding.FragmentChannelOrdersBinding;
 import com.metron.coin.util.ViewUtil;
 
-public class ChannelOrderFragment extends BaseBindFragment<FragmentChannelOrdersBinding> {
+public class OrderChannelFragment extends BaseBindFragment<FragmentChannelOrdersBinding> {
 
     @Override
     public int initLayoutResId() {

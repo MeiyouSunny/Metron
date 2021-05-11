@@ -39,7 +39,7 @@ public class HomeActivity extends BaseViewBindActivity<ActivityHomeBinding> {
         tabFragments.add(new HomeFragment());
         tabFragments.add(new ProfitFragment());
         if (isChannelUser)
-            tabFragments.add(new ChannelOrderFragment());
+            tabFragments.add(new OrderChannelFragment());
         else
             tabFragments.add(new MinterFragment());
 

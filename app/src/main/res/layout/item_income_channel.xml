@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="income"
+            type="com.alaer.lib.api.bean.IncomeList.Income" />
+
+        <variable
+            name="numberUtil"
+            type="com.metron.coin.util.NumberUtils" />
+
+        <variable
+            name="incomeUtil"
+            type="com.metron.coin.data.IncomeUtil" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{income.time}"
+            android:textColor="#6D7686"
+            android:textSize="11sp"
+            tools:text="2021.03.29" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{numberUtil.parseFloat8(income.totalIncome)}"
+            android:textColor="#6D7686"
+            android:textSize="11sp"
+            tools:text="0.12345678" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{numberUtil.parseFloat8(income.powerFee)}"
+            android:textColor="#6D7686"
+            android:textSize="11sp"
+            tools:text="0.12345678" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{numberUtil.parseFloat8(income.userIncome)}"
+            android:textColor="#6D7686"
+            android:textSize="11sp"
+            tools:text="0.12345678" />
+
+    </LinearLayout>
+
+</layout>

@@ -158,12 +158,45 @@ public interface ApiService {
     Call<IncomeLastest> incomeLatest(@Query("currency") String currency, Callback<IncomeLastest> callback);
 
     /**
+     * 用户最新收益:渠道专员
+     */
+    @GET("/user/income/latest")
+    Call<IncomeLastest> incomeLatest(@Query("role") int role, @Query("currency") String currency,
+                                     Callback<IncomeLastest> callback);
+
+    /**
      * 提币统计
      *
      * @param type BTC/ETH
      */
     @GET("/user/withdraw/stats")
     Call<WithdrawStats> withdrawStats(@Query("currency") String currency, Callback<WithdrawStats> callback);
+
+    /**
+     * 提币统计:渠道专员
+     *
+     * @param type BTC/ETH
+     */
+    @GET("/user/withdraw/stats")
+    Call<WithdrawStats> withdrawStats(@Query("role") int role, @Query("currency") String currency,
+                                      Callback<WithdrawStats> callback);
+
+    /**
+     * 收益列表
+     *
+     * @param type BTC/ETH
+     */
+    @GET("/user/income/list")
+    Call<IncomeList> incomeList(@Query("currency") String currency, Callback<IncomeList> callback);
+
+    /**
+     * 收益列表:渠道专员
+     *
+     * @param type BTC/ETH
+     */
+    @GET("/user/income/list")
+    Call<IncomeList> incomeList(@Query("role") int role, @Query("currency") String currency,
+                                Callback<IncomeList> callback);
 
     /**
      * 提币申请
@@ -174,14 +207,6 @@ public interface ApiService {
     @POST("/withdraw")
     Call<String> withdrawApply(@Part("role") int role, @Part("currency") String currency, @Part("amount") float amount,
                                Callback<String> callback);
-
-    /**
-     * 收益列表
-     *
-     * @param type BTC/ETH
-     */
-    @GET("/user/income/list")
-    Call<IncomeList> incomeList(@Query("currency") String currency, Callback<IncomeList> callback);
 
     /**
      * 总资产估值

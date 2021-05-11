@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.metron.coin.base.BindClickListener" />
+
+        <variable
+            name="type"
+            type="String" />
+
+        <variable
+            name="numberUtil"
+            type="com.metron.coin.util.NumberUtils" />
+
+        <variable
+            name="incomeUtil"
+            type="com.metron.coin.data.IncomeUtil" />
+
+        <variable
+            name="incomeLatest"
+            type="com.alaer.lib.api.bean.IncomeLastest" />
+
+        <variable
+            name="withdrawStats"
+            type="com.alaer.lib.api.bean.WithdrawStats" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginTop="12dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <View
+                    android:id="@+id/greenDot"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_green_dot" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@+id/greenDot"
+                    android:text="收益图表"
+                    android:textColor="#15233E"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="收益说明"
+                    android:textColor="#15233E"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/lineChart"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_gravity="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="18dp"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+
+                        <TextView
+                            android:id="@+id/profitTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{numberUtil.parseFloat8(incomeLatest.totalIncome)}"
+                            android:textColor="#15233E"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            tools:text="0.00000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/profitTotal"
+                            android:text="@{type}"
+                            android:textColor="#6D7686"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/profitTotal"
+                            android:layout_marginTop="2dp"
+                            android:text="今日挖币"
+                            android:textColor="#6D7686"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+
+                        <TextView
+                            android:id="@+id/profitToday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{numberUtil.parseFloat8(incomeLatest.userIncome)}"
+                            android:textColor="#005FEB"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            tools:text="0.00000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/profitToday"
+                            android:text="@{type}"
+                            android:textColor="#6D7686"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/profitToday"
+                            android:layout_marginTop="2dp"
+                            android:text="今日渠道收益"
+                            android:textColor="#6D7686"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+
+                        <TextView
+                            android:id="@+id/extractCoin1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{numberUtil.parseFloat8(withdrawStats.income.totalIncome)}"
+                            android:textColor="#15233E"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            tools:text="0.00000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/extractCoin1"
+                            android:text="@{type}"
+                            android:textColor="#6D7686"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/extractCoin1"
+                            android:layout_marginTop="2dp"
+                            android:text="累计挖币"
+                            android:textColor="#6D7686"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+
+                        <TextView
+                            android:id="@+id/amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{numberUtil.parseFloat8(withdrawStats.balance)}"
+                            android:textColor="#15233E"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            tools:text="0.00000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/amount"
+                            android:text="@{type}"
+                            android:textColor="#6D7686"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/amount"
+                            android:layout_marginTop="2dp"
+                            android:text="渠道总收益"
+                            android:textColor="#6D7686"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+
+                        <TextView
+                            android:id="@+id/label1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{numberUtil.parseFloat8(incomeUtil.parseWithdrawTotal(withdrawStats))}"
+                            android:textColor="#15233E"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            tools:text="0.00000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/label1"
+                            android:text="@{type}"
+                            android:textColor="#6D7686"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/label1"
+                            android:layout_marginTop="2dp"
+                            android:text="已提币"
+                            android:textColor="#6D7686"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+
+                        <TextView
+                            android:id="@+id/label2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{numberUtil.parseFloat8(withdrawStats.balance)}"
+                            android:textColor="#15233E"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            tools:text="0.00000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/label2"
+                            android:text="@{type}"
+                            android:textColor="#6D7686"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/label2"
+                            android:layout_marginTop="2dp"
+                            android:text="余额"
+                            android:textColor="#6D7686"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:background="#F0F0F0"
+                android:paddingLeft="16dp"
+                android:paddingTop="24dp"
+                android:text="收益记录"
+                android:textColor="#15233E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="日期"
+                    android:textColor="#15233E"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="挖矿"
+                    android:textColor="#15233E"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="电费"
+                    android:textColor="#15233E"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="收益"
+                    android:textColor="#15233E"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#D6D6D6" />
+
+            <likly.view.repeat.RepeatView
+                android:id="@+id/repeatView"
+                style="@style/RepeatView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:emptyView="@layout/layout_no_data"
+                app:viewHolderClass="com.metron.coin.adapter.IncomeAdapterChannel"
+                app:viewHolderLayout="@layout/item_income_channel" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

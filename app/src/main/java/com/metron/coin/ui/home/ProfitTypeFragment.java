@@ -12,7 +12,6 @@ import com.metron.coin.R;
 import com.metron.coin.base.BaseBindFragment;
 import com.metron.coin.data.IncomeUtil;
 import com.metron.coin.databinding.FragmentProfitBtcBinding;
-import com.metron.coin.util.CoinConst;
 import com.metron.coin.util.CollectionUtils;
 import com.metron.coin.util.NumberUtils;
 import com.metron.coin.util.ViewUtil;
@@ -22,10 +21,10 @@ import java.util.List;
 /**
  * 收益BTC
  */
-public class ProfitBTCFragment extends BaseBindFragment<FragmentProfitBtcBinding> {
+public class ProfitTypeFragment extends BaseBindFragment<FragmentProfitBtcBinding> {
     private String type;
 
-    public ProfitBTCFragment(String type) {
+    public ProfitTypeFragment(String type) {
         this.type = type;
     }
 
@@ -68,7 +67,7 @@ public class ProfitBTCFragment extends BaseBindFragment<FragmentProfitBtcBinding
             }
         });
 
-        ApiUtil.apiService().incomeTrend(CoinConst.ETH, "d", new Callback<IncomeTrend>() {
+        ApiUtil.apiService().incomeTrend(type, "d", new Callback<IncomeTrend>() {
             @Override
             public void onResponse(IncomeTrend incomeTrend) {
                 if (incomeTrend != null && !CollectionUtils.isEmpty(incomeTrend.tickers)) {
