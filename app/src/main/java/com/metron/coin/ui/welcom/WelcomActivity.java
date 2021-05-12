@@ -3,6 +3,7 @@ package com.metron.coin.ui.welcom;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.view.View;
 
 import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
@@ -26,6 +27,20 @@ public class WelcomActivity extends BaseViewBindActivity<ActivityWelcomBinding> 
     }
 
     @Override
+    public void click(View view) {
+        switch (view.getId()) {
+            case R.id.login:
+                ViewUtil.gotoActivity(this, LoginActivity.class, "type", LoginActivity.TYPE_LOGIN);
+                finish();
+                break;
+            case R.id.regist:
+                ViewUtil.gotoActivity(this, LoginActivity.class, "type", LoginActivity.TYPE_REGIST);
+                finish();
+                break;
+        }
+    }
+
+    @Override
     public void onViewCreated() {
         autoLogin();
     }
@@ -39,8 +54,7 @@ public class WelcomActivity extends BaseViewBindActivity<ActivityWelcomBinding> 
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    ViewUtil.gotoActivity(WelcomActivity.this, LoginActivity.class);
-                    finish();
+                    bindRoot.setVisiable(true);
                 }
             }, 1500);
         }
