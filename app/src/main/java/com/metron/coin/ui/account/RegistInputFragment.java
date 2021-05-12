@@ -1,5 +1,6 @@
 package com.metron.coin.ui.account;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,8 +11,11 @@ import com.meiyou.mvp.MvpBinder;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBackFragment;
 import com.metron.coin.databinding.FragmentRegistInputBinding;
+import com.metron.coin.ui.webpage.WebPageActivity;
 import com.metron.coin.util.SimpleTextWatcher;
 import com.metron.coin.util.ViewUtil;
+
+import likly.dollar.$;
 
 @MvpBinder(
 )
@@ -26,7 +30,17 @@ public class RegistInputFragment extends BaseBackFragment<FragmentRegistInputBin
     public void click(View view) {
         switch (view.getId()) {
             case R.id.btnGetCode:
+                if (!bindRoot.checkbox.isChecked()) {
+                    $.toast().text("请先同意用户协议和隐私政策!").show();
+                    break;
+                }
                 sendSms();
+                break;
+            case R.id.userAgreement:
+                WebPageActivity.start(getContext(), "https://app.tokensky.cn/articles/zh_CN/agreement-zh_CN.html", "用户协议");
+                break;
+            case R.id.privacyPolicy:
+                WebPageActivity.start(getContext(), "https://app.tokensky.cn/articles/zh_CN/agreement-zh_CN.html", "隐私政策");
                 break;
         }
     }
@@ -63,6 +77,9 @@ public class RegistInputFragment extends BaseBackFragment<FragmentRegistInputBin
                 bindRoot.btnGetCode.setEnabled(!TextUtils.isEmpty(ViewUtil.getText(bindRoot.etPhone)));
             }
         });
+
+        bindRoot.userAgreement.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+        bindRoot.privacyPolicy.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
     }
 
 }

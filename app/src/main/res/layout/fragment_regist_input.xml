@@ -88,6 +88,60 @@
                 android:onClick="@{handler.click}"
                 android:text="获取验证码" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="281dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkbox"
+                    style="@style/CheckboxStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:gravity="center"
+                    android:paddingLeft="4dp"
+                    android:text="已阅读并同意"
+                    android:textColor="#6D7686"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/userAgreement"
+                    style="@style/ClickableStyle_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:autoLink="web"
+                    android:onClick="@{handler.click}"
+                    android:text="用户协议"
+                    android:textColor="#15233E"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="和"
+                    android:textColor="#6D7686"
+                    android:textSize="13sp" />
+
+
+                <TextView
+                    android:id="@+id/privacyPolicy"
+                    style="@style/ClickableStyle_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:autoLink="web"
+                    android:onClick="@{handler.click}"
+                    android:text="隐私政策"
+                    android:textColor="#15233E"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
 
         </RelativeLayout>
 
