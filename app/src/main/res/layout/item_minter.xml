@@ -11,7 +11,7 @@
 
         <variable
             name="minterUtil"
-            type="com.metron.coin.data.MinterUtil" />
+            type="com.metron.xiaoming.data.MinterUtil" />
 
     </data>
 

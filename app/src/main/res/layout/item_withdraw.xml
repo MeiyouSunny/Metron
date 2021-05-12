@@ -13,11 +13,11 @@
 
         <variable
             name="numberUtil"
-            type="com.metron.coin.util.NumberUtils" />
+            type="com.metron.xiaoming.util.NumberUtils" />
 
         <variable
             name="incomeUtil"
-            type="com.metron.coin.data.IncomeUtil" />
+            type="com.metron.xiaoming.data.IncomeUtil" />
 
         <variable
             name="statusList"

@@ -9,7 +9,7 @@
 
         <variable
             name="handler"
-            type="com.metron.coin.base.BindClickListener" />
+            type="com.metron.xiaoming.base.BindClickListener" />
 
         <variable
             name="userInfo"

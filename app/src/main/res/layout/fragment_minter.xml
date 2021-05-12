@@ -9,7 +9,7 @@
 
         <variable
             name="handler"
-            type="com.metron.coin.base.BindClickListener" />
+            type="com.metron.xiaoming.base.BindClickListener" />
 
         <variable
             name="typeListVisible"
@@ -93,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.metron.coin.view.NoScrollViewPager
+                <com.metron.xiaoming.view.NoScrollViewPager
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />

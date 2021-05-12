@@ -7,21 +7,21 @@
 
     <fragment
         android:id="@+id/tab_home"
-        android:name="com.metron.coin.ui.home.HomeFragment"
+        android:name="com.metron.xiaoming.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/tab_profit"
-        android:name="com.metron.coin.ui.home.ProfitFragment"
+        android:name="com.metron.xiaoming.ui.home.ProfitFragment"
         tools:layout="@layout/fragment_profit" />
 
     <fragment
         android:id="@+id/tab_minter"
-        android:name="com.metron.coin.ui.home.MinterFragment"
+        android:name="com.metron.xiaoming.ui.home.MinterFragment"
         tools:layout="@layout/fragment_mine" />
 
     <fragment
         android:id="@+id/tab_mine"
-        android:name="com.metron.coin.ui.home.MineFragment"
+        android:name="com.metron.xiaoming.ui.home.MineFragment"
         tools:layout="@layout/fragment_mine" />
 </navigation>

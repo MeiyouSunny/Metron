@@ -13,7 +13,7 @@
 
         <variable
             name="util"
-            type="com.metron.coin.util.StringUtil" />
+            type="com.metron.xiaoming.util.StringUtil" />
 
         <variable
             name="icons"

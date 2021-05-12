@@ -7,7 +7,7 @@ android {
     buildToolsVersion '30.0.2'
 
     defaultConfig {
-        applicationId "com.metron.coin"
+        applicationId "com.metron.xiaoming"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -40,6 +40,35 @@ android {
 
     lintOptions {
         disable 'ExtraTranslation'
+    }
+
+
+    signingConfigs {
+        debug {
+            storeFile file('metron.jks')
+            storePassword "xiaoming"
+            keyAlias "metron"
+            keyPassword "xiaoming"
+        }
+        release {
+            storeFile file('metron.jks')
+            storePassword "xiaoming"
+            keyAlias "metron"
+            keyPassword "xiaoming"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+        }
+        release {
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            minifyEnabled true
+            zipAlignEnabled true
+        }
     }
 }
 
@@ -75,7 +104,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.2.2'
 
     // Switch button
-    compile 'com.kyleduo.switchbutton:library:1.4.6'
+    implementation 'com.kyleduo.switchbutton:library:1.4.6'
     // MPAndroidChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     // statusbar

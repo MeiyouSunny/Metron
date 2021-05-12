@@ -9,7 +9,7 @@
 
         <variable
             name="handler"
-            type="com.metron.coin.base.BindClickListener" />
+            type="com.metron.xiaoming.base.BindClickListener" />
 
         <variable
             name="minterSeries"
@@ -21,7 +21,7 @@
 
         <variable
             name="minterUtil"
-            type="com.metron.coin.data.MinterUtil" />
+            type="com.metron.xiaoming.data.MinterUtil" />
 
         <variable
             name="unreadMessage"

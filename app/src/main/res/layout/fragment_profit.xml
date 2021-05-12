@@ -7,7 +7,7 @@
 
         <variable
             name="handler"
-            type="com.metron.coin.base.BindClickListener" />
+            type="com.metron.xiaoming.base.BindClickListener" />
 
         <variable
             name="totalAssets"
@@ -15,7 +15,7 @@
 
         <variable
             name="util"
-            type="com.metron.coin.util.NumberUtils" />
+            type="com.metron.xiaoming.util.NumberUtils" />
     </data>
 
 <!--    <ScrollView-->
@@ -122,7 +122,7 @@
                 app:tabMode="scrollable"
                 app:tabRippleColor="#06000000" />
 
-            <com.metron.coin.view.NoScrollViewPager
+            <com.metron.xiaoming.view.NoScrollViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
