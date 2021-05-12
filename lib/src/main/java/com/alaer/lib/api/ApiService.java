@@ -117,6 +117,14 @@ public interface ApiService {
                                  Callback<String> callback);
 
     /**
+     * 修改BtcWallet和EthWallet
+     */
+    @FormBody
+    @PUT("/user/profile")
+    Call<String> modifyBtcAndEthWallet(@Query("btcWallet") String btcWallet, @Query("ethWallet") String ethWallet,
+                                       Callback<String> callback);
+
+    /**
      * UsdtWallet
      */
     @FormBody

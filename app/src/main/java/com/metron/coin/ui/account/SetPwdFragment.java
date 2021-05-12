@@ -5,6 +5,9 @@ import android.view.View;
 
 import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
+import com.alaer.lib.api.bean.TokenInfo;
+import com.alaer.lib.api.bean.UserInfo;
+import com.alaer.lib.util.UserDataUtil;
 import com.meiyou.mvp.MvpBinder;
 import com.metron.coin.R;
 import com.metron.coin.base.BaseBackFragment;
@@ -90,7 +93,7 @@ public class SetPwdFragment extends BaseBackFragment<FragmentSetPwdBinding> {
                     @Override
                     public void onResponse(String response) {
                         $.toast().text("注册成功！").show();
-                        navigate(R.id.action_setPwd_to_login);
+                        autoLogin(mobile, password);
                     }
 
                     @Override
@@ -131,6 +134,33 @@ public class SetPwdFragment extends BaseBackFragment<FragmentSetPwdBinding> {
                         $.toast().text(msg).show();
                     }
                 });
+    }
+
+    private void autoLogin(String phone, String pwd) {
+        ApiUtil.apiService().login(phone, pwd,
+                new Callback<TokenInfo>() {
+
+                    @Override
+                    public void onResponse(TokenInfo tokenInfo) {
+                        UserDataUtil.instance().setTokenInfo(tokenInfo);
+                        getUserInfo();
+                    }
+
+                    @Override
+                    public void onError(int code, String msg) {
+                        super.onError(code, msg);
+                    }
+                });
+    }
+
+    private void getUserInfo() {
+        ApiUtil.apiService().getUserInfo(new Callback<UserInfo>() {
+            @Override
+            public void onResponse(UserInfo userInfo) {
+                UserDataUtil.instance().setUserInfo(userInfo);
+                navigate(R.id.action_setPwd_to_setWallet);
+            }
+        });
     }
 
 }

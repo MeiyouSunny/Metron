@@ -50,6 +50,9 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_setPwd_to_setWallet"
+            app:destination="@id/setWalletFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgetPwdFragment"
@@ -59,5 +62,9 @@
             android:id="@+id/action_forgetPwd_to_verifyPhone"
             app:destination="@id/verifyPhoneFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/setWalletFragment"
+        android:name="com.metron.coin.ui.account.SetWalletFragment"
+        android:label="SetWalletFragment" />
 
 </navigation>

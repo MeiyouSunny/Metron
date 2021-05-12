@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.metron.coin.base.BindClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_bar_black_fragment" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp">
+
+            <TextView
+                android:id="@+id/bindWallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="绑定钱包"
+                android:textColor="#15233E"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/skip"
+                style="@style/ClickableStyle_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/bindWallet"
+                android:layout_alignParentRight="true"
+                android:onClick="@{handler.click}"
+                android:padding="4dp"
+                android:text="跳过"
+                android:textColor="#6D7686"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/etETH"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="140dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="ETH钱包地址"
+                android:inputType="textPassword"
+                android:paddingLeft="6dp"
+                android:singleLine="true"
+                android:textColor="#15233E"
+                android:textColorHint="#A0A7B3"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="178dp"
+                android:background="#E8E9EC" />
+
+            <EditText
+                android:id="@+id/etBTC"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="194dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="BTC钱包地址"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:paddingLeft="6dp"
+                android:singleLine="true"
+                android:textColor="#15233E"
+                android:textColorHint="#A0A7B3"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="232dp"
+                android:background="#E8E9EC" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSubmit"
+                style="@style/BtnBLue"
+                android:layout_marginTop="273dp"
+                android:enabled="false"
+                android:onClick="@{handler.click}"
+                android:text="确定" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>
