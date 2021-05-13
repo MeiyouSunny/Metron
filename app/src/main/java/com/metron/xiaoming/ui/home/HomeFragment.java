@@ -17,7 +17,6 @@ import com.metron.xiaoming.ui.dialog.DialogCustomerService;
 import com.metron.xiaoming.ui.message.MessagesActivity;
 import com.metron.xiaoming.util.CollectionUtils;
 import com.metron.xiaoming.util.ViewUtil;
-import com.metron.xiaoming.view.FullyLinearLayoutManager;
 
 import java.util.List;
 
@@ -93,7 +92,6 @@ public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implemen
 
     private void showMinterSeries(List<MinterSeries> series) {
         if (CollectionUtils.isEmpty(series)) {
-
             return;
         }
 
@@ -101,7 +99,7 @@ public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implemen
             TabLayout.Tab tab = bindRoot.tabs.newTab();
             bindRoot.tabs.addTab(tab);
             tab.setCustomView(R.layout.home_minter_series_tab_item);
-            ((TextView) tab.getCustomView().findViewById(R.id.text)).setText(minterSeries.name);
+            ((TextView) tab.getCustomView().findViewById(R.id.text)).setText("小铭" + minterSeries.name);
             tab.setTag(minterSeries);
         }
 
@@ -126,9 +124,9 @@ public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implemen
 //        bindRoot.repeatView.getRecyclerView().setClipToPadding(false);
         ViewUtil.showListData(bindRoot.repeatView, minterSeries.models);
 
-        FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(getContext(), minterSeries.models.size());
-        bindRoot.repeatView.getRecyclerView().setLayoutManager(layoutManager);
-        bindRoot.scrollView.scrollTo(0, 0);
+//        FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(getContext(), minterSeries.models.size());
+//        bindRoot.repeatView.getRecyclerView().setLayoutManager(layoutManager);
+//        bindRoot.scrollView.scrollTo(0, 0);
 
     }
 

@@ -15,7 +15,7 @@ public class MinterSeries {
 
     public static class MinterInfo {
         public int id;
-        public Object createTime;
+        public String createTime;
         public String updateTime;
         public Object createUser;
         public Object updateUser;

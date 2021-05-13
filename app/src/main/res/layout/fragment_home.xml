@@ -381,8 +381,9 @@
                         style="@style/RepeatView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
                         app:emptyView="@layout/layout_no_data"
-                        app:viewHolderClass="com.metron.coin.adapter.MinterSeriesAdapter"
+                        app:viewHolderClass="com.metron.xiaoming.adapter.MinterSeriesAdapter"
                         app:viewHolderLayout="@layout/item_minter_series" />
 
                 </LinearLayout>

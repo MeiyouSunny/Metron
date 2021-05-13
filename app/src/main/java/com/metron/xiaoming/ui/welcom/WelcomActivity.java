@@ -37,6 +37,9 @@ public class WelcomActivity extends BaseViewBindActivity<ActivityWelcomBinding> 
                 ViewUtil.gotoActivity(this, LoginActivity.class, "type", LoginActivity.TYPE_REGIST);
                 finish();
                 break;
+            case R.id.close:
+                finish();
+                break;
         }
     }
 
@@ -54,7 +57,8 @@ public class WelcomActivity extends BaseViewBindActivity<ActivityWelcomBinding> 
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    bindRoot.setVisiable(true);
+                    bindRoot.layoutWelcome.setVisibility(View.GONE);
+                    bindRoot.layoutLogin.setVisibility(View.VISIBLE);
                 }
             }, 1500);
         }

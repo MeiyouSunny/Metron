@@ -416,7 +416,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:emptyView="@layout/layout_no_data"
-                app:viewHolderClass="com.metron.coin.adapter.IncomeAdapterChannel"
+                app:viewHolderClass="com.metron.xiaoming.adapter.IncomeAdapterChannel"
                 app:viewHolderLayout="@layout/item_income_channel" />
 
         </LinearLayout>

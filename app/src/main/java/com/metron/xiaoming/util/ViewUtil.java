@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alaer.lib.api.AppConfig;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -41,7 +42,7 @@ public class ViewUtil {
         if (imageView == null || TextUtils.isEmpty(imageUrl))
             return;
         Glide.with(context)
-                .load(imageUrl)
+                .load(AppConfig.BASE_IMAGE_URL + imageUrl)
                 .dontAnimate()
                 .into(imageView);
     }

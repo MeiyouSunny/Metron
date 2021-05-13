@@ -6,63 +6,117 @@
         <variable
             name="handler"
             type="com.metron.xiaoming.base.BindClickListener" />
-
-        <import type="android.view.View" />
-
-        <variable
-            name="visiable"
-            type="boolean" />
     </data>
 
-    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_welcome"
-        tools:context=".ui.welcom.WelcomActivity">
+        android:background="@drawable/bg_welcome">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="200dp"
-            android:background="@drawable/ic_welcome_logo"
-            android:clickable="true"
-            android:onClick="testApi" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/login"
-            style="@style/CardViewClick"
+        <RelativeLayout
+            android:id="@+id/layoutWelcome"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_above="@+id/regist"
-            android:layout_marginLeft="48dp"
-            android:layout_marginRight="48dp"
-            android:background="@drawable/bg_white_stoke"
-            android:gravity="center"
-            android:onClick="@{handler.click}"
-            android:text="登  录"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:visibility="@{visiable ? View.VISIBLE : View.INVISIBLE}" />
+            android:layout_height="match_parent">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="120dp"
+                android:background="@drawable/img_welcome_logo1" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/regist"
-            style="@style/CardViewClick"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/desc"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/img_welcome_logo2"
+                android:clickable="true"
+                android:onClick="testApi" />
+
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="32dp"
+                android:text="拥抱数字革命｜Embrace the digital revolution"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layoutLogin"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="48dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="48dp"
-            android:layout_marginBottom="62dp"
-            android:background="@drawable/bg_white_stoke"
-            android:gravity="center"
-            android:onClick="@{handler.click}"
-            android:text="注  册"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:visibility="@{visiable ? View.VISIBLE : View.INVISIBLE}" />
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/close"
+                style="@style/ClickableStyle_"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="42dp"
+                android:onClick="@{handler.click}"
+                android:src="@drawable/ic_dialog_close" />
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="120dp"
+                android:background="@drawable/img_login_logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="拥抱数字革命｜Embrace the digital revolution"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/login"
+                style="@style/CardViewClick"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_above="@+id/regist"
+                android:layout_marginLeft="48dp"
+                android:layout_marginRight="48dp"
+                android:background="@drawable/bg_white_stoke"
+                android:gravity="center"
+                android:onClick="@{handler.click}"
+                android:text="登  录"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/regist"
+                style="@style/CardViewClick"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="48dp"
+                android:layout_marginBottom="62dp"
+                android:background="@drawable/bg_white_stoke"
+                android:gravity="center"
+                android:onClick="@{handler.click}"
+                android:text="注  册"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
 </layout>

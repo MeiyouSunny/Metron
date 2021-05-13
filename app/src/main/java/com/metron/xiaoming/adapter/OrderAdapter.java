@@ -36,7 +36,7 @@ public class OrderAdapter extends BaseViewHolder<ItemOrderBinding, OrderList.Ord
             ImageView thumb = view.findViewById(R.id.minterThumb);
             TextView name = view.findViewById(R.id.modeName);
             TextView info = view.findViewById(R.id.count);
-            name.setText(quantity.model.name);
+            name.setText("小铭" + quantity.model.name);
             info.setText("¥" + quantity.model.price + " X " + quantity.quantity + "台");
             ViewUtil.showImage(getContext().getApplicationContext(), thumb, quantity.model.thumbnail);
 

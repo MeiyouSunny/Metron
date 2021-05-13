@@ -6,6 +6,7 @@ import com.metron.xiaoming.R;
 import com.metron.xiaoming.base.BaseTitleActivity;
 import com.metron.xiaoming.databinding.ActivityAboutBinding;
 import com.metron.xiaoming.ui.webpage.WebPageActivity;
+import com.metron.xiaoming.util.StringUtil;
 
 /**
  * 关于
@@ -25,6 +26,7 @@ public class AboutActivity extends BaseTitleActivity<ActivityAboutBinding> {
     @Override
     public void onViewCreated() {
         super.onViewCreated();
+        bindRoot.version.setText(StringUtil.getVersionName(this));
     }
 
     @Override

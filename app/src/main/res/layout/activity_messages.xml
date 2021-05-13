@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:emptyView="@layout/layout_no_data"
-            app:viewHolderClass="com.metron.coin.adapter.MessageAdapter"
+            app:viewHolderClass="com.metron.xiaoming.adapter.MessageAdapter"
             app:viewHolderLayout="@layout/item_message" />
 
     </LinearLayout>

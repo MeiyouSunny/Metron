@@ -1,5 +1,8 @@
 package com.metron.xiaoming.util;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
 import java.text.SimpleDateFormat;
@@ -32,6 +35,18 @@ public class StringUtil {
         }
 
         return builder.toString();
+    }
+
+    public static String getVersionName(Context context) {
+        try {
+            PackageManager pm = context.getPackageManager();
+            PackageInfo packageInfo = pm.getPackageInfo(context.getPackageName(), PackageManager.GET_CONFIGURATIONS);
+            return packageInfo.versionName;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
 }

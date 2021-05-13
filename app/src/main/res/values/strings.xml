@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">METRON</string>
+    <string name="app_name">小铭矿场</string>
 
     <string name="miner_all">全部矿机</string>
     <string name="miner_btc">BTC</string>
@@ -12,5 +12,7 @@
     <string name="user_channel">渠道专员</string>
     <string name="coin_address_is">提币地址：%s</string>
     <string name="total_assets_cny_is">≈ %s CNY</string>
+
+    <string name="mode_name_is">小铭%s</string>
 
 </resources>
