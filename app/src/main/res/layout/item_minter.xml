@@ -26,7 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@{String.valueOf(minter.id)}"
+            android:singleLine="true"
+            android:text="@{String.valueOf(minter.identifier)}"
             android:textColor="#6D7686"
             android:textSize="12sp"
             tools:text="2021.03.29" />
@@ -36,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:singleLine="true"
             android:text="@{minter.model.name}"
             android:textColor="#6D7686"
             android:textSize="12sp"
