@@ -42,7 +42,7 @@ public class ViewUtil {
         if (imageView == null || TextUtils.isEmpty(imageUrl))
             return;
         Glide.with(context)
-                .load(AppConfig.BASE_IMAGE_URL + imageUrl)
+                .load(AppConfig.HOST + imageUrl)
                 .dontAnimate()
                 .into(imageView);
     }

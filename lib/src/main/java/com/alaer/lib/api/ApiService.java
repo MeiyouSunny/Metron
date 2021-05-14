@@ -31,7 +31,7 @@ import likly.reverse.annotation.ServiceInvokeListener;
 /**
  * 请求定义
  */
-@BaseUrl(AppConfig.BASE_URL)
+@BaseUrl(AppConfig.HOST_API)
 @ServiceInvokeListener(OnApiServiceRequestListener.class)
 @CallExecuteListener(ApiCallExecuteListener.class)
 @SuppressWarnings("all")
