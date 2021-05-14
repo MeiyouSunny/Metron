@@ -22,6 +22,7 @@ import java.util.List;
 )
 public class VerifyPhoneFragment extends BaseBackFragment<FragmentVerifyPhoneBinding> {
 
+    private int mType;
     private String mPhone;
     private List<EditText> mEtCodes;
 
@@ -53,6 +54,7 @@ public class VerifyPhoneFragment extends BaseBackFragment<FragmentVerifyPhoneBin
     public void onViewCreated() {
         super.onViewCreated();
 
+        mType = getArguments().getInt("type");
         mPhone = getArguments().getString("mobile");
         bindRoot.tvPhone.setText(mPhone);
 
@@ -105,6 +107,8 @@ public class VerifyPhoneFragment extends BaseBackFragment<FragmentVerifyPhoneBin
         if (hasGoto)
             return;
         Bundle bundle = getArguments();
+        bundle.putInt("type", mType);
+        bundle.putString("mobile", mPhone);
         bundle.putString("smsCode", getInputCode());
         navigate(R.id.action_to_setPwd, bundle);
     }
