@@ -5,11 +5,14 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import com.alaer.lib.api.ApiUtil;
+import com.alaer.lib.api.Callback;
 import com.meiyou.mvp.MvpBinder;
 import com.metron.xiaoming.R;
 import com.metron.xiaoming.base.BaseBackFragment;
 import com.metron.xiaoming.databinding.FragmentVerifyPhoneBinding;
 import com.metron.xiaoming.util.SimpleTextWatcher;
+import com.metron.xiaoming.util.VerifyCodeCounter;
 import com.metron.xiaoming.util.ViewUtil;
 
 import java.util.Arrays;
@@ -19,6 +22,7 @@ import java.util.List;
 )
 public class VerifyPhoneFragment extends BaseBackFragment<FragmentVerifyPhoneBinding> {
 
+    private String mPhone;
     private List<EditText> mEtCodes;
 
     @Override
@@ -29,9 +33,9 @@ public class VerifyPhoneFragment extends BaseBackFragment<FragmentVerifyPhoneBin
     @Override
     public void click(View view) {
         switch (view.getId()) {
-//            case R.id.toRegist:
-//                navigate(R.id.action_to_regisPhoneVerify);
-//                break;
+            case R.id.send:
+                sendSms();
+                break;
         }
     }
 
@@ -49,8 +53,8 @@ public class VerifyPhoneFragment extends BaseBackFragment<FragmentVerifyPhoneBin
     public void onViewCreated() {
         super.onViewCreated();
 
-        String phone = getArguments().getString("mobile");
-        bindRoot.tvPhone.setText(phone);
+        mPhone = getArguments().getString("mobile");
+        bindRoot.tvPhone.setText(mPhone);
 
         mEtCodes = Arrays.asList(new EditText[]{
                 bindRoot.etCode1, bindRoot.etCode2, bindRoot.etCode3, bindRoot.etCode4, bindRoot.etCode5, bindRoot.etCode6
@@ -65,6 +69,8 @@ public class VerifyPhoneFragment extends BaseBackFragment<FragmentVerifyPhoneBin
         }
 
         bindRoot.etCode1.requestFocus();
+
+        VerifyCodeCounter.getInstance().startCounter(bindRoot.send);
     }
 
     private void onInputChange(EditText etInput) {
@@ -109,6 +115,22 @@ public class VerifyPhoneFragment extends BaseBackFragment<FragmentVerifyPhoneBin
             code += ViewUtil.getText(editText);
         }
         return code;
+    }
+
+    private void sendSms() {
+        ApiUtil.apiService().sendSms("86", mPhone,
+                new Callback<Boolean>() {
+                    @Override
+                    public void onResponse(Boolean response) {
+                        VerifyCodeCounter.getInstance().startCounter(bindRoot.send);
+                    }
+                });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        VerifyCodeCounter.getInstance().destory();
     }
 
 }

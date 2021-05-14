@@ -36,17 +36,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="118dp"
-                tools:text="135xxxx6666"
                 android:textColor="#15233E"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:text="135xxxx6666" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/send"
+                android:layout_width="44dp"
+                android:layout_height="24dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="118dp"
-                android:text="60s"
-                android:textColor="@color/colorPrimary"
+                android:background="@null"
+                android:clickable="true"
+                tools:text="发送"
+                android:gravity="right"
+                android:onClick="@{handler.click}"
+                android:textColor="#044FEA"
                 android:textSize="16sp" />
 
             <LinearLayout

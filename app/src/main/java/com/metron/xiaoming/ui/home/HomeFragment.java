@@ -117,17 +117,8 @@ public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implemen
             return;
         }
 
-//        bindRoot.setMinterUtil(new MinterUtil());
         bindRoot.setMinterSeries(minterSeries);
-
-//        bindRoot.repeatView.getRecyclerView().setPaddingRelative(0, 30, 0, 30);
-//        bindRoot.repeatView.getRecyclerView().setClipToPadding(false);
         ViewUtil.showListData(bindRoot.repeatView, minterSeries.models);
-
-//        FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(getContext(), minterSeries.models.size());
-//        bindRoot.repeatView.getRecyclerView().setLayoutManager(layoutManager);
-//        bindRoot.scrollView.scrollTo(0, 0);
-
     }
 
     @Override
