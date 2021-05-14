@@ -18,21 +18,27 @@
     </data>
 
     <RelativeLayout
-        style="@style/ClickableStyle"
         android:layout_width="match_parent"
-        android:layout_height="86dp"
+        android:layout_height="188dp"
         android:paddingLeft="16dp"
-        android:paddingTop="8dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="8dp">
+        android:paddingRight="16dp">
 
-        <ImageView
+        <RelativeLayout
             android:id="@+id/icon"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_centerVertical="true"
-            android:scaleType="centerInside"
-            android:src="@drawable/pic_minter_default" />
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_white_stoke"
+            android:padding="1dp">
+
+            <ImageView
+                android:id="@+id/thumb"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/pic_minter_default" />
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/name"
@@ -40,18 +46,24 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/icon"
             android:layout_marginLeft="14dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="2dp"
+            android:layout_toLeftOf="@+id/status"
             android:layout_toRightOf="@+id/icon"
+            android:singleLine="true"
             android:text="@{@string/mode_name_is(minter.name)}"
             android:textColor="#15233E"
             android:textSize="14sp"
             tools:text="小铭 S1" />
 
         <TextView
+            android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/icon"
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="16dp"
-            android:layout_toRightOf="@+id/name"
+            android:layout_marginTop="4dp"
             android:background="@drawable/bg_green_toke"
             android:paddingLeft="6dp"
             android:paddingTop="2dp"
@@ -66,8 +78,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/icon"
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="16dp"
-            android:layout_toRightOf="@+id/name"
+            android:layout_marginTop="4dp"
             android:background="@drawable/bg_yellow_toke"
             android:paddingLeft="6dp"
             android:paddingTop="2dp"
@@ -83,8 +96,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/icon"
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="16dp"
-            android:layout_toRightOf="@+id/name"
+            android:layout_marginTop="4dp"
             android:background="@drawable/bg_orange_toke"
             android:paddingLeft="6dp"
             android:paddingTop="2dp"
@@ -98,9 +112,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/icon"
-            android:layout_alignParentRight="true"
+            android:layout_below="@+id/name"
             android:layout_marginLeft="14dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/icon"
             android:text="@{util.parseMinterPrice(minter)}"
             android:textColor="#15233E"
             android:textSize="14sp"
@@ -111,13 +126,12 @@
             android:id="@+id/caculateLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/profitLabel"
-            android:layout_marginLeft="14dp"
+            android:layout_below="@+id/icon"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="2dp"
-            android:layout_toRightOf="@+id/icon"
+            android:text="预估算力："
             android:textColor="#6D7686"
-            android:textSize="14sp"
-            tools:text="预估算力：" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/caculate"
@@ -135,19 +149,18 @@
             android:id="@+id/powerWasteLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/profitLabel"
+            android:layout_below="@+id/icon"
             android:layout_marginLeft="12dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginTop="16dp"
             android:layout_toRightOf="@+id/caculate"
+            android:text="功耗："
             android:textColor="#6D7686"
-            android:textSize="14sp"
-            tools:text="功耗：" />
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/profitLabel"
-            android:layout_marginBottom="2dp"
             android:layout_toRightOf="@+id/powerWasteLabel"
             android:text="@{util.parseMinterPowerWaste(minter)}"
             android:textColor="#6D7686"
@@ -158,9 +171,8 @@
             android:id="@+id/profitLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="14dp"
-            android:layout_toRightOf="@+id/icon"
+            android:layout_below="@+id/caculateLabel"
+            android:layout_marginTop="4dp"
             android:text="预估300天静态收益："
             android:textColor="#6D7686"
             android:textSize="14sp" />
@@ -168,12 +180,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/caculateLabel"
+            android:layout_marginTop="4dp"
             android:layout_toRightOf="@+id/profitLabel"
             android:text="@{util.parseMinterEstimationRevenue(minter)}"
             android:textColor="#6D7686"
             android:textSize="14sp"
             tools:text="70.12%" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="#D6D6D6" />
 
     </RelativeLayout>
 

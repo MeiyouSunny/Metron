@@ -14,5 +14,6 @@
     <string name="total_assets_cny_is">≈ %s CNY</string>
 
     <string name="mode_name_is">小铭%s</string>
+    <string name="series_is">%s系列</string>
 
 </resources>

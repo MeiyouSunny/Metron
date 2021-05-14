@@ -14,7 +14,7 @@ public class MinterSeriesAdapter extends BaseViewHolder<ItemMinterSeriesBinding,
         bindRoot.setUtil(new MinterUtil());
         bindRoot.setMinter(minter);
         bindRoot.executePendingBindings();
-        ViewUtil.showImage(getContext(), bindRoot.icon, minter.thumbnail);
+        ViewUtil.showImage(getContext(), bindRoot.thumb, minter.thumbnail);
     }
 
     @Override

@@ -99,7 +99,7 @@ public class HomeFragment extends BaseBindFragment<FragmentHomeBinding> implemen
             TabLayout.Tab tab = bindRoot.tabs.newTab();
             bindRoot.tabs.addTab(tab);
             tab.setCustomView(R.layout.home_minter_series_tab_item);
-            ((TextView) tab.getCustomView().findViewById(R.id.text)).setText("小铭" + minterSeries.name);
+            ((TextView) tab.getCustomView().findViewById(R.id.text)).setText(getString(R.string.series_is, minterSeries.name));
             tab.setTag(minterSeries);
         }
 
