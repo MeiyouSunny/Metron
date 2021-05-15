@@ -15,5 +15,6 @@
 
     <string name="mode_name_is">小铭%s</string>
     <string name="series_is">%s系列</string>
+    <string name="extra_config_is">BTC起提数量：%f    BTC提币手续费：%f</string>
 
 </resources>

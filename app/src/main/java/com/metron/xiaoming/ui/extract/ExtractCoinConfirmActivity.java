@@ -5,13 +5,17 @@ import android.view.View;
 
 import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
+import com.alaer.lib.api.bean.ExtraConfig;
 import com.alaer.lib.util.UserDataUtil;
 import com.metron.xiaoming.R;
 import com.metron.xiaoming.base.BaseTitleActivity;
 import com.metron.xiaoming.databinding.ActivityExtractCoinConfirmBinding;
 import com.metron.xiaoming.util.CoinConst;
+import com.metron.xiaoming.util.CollectionUtils;
 import com.metron.xiaoming.util.NumberUtils;
 import com.metron.xiaoming.util.ViewUtil;
+
+import java.util.List;
 
 import likly.dollar.$;
 
@@ -20,10 +24,8 @@ import likly.dollar.$;
  */
 public class ExtractCoinConfirmActivity extends BaseTitleActivity<ActivityExtractCoinConfirmBinding> {
 
-    // 最小提币数量
-    private static final float MIN_BTC = 0.005F;
-    private static final float MIN_ETH = 0.2F;
-
+    // 最小提币数量/手续费
+    private float[] mConfigValues = new float[2];
     private String type;
 
     @Override
@@ -54,10 +56,30 @@ public class ExtractCoinConfirmActivity extends BaseTitleActivity<ActivityExtrac
         float balance = getIntent().getFloatExtra("balance", 0F);
         bindRoot.setBalance(NumberUtils.instance().parseFloat8(balance));
 
-        if (TextUtils.equals(type, CoinConst.BTC))
-            bindRoot.hintBTC.setVisibility(View.VISIBLE);
-        if (TextUtils.equals(type, CoinConst.ETH))
-            bindRoot.hintETH.setVisibility(View.VISIBLE);
+        queryConfig();
+    }
+
+    private void queryConfig() {
+        ApiUtil.apiService().extraConfig(new Callback<List<ExtraConfig>>() {
+            @Override
+            public void onResponse(List<ExtraConfig> response) {
+                if (!CollectionUtils.isEmpty(response)) {
+                    for (ExtraConfig extraConfig : response) {
+                        if (TextUtils.equals(extraConfig.name, type)) {
+                            if (TextUtils.equals(extraConfig.type, "minWithdraw")) {
+                                mConfigValues[0] = Float.parseFloat(extraConfig.value);
+                            } else if (TextUtils.equals(extraConfig.type, "feeRate")) {
+                                mConfigValues[1] = Float.parseFloat(extraConfig.value);
+                            }
+                        }
+                    }
+                }
+
+                bindRoot.hintBTC.setText(getString(R.string.extra_config_is, mConfigValues[0], mConfigValues[1]));
+            }
+
+            ;
+        });
     }
 
     private String getCoinAddress() {
@@ -103,9 +125,7 @@ public class ExtractCoinConfirmActivity extends BaseTitleActivity<ActivityExtrac
     private boolean inputTooSmall(float inputValue) {
         if (inputValue <= 0)
             return true;
-        if (TextUtils.equals(type, CoinConst.BTC) && inputValue < MIN_BTC)
-            return true;
-        if (TextUtils.equals(type, CoinConst.ETH) && inputValue < MIN_ETH)
+        if (mConfigValues.length >= 1 && inputValue < mConfigValues[0])
             return true;
 
         return false;

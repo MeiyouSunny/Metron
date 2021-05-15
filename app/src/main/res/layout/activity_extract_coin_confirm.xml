@@ -121,20 +121,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
-                    android:text="BTC起提数量：0.005    BTC提币手续费：0.0005"
+                    tools:text="BTC起提数量：0.005    BTC提币手续费：0.0005"
                     android:textColor="#A0A7B3"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/hintETH"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:text="ETH起提数量：0.2    ETH提币手续费：0.005"
-                    android:textColor="#A0A7B3"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
+                    android:textSize="12sp" />
 
             </LinearLayout>
 

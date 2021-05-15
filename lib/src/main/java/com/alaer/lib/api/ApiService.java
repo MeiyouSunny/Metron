@@ -1,5 +1,6 @@
 package com.alaer.lib.api;
 
+import com.alaer.lib.api.bean.ExtraConfig;
 import com.alaer.lib.api.bean.IncomeLastest;
 import com.alaer.lib.api.bean.IncomeList;
 import com.alaer.lib.api.bean.IncomeTrend;
@@ -255,6 +256,12 @@ public interface ApiService {
      */
     @GET("/user/order/list")
     Call<OrderList> orderList(@Query("role") int role, @Query("pageSize") int pageSize, Callback<OrderList> callback);
+
+    /**
+     * 获取提币相关配置
+     */
+    @GET("/config/list")
+    Call<List<ExtraConfig>> extraConfig(Callback<List<ExtraConfig>> callback);
 
     /**
      * 提币列表
