@@ -7,7 +7,6 @@ import com.alaer.lib.api.bean.IncomeTrend;
 import com.alaer.lib.api.bean.MessageList;
 import com.alaer.lib.api.bean.MinterList;
 import com.alaer.lib.api.bean.MinterSeries;
-import com.alaer.lib.api.bean.MinterStats;
 import com.alaer.lib.api.bean.OrderList;
 import com.alaer.lib.api.bean.PollNewInfo;
 import com.alaer.lib.api.bean.TokenInfo;
@@ -15,6 +14,7 @@ import com.alaer.lib.api.bean.TotalAssets;
 import com.alaer.lib.api.bean.UserInfo;
 import com.alaer.lib.api.bean.WithdrawList;
 import com.alaer.lib.api.bean.WithdrawStats;
+import com.alaer.lib.api.bean.WorkerStats;
 
 import java.util.List;
 
@@ -237,13 +237,13 @@ public interface ApiService {
      * @param currency BTC/ETH
      */
     @GET("/user/workers/stats")
-    Call<List<MinterStats>> workerStats(@Query("currency") String currency, Callback<List<MinterStats>> callback);
+    Call<WorkerStats> workerStats(@Query("currency") String currency, Callback<WorkerStats> callback);
 
     /**
      * 所有矿机统计
      */
     @GET("/user/workers/stats")
-    Call<List<MinterStats>> workerAllStats(Callback<List<MinterStats>> callback);
+    Call<WorkerStats> workerAllStats(Callback<WorkerStats> callback);
 
     /**
      * 我的订单列表

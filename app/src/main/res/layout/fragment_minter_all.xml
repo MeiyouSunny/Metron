@@ -10,16 +10,8 @@
             type="com.metron.xiaoming.base.BindClickListener" />
 
         <variable
-            name="minterValues"
-            type="int[]" />
-
-        <variable
-            name="minterCountBTC"
-            type="int" />
-
-        <variable
-            name="minterCountETH"
-            type="int" />
+            name="workerStats"
+            type="com.alaer.lib.api.bean.WorkerStats" />
 
     </data>
 
@@ -49,7 +41,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(minterValues[0])}"
+                        android:text="@{String.valueOf(workerStats.BTC.count + workerStats.ETH.count)}"
                         android:textColor="@color/white"
                         android:textSize="24sp" />
 
@@ -73,7 +65,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(minterCountETH)}"
+                        android:text="@{String.valueOf(workerStats.ETH.count)}"
                         android:textColor="@color/white"
                         android:textSize="24sp" />
 
@@ -97,7 +89,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(minterCountBTC)}"
+                        android:text="@{String.valueOf(workerStats.BTC.count)}"
                         android:textColor="@color/white"
                         android:textSize="24sp" />
 
@@ -130,7 +122,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(minterValues[1])}"
+                        android:text="@{String.valueOf(workerStats.BTC.status._$1 + workerStats.ETH.status._$1)}"
                         android:textColor="@color/white"
                         android:textSize="24sp" />
 
@@ -154,7 +146,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(minterValues[2])}"
+                        android:text="@{String.valueOf(workerStats.BTC.status._$3 + workerStats.ETH.status._$3)}"
                         android:textColor="@color/white"
                         android:textSize="24sp" />
 
@@ -178,7 +170,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{String.valueOf(minterValues[3])}"
+                        android:text="@{String.valueOf(workerStats.BTC.status._$4 + workerStats.ETH.status._$4)}"
                         android:textColor="@color/white"
                         android:textSize="24sp" />
 

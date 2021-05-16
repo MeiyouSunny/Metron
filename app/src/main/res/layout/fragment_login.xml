@@ -55,7 +55,6 @@
                 android:maxLength="11"
                 android:paddingLeft="6dp"
                 android:singleLine="true"
-                android:text="15680809781"
                 android:textColor="#15233E"
                 android:textColorHint="#A0A7B3"
                 android:textSize="18sp" />
@@ -99,7 +98,6 @@
                 android:maxLength="16"
                 android:paddingLeft="6dp"
                 android:singleLine="true"
-                android:text="123456"
                 android:textColor="#15233E"
                 android:textColorHint="#A0A7B3"
                 android:textSize="18sp" />

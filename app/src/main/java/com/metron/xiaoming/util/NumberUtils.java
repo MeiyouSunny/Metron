@@ -22,6 +22,19 @@ public class NumberUtils {
         return String.format("%.8f", Float.valueOf(nf.format(value)));
     }
 
+    public String parseFloat8(String value) {
+        try {
+            NumberFormat nf = NumberFormat.getNumberInstance();
+            nf.setMaximumFractionDigits(8);
+            nf.setGroupingUsed(false);
+            return String.format("%.8f", Float.valueOf(nf.format(Float.valueOf(value))));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
     public float parseFloat(float value) {
         NumberFormat nf = NumberFormat.getNumberInstance();
         nf.setMaximumFractionDigits(8);

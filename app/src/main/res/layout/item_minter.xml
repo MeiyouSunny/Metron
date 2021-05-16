@@ -59,7 +59,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@{minterUtil.parseMinterStatus(minter)}"
-            android:textColor="#6D7686"
+            android:textColor="@{minter.status==4 ? @color/font_red : @color/font_6D}"
             android:textSize="12sp"
             tools:text="0.12345678" />
 

@@ -24,9 +24,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="38dp"
-        android:gravity="center_vertical"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:gravity="center_vertical">
 
         <TextView
             android:layout_width="0dp"
@@ -63,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@{numberUtil.parseFloat8(income.companyIncome + income.channelIncome)}"
+            android:text="@{numberUtil.parseFloat8(income.dividedIncome)}"
             android:textColor="#6D7686"
             android:textSize="11sp"
             tools:text="0.12345678" />

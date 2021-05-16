@@ -8,9 +8,9 @@ import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
 import com.alaer.lib.api.bean.IncomeLastest;
 import com.alaer.lib.api.bean.MinterList;
-import com.alaer.lib.api.bean.MinterStats;
 import com.alaer.lib.api.bean.PollNewInfo;
 import com.alaer.lib.api.bean.WithdrawStats;
+import com.alaer.lib.api.bean.WorkerStats;
 import com.metron.xiaoming.R;
 import com.metron.xiaoming.adapter.MinterListAdapter;
 import com.metron.xiaoming.base.BaseBindFragment;
@@ -20,8 +20,6 @@ import com.metron.xiaoming.ui.dialog.DialogMinterDetail;
 import com.metron.xiaoming.util.CoinConst;
 import com.metron.xiaoming.util.NumberUtils;
 import com.metron.xiaoming.util.ViewUtil;
-
-import java.util.List;
 
 import likly.dialogger.Dialogger;
 import likly.view.repeat.OnHolderClickListener;
@@ -54,12 +52,14 @@ public class MinterTypeFragment extends BaseBindFragment<FragmentMinterBtcBindin
 
     private void queryMinters() {
         ApiUtil.apiService().workerStats(type,
-                new Callback<List<MinterStats>>() {
+                new Callback<WorkerStats>() {
                     @Override
-                    public void onResponse(List<MinterStats> minterStatsList) {
-                        if (minterStatsList != null) {
-                            int[] values = new MinterUtil().parseMinterStatsValues(minterStatsList);
-                            bindRoot.setMinterValues(values);
+                    public void onResponse(WorkerStats workerStats) {
+                        if (workerStats != null) {
+                            if (TextUtils.equals(type, CoinConst.BTC))
+                                bindRoot.setCoinStats(workerStats.BTC);
+                            else
+                                bindRoot.setCoinStats(workerStats.ETH);
                         }
                     }
                 });
@@ -103,9 +103,6 @@ public class MinterTypeFragment extends BaseBindFragment<FragmentMinterBtcBindin
                 super.onResponse(minterList);
                 if (minterList != null) {
                     ViewUtil.showListData(bindRoot.repeatView, minterList.rows);
-
-//                    FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(getContext(), minterList.rows.size());
-//                    bindRoot.repeatView.getRecyclerView().setLayoutManager(layoutManager);
                 } else {
                     bindRoot.repeatView.layoutAdapterManager().showEmptyView();
                 }

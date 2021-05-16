@@ -6,17 +6,13 @@ import android.view.View;
 import com.alaer.lib.api.ApiUtil;
 import com.alaer.lib.api.Callback;
 import com.alaer.lib.api.bean.MinterList;
-import com.alaer.lib.api.bean.MinterStats;
+import com.alaer.lib.api.bean.WorkerStats;
 import com.metron.xiaoming.R;
 import com.metron.xiaoming.adapter.MinterListAdapter;
 import com.metron.xiaoming.base.BaseBindFragment;
-import com.metron.xiaoming.data.MinterUtil;
 import com.metron.xiaoming.databinding.FragmentMinterAllBinding;
 import com.metron.xiaoming.ui.dialog.DialogMinterDetail;
-import com.metron.xiaoming.util.CoinConst;
 import com.metron.xiaoming.util.ViewUtil;
-
-import java.util.List;
 
 import likly.dialogger.Dialogger;
 import likly.view.repeat.OnHolderClickListener;
@@ -53,37 +49,14 @@ public class MinterAllFragment extends BaseBindFragment<FragmentMinterAllBinding
             }
         });
 
-        ApiUtil.apiService().workerAllStats(new Callback<List<MinterStats>>() {
+        ApiUtil.apiService().workerAllStats(new Callback<WorkerStats>() {
             @Override
-            public void onResponse(List<MinterStats> minterStatsList) {
-                if (minterStatsList != null) {
-                    int[] values = new MinterUtil().parseMinterStatsValues(minterStatsList);
-                    bindRoot.setMinterValues(values);
+            public void onResponse(WorkerStats workerStats) {
+                if (workerStats != null) {
+                    bindRoot.setWorkerStats(workerStats);
                 }
             }
         });
-
-        ApiUtil.apiService().workerStats(CoinConst.BTC,
-                new Callback<List<MinterStats>>() {
-                    @Override
-                    public void onResponse(List<MinterStats> minterStatsList) {
-                        if (minterStatsList != null) {
-                            int[] values = new MinterUtil().parseMinterStatsValues(minterStatsList);
-                            bindRoot.setMinterCountBTC(values[0]);
-                        }
-                    }
-                });
-
-        ApiUtil.apiService().workerStats(CoinConst.ETH,
-                new Callback<List<MinterStats>>() {
-                    @Override
-                    public void onResponse(List<MinterStats> minterStatsList) {
-                        if (minterStatsList != null) {
-                            int[] values = new MinterUtil().parseMinterStatsValues(minterStatsList);
-                            bindRoot.setMinterCountETH(values[0]);
-                        }
-                    }
-                });
     }
 
     @Override

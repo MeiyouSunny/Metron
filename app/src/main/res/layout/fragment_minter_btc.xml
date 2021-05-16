@@ -10,10 +10,6 @@
             type="com.metron.xiaoming.base.BindClickListener" />
 
         <variable
-            name="minterValues"
-            type="int[]" />
-
-        <variable
             name="coin"
             type="com.alaer.lib.api.bean.PollNewInfo.Coin" />
 
@@ -32,6 +28,10 @@
         <variable
             name="incomeLatest"
             type="com.alaer.lib.api.bean.IncomeLastest" />
+
+        <variable
+            name="coinStats"
+            type="com.alaer.lib.api.bean.WorkerStats.CoinStats" />
 
     </data>
 
@@ -55,7 +55,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(minterValues[0])}"
+                    android:text="@{String.valueOf(coinStats.count)}"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
@@ -79,7 +79,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(minterValues[1])}"
+                    android:text="@{String.valueOf(coinStats.status._$1)}"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
@@ -103,7 +103,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(minterValues[2])}"
+                    android:text="@{String.valueOf(coinStats.status._$3)}"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
@@ -127,7 +127,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(minterValues[3])}"
+                    android:text="@{String.valueOf(coinStats.status._$4)}"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
