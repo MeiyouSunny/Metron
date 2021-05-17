@@ -229,7 +229,13 @@ public interface ApiService {
      * @param currency BTC/ETH
      */
     @GET("/user/workers/list")
-    Call<MinterList> workerList(@Query("currency") String currency, @Query("pageSize") int pageSize, Callback<MinterList> callback);
+    Call<MinterList> workerList(@Query("currency[]") String currency, @Query("pageSize") int pageSize, Callback<MinterList> callback);
+
+    /**
+     * 我的所有矿机列表
+     */
+    @GET("/user/workers/list")
+    Call<MinterList> workerAllList(@Query("pageSize") int pageSize, Callback<MinterList> callback);
 
     /**
      * 我的矿机统计
@@ -269,7 +275,7 @@ public interface ApiService {
      * @param currency BTC/ETH
      */
     @GET("/user/withdraw/list")
-    Call<WithdrawList> withdrawList(@Query("currency") String[] currency, @Query("pageSize") int pageSize,
+    Call<WithdrawList> withdrawList(@Query("currency[]") String currency, @Query("pageSize") int pageSize,
                                     Callback<WithdrawList> callback);
 
     /**

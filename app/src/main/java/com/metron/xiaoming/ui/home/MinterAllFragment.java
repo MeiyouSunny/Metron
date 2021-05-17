@@ -37,7 +37,7 @@ public class MinterAllFragment extends BaseBindFragment<FragmentMinterAllBinding
     }
 
     private void queryMinters() {
-        ApiUtil.apiService().workerList("", 200, new Callback<MinterList>() {
+        ApiUtil.apiService().workerAllList(200, new Callback<MinterList>() {
             @Override
             public void onResponse(MinterList minterList) {
                 super.onResponse(minterList);

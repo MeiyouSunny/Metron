@@ -63,7 +63,8 @@ public class ProfitFragment extends BaseBindFragment<FragmentProfitBinding> {
     }
 
     private void queryTotalAssets() {
-        ApiUtil.apiService().totalAssets(UserDataUtil.instance().getUserInfo().role, new Callback<TotalAssets>() {
+        int role = UserDataUtil.isChannelUser() ? 2 : 1;
+        ApiUtil.apiService().totalAssets(role, new Callback<TotalAssets>() {
             @Override
             public void onResponse(TotalAssets totalAssets) {
                 mTotalAssets = totalAssets;

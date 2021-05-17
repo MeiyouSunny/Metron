@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="handler"
             type="com.metron.xiaoming.base.BindClickListener" />
@@ -32,6 +34,10 @@
         <variable
             name="coinStats"
             type="com.alaer.lib.api.bean.WorkerStats.CoinStats" />
+
+        <variable
+            name="isBTC"
+            type="boolean" />
 
     </data>
 
@@ -156,10 +162,10 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
                     android:layout_width="match_parent"
                     android:layout_height="72dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -172,16 +178,17 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.00 H/s"
+                            android:text="@{minterUtil.parseCurrentHashrate(coinStats.income)}"
                             android:textColor="#15233E"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:text="0.00 H/s" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="24小时平均算力"
+                            android:text="当前算力"
                             android:textColor="#6D7686"
                             android:textSize="12sp" />
 
@@ -234,7 +241,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{numberUtil.parseFloat8(incomeLatest.totalIncome)}"
+                            android:text="@{numberUtil.parseFloat8(incomeLatest.userIncome)}"
                             android:textColor="#15233E"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -343,7 +350,17 @@
                             android:layout_marginTop="2dp"
                             android:text="每M日理论收益"
                             android:textColor="#6D7686"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:visibility="@{isBTC ? View.GONE : View.VISIBLE}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="每T日理论收益"
+                            android:textColor="#6D7686"
+                            android:textSize="14sp"
+                            android:visibility="@{isBTC ? View.VISIBLE : View.GONE}" />
 
                         <TextView
                             android:layout_width="wrap_content"

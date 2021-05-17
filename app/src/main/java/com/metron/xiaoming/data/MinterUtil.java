@@ -7,6 +7,7 @@ import com.alaer.lib.api.bean.MinterSeries;
 import com.alaer.lib.api.bean.MinterStats;
 import com.alaer.lib.api.bean.OrderList;
 import com.alaer.lib.api.bean.PollNewInfo;
+import com.alaer.lib.api.bean.WorkerStats;
 import com.metron.xiaoming.R;
 import com.metron.xiaoming.util.CollectionUtils;
 import com.metron.xiaoming.util.NumberUtils;
@@ -46,13 +47,13 @@ public class MinterUtil {
 
     public String getCnyRateBTC(PollNewInfo pollNewInfo) {
         if (pollNewInfo != null && pollNewInfo.BTC != null)
-            return String.valueOf(pollNewInfo.BTC.cnyRate);
+            return String.valueOf(pollNewInfo.BTC.currencyValue);
         return "";
     }
 
     public String getCnyRateETH(PollNewInfo pollNewInfo) {
         if (pollNewInfo != null && pollNewInfo.ETH != null)
-            return String.valueOf(pollNewInfo.ETH.cnyRate);
+            return String.valueOf(pollNewInfo.ETH.currencyValue);
         return "";
     }
 
@@ -134,6 +135,11 @@ public class MinterUtil {
             unit = "MH/S";
         }
         return NumberUtils.instance().parseFloat8((float) (coin.networkHashrate / power)) + unit;
+    }
+
+    // 当前算力
+    public String parseCurrentHashrate(WorkerStats.Income income) {
+        return income.hashrate + income.hashrateUnit + "H/S";
     }
 
     // 当前难度，单位K，需转换为T或者E等

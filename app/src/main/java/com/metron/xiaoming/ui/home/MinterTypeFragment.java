@@ -46,6 +46,7 @@ public class MinterTypeFragment extends BaseBindFragment<FragmentMinterBtcBindin
     public void onViewCreated() {
         super.onViewCreated();
 
+        bindRoot.setIsBTC(TextUtils.equals(CoinConst.BTC, type));
         bindRoot.repeatView.onClick(this);
         queryMinters();
     }

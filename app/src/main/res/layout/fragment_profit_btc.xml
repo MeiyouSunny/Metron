@@ -148,7 +148,7 @@
                             android:id="@+id/profitToday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{numberUtil.parseFloat8(incomeLatest.totalIncome)}"
+                            android:text="@{numberUtil.parseFloat8(incomeLatest.userIncome)}"
                             android:textColor="#005FEB"
                             android:textSize="16sp"
                             android:textStyle="bold"
