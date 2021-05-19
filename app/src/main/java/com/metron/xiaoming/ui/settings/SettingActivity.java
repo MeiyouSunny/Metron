@@ -63,7 +63,7 @@ public class SettingActivity extends BaseTitleActivity<ActivitySettngsBinding> {
     private void logout() {
         $.config().putString("phone", "");
         $.config().putString("pwd", "");
-        ViewUtil.gotoActivity(this, LoginActivity.class);
+        ViewUtil.gotoActivity(this, LoginActivity.class, "type", LoginActivity.TYPE_LOGIN);
         HomeActivity.instance.finish();
         finish();
     }

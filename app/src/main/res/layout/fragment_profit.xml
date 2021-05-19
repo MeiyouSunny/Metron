@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerVertical="true"
-                    android:text="@{@string/total_assets_cny_is(util.parseFloat8(totalAssets.totalCny))}"
+                    android:text="@{@string/total_assets_cny_is(util.parseFloat2(totalAssets.totalCny))}"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     tools:text="≈ 10,9839.90 CNY" />

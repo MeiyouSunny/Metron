@@ -22,6 +22,14 @@ public class NumberUtils {
         return String.format("%.8f", Float.valueOf(nf.format(value)));
     }
 
+    // 保留2位小数
+    public String parseFloat2(float value) {
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        nf.setMaximumFractionDigits(2);
+        nf.setGroupingUsed(false);
+        return String.format("%.2f", Float.valueOf(nf.format(value)));
+    }
+
     public String parseFloat8(String value) {
         try {
             NumberFormat nf = NumberFormat.getNumberInstance();
